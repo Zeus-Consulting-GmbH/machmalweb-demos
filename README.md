@@ -5,7 +5,7 @@ Demo-Webseiten für potenzielle Kunden. Jede Demo liegt als Ordner in `public/` 
 ## So wird eine Demo abgelegt
 
 1. Ordner anlegen: `public/<slug>/`
-2. Darin genau eine Datei ablegen: `index.html`
+2. Darin eine `index.html` ablegen. Weitere Dateien und Unterordner (Bilder, CSS, JS) sind erlaubt, siehe unten.
 3. Auf `main` pushen — Vercel deployt automatisch, nichts weiter nötig.
 4. Die Demo ist danach erreichbar unter `https://<slug>.machmalweb.de`
 
@@ -19,15 +19,19 @@ Der Ordnername ist gleichzeitig die Subdomain. Deshalb gilt:
 - `www` und `machmalweb` sind reserviert und funktionieren nicht als Demo-Slug.
 - Beispiele aus dem Repo: `gegaj-galabau`, `maler-mueller`, `tc-gartenbau`
 
-## Wichtig: Die index.html muss vollständig eigenständig sein
+## Assets und Unterseiten
 
-Die Middleware ([middleware.js](middleware.js)) leitet **jeden** Pfad einer Demo-Subdomain auf `/<slug>/index.html` um. Das heißt: Zusätzliche Dateien neben der `index.html` (Bilder, CSS, JS in Unterordnern wie `assets/`) werden **nicht ausgeliefert** — ein Request auf `https://<slug>.machmalweb.de/assets/logo.png` liefert wieder die `index.html` zurück.
+Die Middleware ([middleware.js](middleware.js)) bildet jeden Pfad einer Demo-Subdomain auf den Demo-Ordner ab:
 
-Deshalb muss alles in der einen `index.html` stecken:
+- `https://<slug>.machmalweb.de/assets/logo.png` → `public/<slug>/assets/logo.png`
+- `https://<slug>.machmalweb.de/` → `public/<slug>/index.html`
+- `https://<slug>.machmalweb.de/datenschutz` → `public/<slug>/datenschutz/index.html` (Pfade ohne Dateiendung werden als Unterseite aufgelöst)
 
-- CSS und JavaScript inline (`<style>` / `<script>` im HTML)
-- Bilder als Data-URI (`data:image/...;base64,...`) oder von externen URLs (z. B. CDN)
-- Schriften über externe URLs (z. B. Google Fonts) oder als Data-URI
+Daraus folgt für die Demo-Dateien:
+
+- Asset-Pfade in der `index.html` relativ (`assets/logo.png`) oder root-absolut (`/assets/logo.png`) schreiben — beides landet im eigenen Demo-Ordner.
+- Unterseiten als `unterordner/index.html` ablegen, verlinkt als `/unterordner`.
+- Eine einzelne, in sich geschlossene `index.html` (CSS/JS inline, Bilder als Data-URI oder externe URLs) funktioniert natürlich weiterhin.
 
 ## Wie das Deployment funktioniert
 
