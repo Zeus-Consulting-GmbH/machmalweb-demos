@@ -21,3 +21,9 @@
 
 /* Paedagogen-Spalte vertikal mittig zur Ueberschrift */
 .ped-top{align-items:center}
+
+/* Echte Fotos statt Kachel-Collage im Kindergarten */
+.room-collage.fotos{grid-template-columns:1fr;gap:22px}
+.room-photo{margin:0}
+.room-photo img{display:block;width:100%;height:auto;border-radius:var(--radius-lg);box-shadow:0 24px 50px -34px rgba(61,51,35,.5)}
+.room-photo figcaption{font-size:13.5px;color:var(--ink-soft);margin-top:10px}
