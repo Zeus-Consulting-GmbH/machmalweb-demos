@@ -27,3 +27,6 @@
 .room-photo{margin:0}
 .room-photo img{display:block;width:100%;height:auto;border-radius:var(--radius-lg);box-shadow:0 24px 50px -34px rgba(61,51,35,.5)}
 .room-photo figcaption{font-size:13.5px;color:var(--ink-soft);margin-top:10px}
+
+/* Spendenhinweis im Vereinsteil */
+.donate-note{margin-top:22px;font-size:14.5px;color:var(--ink-soft);background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
