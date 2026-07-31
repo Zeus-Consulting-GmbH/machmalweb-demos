@@ -45,9 +45,5 @@
 .extra-konto{margin-top:10px;font-weight:700;line-height:1.7}
 @media (max-width:820px){.extra-grid{grid-template-columns:1fr}}
 
-/* Krippe: dunkle Karte traegt die Hoehe, kleine Kacheln bleiben kompakt */
-@media (min-width:981px){
-#krippe .offer-inner{align-items:stretch}
-#krippe .room-collage{height:100%;grid-template-rows:auto 1fr auto}
-#krippe .room-tile.big{justify-content:center;gap:14px}
-}
+/* Krippe: Aussengelaende-Box unter den Kacheln */
+#krippe .outdoor-note{margin-top:16px}
