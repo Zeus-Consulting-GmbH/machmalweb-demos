@@ -45,6 +45,9 @@
 .extra-konto{margin-top:10px;font-weight:700;line-height:1.7}
 @media (max-width:820px){.extra-grid{grid-template-columns:1fr}}
 
-/* Krippe: Kachel-Spalte auf die volle Spaltenhoehe verteilen */
+/* Krippe: dunkle Karte traegt die Hoehe, kleine Kacheln bleiben kompakt */
+@media (min-width:981px){
 #krippe .offer-inner{align-items:stretch}
-#krippe .room-collage{height:100%;align-content:space-between}
+#krippe .room-collage{height:100%;grid-template-rows:auto 1fr auto}
+#krippe .room-tile.big{justify-content:center;gap:14px}
+}
