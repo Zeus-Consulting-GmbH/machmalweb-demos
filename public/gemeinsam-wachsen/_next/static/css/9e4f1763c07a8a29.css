@@ -44,3 +44,9 @@
 .extra-hint{margin-top:14px;font-weight:700;color:var(--forest)}
 .extra-konto{margin-top:10px;font-weight:700;line-height:1.7}
 @media (max-width:820px){.extra-grid{grid-template-columns:1fr}}
+
+/* Krippen-Kacheln beruhigen: Listen-Optik statt Boxen, dunkle Kachel bleibt Akzent */
+#krippe .room-tile:not(.big){background:transparent;border:0;border-top:1px solid var(--line);border-radius:0;padding:14px 4px 8px;min-height:0}
+#krippe .room-tile:not(.big):hover{transform:none;box-shadow:none}
+#krippe .room-tile:not(.big) .rt-ic{background:transparent;width:auto;height:auto;border-radius:0;color:var(--forest);opacity:.75;margin-bottom:6px}
+#krippe .room-tile:not(.big) .rt-ic svg{width:18px;height:18px}
