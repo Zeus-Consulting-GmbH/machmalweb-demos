@@ -47,5 +47,4 @@
 
 /* Krippe: Kachel-Spalte auf die volle Spaltenhoehe verteilen */
 #krippe .offer-inner{align-items:stretch}
-#krippe .offer-inner>.reveal{display:flex}
-#krippe .room-collage{flex:1;align-content:space-between}
+#krippe .room-collage{height:100%;align-content:space-between}
