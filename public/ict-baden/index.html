@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ICT Baden GmbH – Softwareentwicklung im Auftrag. C#/.NET für Linux, Windows und Cloud, C/C++ für Embedded. Aus Karlsruhe-Durlach, seit 2009.">
+    <meta name="author" content="ICT Baden GmbH">
+    <title>ICT Baden GmbH – Softwareentwicklung · Karlsruhe</title>
+    <link rel="icon" href="assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="#start" aria-label="ICT Baden – Startseite">
+            <img src="assets/ict-baden.png" alt="ICT Baden" width="145" height="45">
+        </a>
+        <nav class="site-nav" id="siteNav" aria-label="Hauptnavigation">
+            <a href="#start">Start</a>
+            <a href="#leistungen">Leistungen</a>
+            <a href="#technologien">Technologien</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#tools">Tools</a>
+            <a href="#ueber">Über mich</a>
+            <a href="#kontakt" class="nav-cta">Kontakt</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main>
+
+    <!-- ============================== START ============================== -->
+    <section id="start" data-title="Start">
+        <div class="container">
+            <div class="hero">
+                <p class="eyebrow">Softwareentwicklung · Karlsruhe-Durlach</p>
+                <h1>Getting Things Done<span class="dot">.</span></h1>
+                <p class="lead">
+                    Individuelle Software, die in zehn Jahren noch läuft –
+                    C#/.NET für Linux, Windows und Cloud, C/C++ wo es
+                    hardwarenah wird. Seit 1989 in der Praxis, seit 2009 als GmbH.
+                </p>
+                <div class="hero-actions">
+                    <a href="#kontakt" class="btn btn-primary">Projekt anfragen</a>
+                    <a href="#tools" class="btn btn-outline">Tools herunterladen</a>
+                </div>
+            </div>
+        </div>
+        <div class="band">
+            <div class="container">
+                <div class="grid grid-4">
+                    <a class="card card-link" href="#leistungen">
+                        <h3>Auftragsentwicklung</h3>
+                        <p>C#/.NET von Mono bis .NET 10, sauber und wartbar.</p>
+                    </a>
+                    <a class="card card-link" href="#technologien">
+                        <h3>IoT &amp; Embedded</h3>
+                        <p>Raspberry Pi, RevPi, ESP32, Azure IoT Edge.</p>
+                    </a>
+                    <a class="card card-link" href="#technologien">
+                        <h3>Steuerungstechnik</h3>
+                        <p>S7, WAGO, Beckhoff – und OPC UA, Modbus, IEC 60870.</p>
+                    </a>
+                    <a class="card card-link" href="#technologien">
+                        <h3>Energiemanagement</h3>
+                        <p>Daten erfassen, Lasten steuern, Trends auswerten.</p>
+                    </a>
+                </div>
+                <p class="band-foot">
+                    <span>Sie sprechen direkt mit dem Entwickler:</span>
+                    <a href="mailto:fpf@ict-baden.de">fpf@ict-baden.de</a>
+                    <a href="tel:+497219415787">+49 721 9415787</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== LEISTUNGEN ============================== -->
+    <section id="leistungen" data-title="Leistungen">
+        <div class="container">
+            <header class="page-head">
+                <p class="eyebrow">Leistungen</p>
+                <h2>Softwareentwicklung im Auftrag – seit 1989 in der Praxis.</h2>
+                <p class="sub">
+                    Dienstleister und Partner für alle, die individuelle Softwarelösungen
+                    brauchen. Durch Effizienz, Flexibilität und Erfahrung auch bei
+                    Projekten mit straffem Timing.
+                </p>
+            </header>
+
+            <div class="grid grid-4">
+                <div class="card">
+                    <h3>Web &amp; Desktop</h3>
+                    <p>Web-Anwendungen und Desktop-Programme für Windows, Linux und macOS – u. a. mit dem eigenen stonehenge&nbsp;Framework sowie WPF.</p>
+                </div>
+                <div class="card">
+                    <h3>Systemdienste</h3>
+                    <p>Zuverlässige Dienste für Windows und Linux, die jahrelang unbeaufsichtigt laufen – vom Datenlogger bis zum Kommunikationsdienst.</p>
+                </div>
+                <div class="card">
+                    <h3>Cloud &amp; Hosting</h3>
+                    <p>Microsoft Azure und AWS, Docker und Kubernetes – vom einzelnen Container bis zur IoT-Anbindung kompletter Anlagen.</p>
+                </div>
+                <div class="card">
+                    <h3>Datenbanken</h3>
+                    <p>SQL Server, MongoDB und Cosmos DB – Datenmodell, Anbindung und Auswertungen aus einer Hand.</p>
+                </div>
+            </div>
+
+            <div class="split">
+                <div>
+                    <h3 class="block-title">So läuft die Zusammenarbeit</h3>
+                    <ol class="steps">
+                        <li><b>Erstgespräch</b><span>Anforderungen klären, per Telefon oder Video.</span></li>
+                        <li><b>Konzept &amp; Angebot</b><span>Klarer Umfang, klare Kosten.</span></li>
+                        <li><b>Umsetzung</b><span>Kurze Wege, regelmäßige Zwischenstände.</span></li>
+                        <li><b>Betrieb &amp; Wartung</b><span>Software, die bleibt – inklusive Pflege.</span></li>
+                    </ol>
+                </div>
+                <div>
+                    <h3 class="block-title">Ein Ansprechpartner, erfahrenes Netzwerk</h3>
+                    <p>
+                        Kein Account-Management, keine Übergaben: Sie sprechen direkt mit dem,
+                        der die Lösung entwickelt und verantwortet. Für Projekte, bei denen
+                        „ein Mann" nicht ausreicht, stehen erfahrene Partner bereit – sie
+                        erweitern Kapazität und Themengebiete.
+                    </p>
+                    <p>
+                        Die Zusammenarbeit funktioniert seit Jahren auch mit Großfirmen
+                        vollständig remote.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== TECHNOLOGIEN ============================== -->
+    <section id="technologien" data-title="Technologien">
+        <div class="container">
+            <header class="page-head">
+                <p class="eyebrow">Technologien &amp; Schwerpunkte</p>
+                <h2>Vom Sensor bis in die Cloud.</h2>
+                <p class="sub">Konkrete Plattformen statt Buzzwords – das sind die Spezialgebiete.</p>
+            </header>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Industrie 4.0, IoT &amp; Embedded</h3>
+                    <p>Azure IoT Edge (inkl. Installation auf RevolutionPi), Raspberry Pi &amp; Co. mit eigenen NuGet-Paketen, ESP8266/ESP32.</p>
+                    <div class="chips">
+                        <span>Raspberry Pi</span><span>Revolution Pi</span><span>PiXtend</span><span>ESP32</span><span>Azure IoT Edge</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Steuerungstechnik &amp; Protokolle</h3>
+                    <p>Anbindung der großen SPS-Welten und der Protokolle dazwischen – u. a. mit dem eigenen Tool WagoLoader.</p>
+                    <div class="chips">
+                        <span>Siemens S7 / TIA</span><span>WAGO CoDeSys</span><span>Beckhoff TwinCAT</span><span>OPC UA</span><span>Modbus TCP</span><span>IEC 60870-5-101/104</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Energiemanagement-Systeme</h3>
+                    <p>Die vier Bausteine eines EMS – komplett oder einzeln:</p>
+                    <ol class="mini-steps">
+                        <li><b>Erfassen</b> – Zähler, Messwerte</li>
+                        <li><b>Steuern</b> – Batterien, Lasten</li>
+                        <li><b>Überwachen</b> – Live-Daten, Trends, Alarme</li>
+                        <li><b>Auswerten</b> – Betriebstagebuch</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h3>Telekommunikation</h3>
+                    <p>Software trifft Kommunikationshardware: SIP/VoIP mit eigenem .NET-Wrapper für PJSIP, Mobilfunk und SMS-Versand.</p>
+                    <div class="chips">
+                        <span>SIP / VoIP</span><span>PJSIP (.NET)</span><span>5G/LTE-Router</span><span>SMS-Versand</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== PORTFOLIO ============================== -->
+    <section id="portfolio" data-title="Portfolio">
+        <div class="container">
+            <header class="page-head">
+                <p class="eyebrow">Portfolio</p>
+                <h2>Über die Jahre gewachsen.</h2>
+                <p class="sub">Eigenentwicklungen, offener Code und Engagement in der Entwickler-Community.</p>
+            </header>
+
+            <h3 class="block-title">Eigenentwicklungen: Überwachung &amp; Alarmierung</h3>
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>Informant</h3>
+                    <p>Alarmierung im industriellen Umfeld – meldet Störungen zuverlässig an den Bereitschaftsdienst, rund um die Uhr.</p>
+                </div>
+                <div class="card">
+                    <h3>CallCenter</h3>
+                    <p>Industrieller Anrufbeantworter und Telefonzentrale – nimmt Meldungen an und leitet sie strukturiert weiter.</p>
+                </div>
+                <div class="card">
+                    <h3>Monitoring</h3>
+                    <p>Überwachung von Anlagen und Diensten mit aktuellen Daten, Verteilung, Trends und Alarmen.</p>
+                </div>
+            </div>
+
+            <div class="split">
+                <div>
+                    <h3 class="block-title">Open Source &amp; NuGet</h3>
+                    <ul class="link-list">
+                        <li><a href="https://github.com/FrankPfattheicher/stonehenge4" target="_blank" rel="noopener">stonehenge4</a><span>Web- und Desktop-Framework für Windows, Linux, macOS</span></li>
+                        <li><a href="https://github.com/FrankPfattheicher/WagoLoader" target="_blank" rel="noopener">WagoLoader</a><span>Werkzeug für WAGO-Steuerungen</span></li>
+                        <li><a href="https://github.com/FrankPfattheicher/IctBaden.pjsua2" target="_blank" rel="noopener">IctBaden.pjsua2</a><span>.NET-Wrapper für PJSIP (SIP/VoIP)</span></li>
+                        <li><a href="https://github.com/FrankPfattheicher/IotEdgeRevPi" target="_blank" rel="noopener">IotEdgeRevPi</a><span>Azure IoT Edge auf dem RevolutionPi</span></li>
+                        <li><a href="https://github.com/FrankPfattheicher" target="_blank" rel="noopener">Alle Repositories auf GitHub →</a><span></span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="block-title">Community</h3>
+                    <p>
+                        Mitgründer der <a href="http://www.dotnet-ka.de" target="_blank" rel="noopener">.NET UserGroup Karlsruhe</a> (2004)
+                        mit langjähriger Leitung, Mitarbeit beim
+                        <a href="http://nossued.de" target="_blank" rel="noopener">.NET Open Space Süd</a> und Mitglied im
+                        <a href="http://www.vksi.de/" target="_blank" rel="noopener">VKSI</a> –
+                        dem Verein der Karlsruher Software-Ingenieure.
+                    </p>
+                    <p>
+                        Dieses Engagement stellt sicher, dass die Technik aktuell bleibt.
+                        Denn nur mit aktuellen Technologien entwickelte Software ist
+                        wirklich eine Investition in die Zukunft.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== TOOLS ============================== -->
+    <section id="tools" data-title="Tools">
+        <div class="container">
+            <header class="page-head">
+                <p class="eyebrow">Tools &amp; Downloads</p>
+                <h2>Kostenlos – zur Verwendung „wie sie ist".</h2>
+                <p class="sub">Die Programme sind kostenfrei und ohne Registrierung nutzbar. Eine Garantie für die Funktion wird nicht gegeben.</p>
+            </header>
+
+            <div class="grid grid-3">
+                <div class="card card-tool">
+                    <div class="tool-head"><h3>ModbusExplorer</h3><span class="tag">Windows</span></div>
+                    <p>Modbus-TCP-Geräte schnell im Blick – für Automatisierungs- und Inbetriebnahme-Techniker.</p>
+                    <a class="btn btn-small btn-primary" href="https://modbus.de/explorer.html" target="_blank" rel="noopener">Download bei modbus.de</a>
+                </div>
+                <div class="card card-tool">
+                    <div class="tool-head"><h3>TRON</h3><span class="tag">Windows · 32 Bit</span></div>
+                    <p>Diagnose-Ausgabe für Windows – Trace-Meldungen live mitlesen, ohne Installation.</p>
+                    <a class="btn btn-small btn-primary" href="https://ict-baden.de/downloads/Tron.exe">Tron.exe herunterladen</a>
+                </div>
+                <div class="card card-tool">
+                    <div class="tool-head"><h3>NuGet-Pakete</h3><span class="tag">.NET</span></div>
+                    <p class="mono-cmd" id="nugetCmd">dotnet add package IctBaden.Raspi</p>
+                    <p>Fertige Bausteine für <a href="https://www.nuget.org/packages/IctBaden.Raspi/" target="_blank" rel="noopener">Raspberry Pi</a>,
+                       <a href="https://www.nuget.org/packages/IctBaden.RevolutionPi/" target="_blank" rel="noopener">RevolutionPi</a> und
+                       <a href="https://www.nuget.org/packages/IctBaden.PiXtend/" target="_blank" rel="noopener">PiXtend</a>.</p>
+                </div>
+            </div>
+
+            <div class="calc">
+                <div class="calc-head">
+                    <h3>Energiezähler: Pulswertigkeit berechnen</h3>
+                    <p>Berechnung der Primär-Impulskonstante direkt im Browser – kein Download nötig.</p>
+                </div>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h4>Aus Wandlerkonstante</h4>
+                        <div class="calc-row">
+                            <label for="impulses">Zähler-Impulskonstante</label>
+                            <span class="calc-input"><input id="impulses" type="number" inputmode="decimal" value="20000"> <em>Imp./kWh, kvarh</em></span>
+                        </div>
+                        <div class="calc-row">
+                            <label for="factor">Wandlerkonstante</label>
+                            <span class="calc-input"><input id="factor" type="number" inputmode="decimal" value="100"></span>
+                        </div>
+                        <p class="calc-result">1 Impuls = <output id="pulse">5</output> Wh</p>
+                    </div>
+                    <div class="card">
+                        <h4>Vom Messwandlerzähler</h4>
+                        <div class="calc-row">
+                            <label for="MwImpulses">Impulse (RA)</label>
+                            <span class="calc-input"><input id="MwImpulses" type="number" inputmode="decimal" value="20000"> <em>Imp./kWh</em></span>
+                        </div>
+                        <div class="calc-row">
+                            <label for="MwVolts">Spannungswandler</label>
+                            <span class="calc-input"><input id="MwVolts" type="number" inputmode="decimal" value="20000"> / <input id="MwVoltsDiv" type="number" inputmode="decimal" value="100"> <em>V</em></span>
+                        </div>
+                        <div class="calc-row">
+                            <label for="MwAmps">Stromwandler</label>
+                            <span class="calc-input"><input id="MwAmps" type="number" inputmode="decimal" value="100"> / <input id="MwAmpsDiv" type="number" inputmode="decimal" value="5"> <em>A</em></span>
+                        </div>
+                        <p class="calc-result">1 Impuls = <output id="MwPulse">200</output> Wh</p>
+                    </div>
+                </div>
+                <details class="calc-ref">
+                    <summary>Referenz: Landis+Gyr Impulswertigkeiten am IM-E2A07</summary>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Spannung [V]</th><th>Strom [A]</th><th>Impulskonstante [Imp/kWh]</th></tr></thead>
+                            <tbody>
+                                <tr><td>3 × 230/400</td><td>5(100)</td><td>250</td></tr>
+                                <tr><td>3 × 230/400</td><td>1(6)</td><td>5000</td></tr>
+                                <tr><td>3 × 58/100</td><td>1(6)</td><td>20000</td></tr>
+                                <tr><td>3 × 58/100</td><td>1(2)</td><td>100000</td></tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <thead><tr><th>Kennziffer</th><th>Impulskonstante</th></tr></thead>
+                            <tbody>
+                                <tr><td>0.3.0</td><td>Prüf-LED-Konstante P+/− [Imp/kWh]</td></tr>
+                                <tr><td>0.3.3</td><td>Impulsausgangskonstante P+/− [Imp/kWh]</td></tr>
+                                <tr><td>0.3.4</td><td>Impulsausgangskonstante Q+/− [Imp/kvarh]</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== ÜBER MICH ============================== -->
+    <section id="ueber" data-title="Über mich">
+        <div class="container">
+            <header class="page-head">
+                <p class="eyebrow">Über mich</p>
+                <h2>„Wir" – das bin hauptsächlich ich, Frank Pfattheicher.</h2>
+            </header>
+
+            <div class="split split-wide">
+                <div>
+                    <p>
+                        Unterstützt werde ich in Büro- und Steuerangelegenheiten durch meine
+                        Frau. Und um Projekte realisieren zu können, bei denen „ein Mann"
+                        nicht ausreicht, stehen mir erfahrene Partner zur Seite – sie
+                        erweitern auch das Portfolio um Themengebiete, die man alleine
+                        nicht abdecken kann.
+                    </p>
+                    <p>
+                        Software entwickle ich seit 1989, seit 2009 als ICT Baden GmbH.
+                        Mein Standort ist Karlsruhe-Durlach – seit Jahren arbeite ich
+                        auch mit Großfirmen ausschließlich remote.
+                    </p>
+                    <p>
+                        „Am Puls der Zeit" bedeutet für mich den Einsatz der modernsten
+                        Technologien am Markt. Das ermöglicht Produkte, die auch in vielen
+                        Jahren noch einsatzfähig sind – denn nur mit aktuellen Technologien
+                        entwickelte Software ist wirklich eine Investition in die Zukunft.
+                    </p>
+                </div>
+                <aside class="fact-card">
+                    <dl>
+                        <div><dt>Geschäftsführer</dt><dd>Frank Pfattheicher</dd></div>
+                        <div><dt>Standort</dt><dd>Karlsruhe-Durlach</dd></div>
+                        <div><dt>Software seit</dt><dd>1989</dd></div>
+                        <div><dt>GmbH seit</dt><dd>2009</dd></div>
+                        <div><dt>Zusammenarbeit</dt><dd>Vor Ort &amp; 100 % remote</dd></div>
+                        <div><dt>Handelsregister</dt><dd>HRB 706949 · AG Mannheim</dd></div>
+                    </dl>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== KONTAKT ============================== -->
+    <section id="kontakt" data-title="Kontakt">
+        <div class="container">
+            <header class="page-head">
+                <p class="eyebrow">Kontakt</p>
+                <h2>Direkt zu Frank Pfattheicher.</h2>
+                <p class="sub">Schreiben Sie eine kurze E-Mail oder rufen Sie einfach an – die Antwort kommt meist noch am selben Tag.</p>
+            </header>
+
+            <div class="grid grid-3">
+                <div class="card contact-card">
+                    <h3>Erreichbar</h3>
+                    <ul class="contact-list">
+                        <li><span>E-Mail</span><a href="mailto:fpf@ict-baden.de">fpf@ict-baden.de</a></li>
+                        <li><span>Telefon</span><a href="tel:+497219415787">+49 721 9415787</a></li>
+                        <li><span>Mobil</span><a href="tel:+491727207196">+49 172 7207196</a></li>
+                    </ul>
+                </div>
+                <div class="card contact-card">
+                    <h3>Profile</h3>
+                    <ul class="contact-list">
+                        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/frank-pfattheicher" target="_blank" rel="noopener">frank-pfattheicher</a></li>
+                        <li><span>GitHub</span><a href="https://github.com/FrankPfattheicher" target="_blank" rel="noopener">FrankPfattheicher</a></li>
+                        <li><span>freelance.de</span><a href="https://www.freelance.de/Freiberufler/91924" target="_blank" rel="noopener">Profil &amp; Verfügbarkeit</a></li>
+                    </ul>
+                </div>
+                <div class="card contact-card">
+                    <h3>Anschrift</h3>
+                    <p class="address">
+                        ICT Baden GmbH<br>
+                        Seboldstraße 9<br>
+                        76227 Karlsruhe-Durlach
+                    </p>
+                    <p class="address-hint">Im Navi: „Zur Gießerei 20"</p>
+                </div>
+            </div>
+
+            <div class="split">
+                <div>
+                    <h3 class="block-title">Anfahrt</h3>
+                    <ul class="plain-list">
+                        <li><b>Auto:</b> A5, Ausfahrt 44 Karlsruhe-Durlach, Richtung Durlach.</li>
+                        <li><b>S-Bahn:</b> bis Karlsruhe-Durlach (S3, S31, S32), 5 Minuten Fußweg.</li>
+                        <li><b>Tram:</b> Linie 1 oder 2 bis „Auer Straße", 5 Minuten Fußweg.</li>
+                    </ul>
+                    <p><a href="assets/Anfahrtsbeschreibung.pdf">Anfahrtsbeschreibung als PDF →</a></p>
+                </div>
+                <div>
+                    <h3 class="block-title">Oder ganz ohne Anfahrt</h3>
+                    <p>
+                        Projekte laufen auf Wunsch vollständig remote – so arbeite ich
+                        seit Jahren auch mit Großfirmen. Das Erstgespräch gern per
+                        Telefon oder Video.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-cols">
+            <div>
+                <img src="assets/ict-baden-light.png" alt="ICT Baden" width="130" height="41">
+                <p>Seboldstraße 9<br>76227 Karlsruhe-Durlach</p>
+            </div>
+            <div>
+                <p class="footer-title">Pflichtangaben</p>
+                <p>Geschäftsführer: Frank Pfattheicher<br>
+                   Amtsgericht Mannheim · HRB 706949<br>
+                   USt-IdNr. DE 265276745</p>
+            </div>
+            <div>
+                <p class="footer-title">Kontakt</p>
+                <p><a href="mailto:fpf@ict-baden.de">fpf@ict-baden.de</a><br>
+                   +49 721 9415787</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span id="year">2026</span> ICT Baden GmbH</span>
+            <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
