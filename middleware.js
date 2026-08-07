@@ -22,6 +22,12 @@ export default function middleware(request) {
     });
   }
 
-  // <slug>.machmalweb.de -> Ordner /<slug>/index.html
-  return rewrite(new URL(`/${slug}/index.html`, request.url));
+  // <slug>.machmalweb.de/<pfad> -> Ordner /<slug>/<pfad>
+  // Pfade ohne Dateiendung (Seiten wie / oder /datenschutz) auf index.html aufloesen
+  let path = url.pathname;
+  const lastSegment = path.split('/').pop();
+  if (!lastSegment.includes('.')) {
+    path = path.replace(/\/$/, '') + '/index.html';
+  }
+  return rewrite(new URL(`/${slug}${path}`, request.url));
 }
