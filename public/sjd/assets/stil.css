@@ -355,38 +355,156 @@ section.papier-2 { background: var(--papier-2); }
 }
 .abschnitt-kopf h2 + .fliess { margin-top: 1.2rem; }
 
-/* ---------- Leistungen als Fragen ---------- */
+/* ---------- Leistungen als Karten-Bahn ----------
+   Ohne JavaScript: alle acht Karten als Raster, jede mit offenem Detailtext.
+   Mit JavaScript (html.js): waagerechte Bahn zum Wischen, Detail auf Tipp,
+   am Rechner zusätzlich Pfeil-Knöpfe zum Blättern. */
 
-.fragen { border-top: 1px solid var(--linie); }
+#leistungen { padding-block: clamp(56px, 7vw, 104px); }
 
-.frage {
+.bahn-kopf {
   display: grid;
-  gap: .9rem;
-  padding-block: clamp(28px, 3.4vw, 42px);
-  border-bottom: 1px solid var(--linie);
+  gap: 1.6rem;
+  margin-bottom: clamp(26px, 3.2vw, 44px);
 }
 @media (min-width: 860px) {
-  .frage {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: clamp(32px, 4vw, 72px);
-    align-items: start;
-  }
+  .bahn-kopf { grid-template-columns: 1fr auto; align-items: end; }
 }
-.frage h3 {
+.bahn-kopf .abschnitt-kopf { margin-bottom: 0; }
+
+.bahn-pfeile { display: none; gap: .6rem; }
+@media (min-width: 860px) {
+  .js .bahn-pfeile { display: flex; }
+}
+.pfeil {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--linie);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--tinte);
+  cursor: pointer;
+  transition: border-color .18s ease, opacity .18s ease;
+}
+.pfeil:hover:not(:disabled) { border-color: var(--tinte); }
+.pfeil:disabled { opacity: .3; cursor: default; }
+.pfeil svg { width: 20px; height: 20px; }
+
+.bahn {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+  align-items: start;
+  gap: clamp(16px, 2.2vw, 28px);
+}
+.js .bahn {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: .5rem;
+}
+.bahn::-webkit-scrollbar { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .bahn { scroll-behavior: auto; }
+}
+
+.js .karte {
+  flex: 0 0 clamp(228px, 70vw, 268px);
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+.karte-bild {
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--papier-2);
+}
+.karte-bild img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.karte:hover .karte-bild img { transform: scale(1.035); }
+@media (prefers-reduced-motion: reduce) {
+  .karte-bild img, .karte:hover .karte-bild img { transition: none; transform: none; }
+}
+
+.karte-titel {
+  font-size: 1.1875rem;
+  line-height: 1.3;
   color: var(--tief);
+  margin-top: 1.15rem;
   text-wrap: balance;
 }
-.frage .antwort-marke {
-  display: block;
+.karte-satz {
+  margin: .5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--tinte-weich);
+}
+
+.karte-knopf {
+  display: none;
+  align-items: center;
+  gap: .45rem;
+  margin-top: .9rem;
+  padding: 0;
+  background: none;
+  border: 0;
   font-family: var(--sans);
   font-size: .9375rem;
   font-weight: 600;
-  letter-spacing: .1em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--warm-tief);
-  margin-bottom: .8rem;
+  cursor: pointer;
 }
-.frage p { color: var(--tinte-weich); }
+.js .karte-knopf { display: inline-flex; }
+.karte-knopf svg {
+  width: 15px;
+  height: 15px;
+  transition: transform .25s ease;
+}
+.karte-knopf[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+.karte-detail { display: grid; }
+.js .karte-detail {
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .3s ease;
+}
+.js .karte.offen .karte-detail { grid-template-rows: 1fr; }
+.karte-detail > div { min-height: 0; }
+.js .karte-detail > div {
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility .3s;
+}
+.js .karte.offen .karte-detail > div { visibility: visible; }
+.karte-detail p {
+  margin: .9rem 0 0;
+  padding-top: .9rem;
+  border-top: 1px solid var(--linie);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--tinte-weich);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .karte-detail, .js .karte-detail > div, .karte-knopf svg { transition: none; }
+}
+
+.bahn-hinweis {
+  display: none;
+  margin-top: 1.4rem;
+  font-size: .9375rem;
+  color: var(--tinte-weich);
+}
+@media (max-width: 859px) {
+  .js .bahn-hinweis { display: block; }
+}
 
 .nachsatz {
   margin-top: clamp(32px, 4vw, 52px);

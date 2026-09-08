@@ -42,6 +42,17 @@ const FAKTEN = {
       'Anyali Rösch', 'Magdalena Kober', 'Volker Gmeiner', 'Stefan Schmiederer',
       'HRA 706793',          // Registernummer der KG, aus dem Originalimpressum
       'HRB 722486',          // Registernummer der Komplementär-GmbH, ebenda
+      // Die acht Leistungen der Startseite. Sie stecken in der Karten-Bahn,
+      // die man von Hand leicht um eine Karte kürzt — geschrieben wie im
+      // Quelltext, das kaufmännische Und also als Entity.
+      'Rechnungswesen &amp; Buchhaltung',
+      'Lohn- und Gehaltsabrechnung',
+      'Betriebswirtschaftliche Beratung',
+      'Jahresabschluss &amp; Steuererklärungen',
+      'Betriebsprüfung',
+      'Unternehmensnachfolge &amp; Testamentsvollstreckung',
+      'Internationales Steuerrecht',
+      'Umstrukturierung &amp; Unternehmensverkauf',
     ],
     darfNicht: [
       '0178',                // private Handynummer aus dem Lead

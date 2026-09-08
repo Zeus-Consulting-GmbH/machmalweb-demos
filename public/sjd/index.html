@@ -11,6 +11,7 @@
 <link rel="preload" href="assets/newsreader.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/stil.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -81,119 +82,195 @@
 
   <section id="leistungen">
     <div class="rahmen">
-      <div class="abschnitt-kopf">
-        <span class="auge">Leistungen</span>
-        <h2>Wobei können wir Ihnen helfen?</h2>
-        <p class="fliess">
-          Die meisten Mandanten kommen nicht mit einem Fachbegriff zu uns, sondern
-          mit einer Situation. Hier sind die häufigsten – und was wir dann tun.
-        </p>
+      <div class="bahn-kopf">
+        <div class="abschnitt-kopf">
+          <span class="auge">Leistungen</span>
+          <h2>Wobei können wir Ihnen helfen?</h2>
+          <p class="fliess">
+            Die meisten Mandanten kommen nicht mit einem Fachbegriff zu uns, sondern
+            mit einer Situation. Hier sind die häufigsten – und was wir dann tun.
+          </p>
+        </div>
+        <div class="bahn-pfeile">
+          <button class="pfeil" type="button" id="pfeil-links" aria-label="Vorherige Leistungen anzeigen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18L9 12l6-6"/></svg>
+          </button>
+          <button class="pfeil" type="button" id="pfeil-rechts" aria-label="Weitere Leistungen anzeigen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
       </div>
 
-      <div class="fragen">
+      <div class="bahn" id="bahn">
 
-        <article class="frage">
-          <h3>„Meine Buchhaltung frisst jeden Monat zu viel Zeit.“</h3>
-          <div>
-            <span class="antwort-marke">Rechnungswesen &amp; Buchhaltung</span>
+        <article class="karte">
+          <div class="karte-bild">
+            <img src="assets/kanzlei-beratung.webp" width="1000" height="667" loading="lazy" decoding="async"
+                 alt="Mitarbeiter der Societät SJD am Arbeitsplatz mit Headset">
+          </div>
+          <h3 class="karte-titel">Rechnungswesen &amp; Buchhaltung</h3>
+          <p class="karte-satz">„Meine Buchhaltung frisst jeden Monat zu viel Zeit.“</p>
+          <button class="karte-knopf" type="button" aria-expanded="false" aria-controls="detail-1">
+            <span>Mehr dazu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="karte-detail" id="detail-1"><div>
             <p>
               Wir übernehmen die Finanzbuchhaltung digital, mit Schnittstellen zu allen
               gängigen Buchhaltungssystemen, und liefern zeitnahe, aussagekräftige
               Auswertungen – statt Zahlen, die erst im Folgejahr kommen. Wenn Sie mit
               eigener Software buchen, unterstützen wir Sie im Tagesgeschäft.
             </p>
-          </div>
+          </div></div>
         </article>
 
-        <article class="frage">
-          <h3>„Die Lohnabrechnung muss stimmen. Jeden Monat.“</h3>
-          <div>
-            <span class="antwort-marke">Lohn- und Gehaltsabrechnung</span>
+        <article class="karte">
+          <div class="karte-bild">
+            <img src="assets/kanzlei-empfang.webp" width="1000" height="667" loading="lazy" decoding="async"
+                 alt="Heller Empfangsbereich der Kanzlei mit Wartezone">
+          </div>
+          <h3 class="karte-titel">Lohn- und Gehaltsabrechnung</h3>
+          <p class="karte-satz">„Die Lohnabrechnung muss stimmen. Jeden Monat.“</p>
+          <button class="karte-knopf" type="button" aria-expanded="false" aria-controls="detail-2">
+            <span>Mehr dazu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="karte-detail" id="detail-2"><div>
             <p>
               Monatliche Abrechnung samt Melde- und Bescheinigungswesen, dazu die
               Kommunikation mit Finanzämtern, Rentenversicherungsträgern, Arbeits­agenturen
               und Kreditinstituten. Prüfungen können bei uns im Haus an eingerichteten
               Arbeitsplätzen zusammen mit den Prüfern abgewickelt werden.
             </p>
-          </div>
+          </div></div>
         </article>
 
-        <article class="frage">
-          <h3>„Ich will Zahlen, auf die ich Entscheidungen stützen kann.“</h3>
-          <div>
-            <span class="antwort-marke">Betriebswirtschaftliche Beratung</span>
+        <article class="karte">
+          <div class="karte-bild">
+            <img src="assets/kanzlei-menschen.webp" width="1600" height="1067" loading="lazy" decoding="async"
+                 alt="Sechs Kolleginnen und Kollegen der Societät SJD im Flur der Kanzlei in der Esperantostraße">
+          </div>
+          <h3 class="karte-titel">Betriebswirtschaftliche Beratung</h3>
+          <p class="karte-satz">„Ich will Zahlen, auf die ich Entscheidungen stützen kann.“</p>
+          <button class="karte-knopf" type="button" aria-expanded="false" aria-controls="detail-3">
+            <span>Mehr dazu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="karte-detail" id="detail-3"><div>
             <p>
               Steuerberatung endet für uns nicht bei der Erfüllung von Pflichten. Wir
               schauen mit Ihnen auf den wirtschaftlichen Erfolg und die Wettbewerbs­position
               Ihres Unternehmens – und sagen Ihnen in klarer Sprache, was die Zahlen
               bedeuten.
             </p>
-          </div>
+          </div></div>
         </article>
 
-        <article class="frage">
-          <h3>„Der Jahresabschluss steht an.“</h3>
-          <div>
-            <span class="antwort-marke">Jahresabschluss &amp; Steuererklärungen</span>
+        <article class="karte">
+          <div class="karte-bild">
+            <img src="assets/kanzlei-bibliothek.webp" width="1000" height="667" loading="lazy" decoding="async"
+                 alt="Blick in die Kanzlei mit Fachbibliothek und Empfang">
+          </div>
+          <h3 class="karte-titel">Jahresabschluss &amp; Steuererklärungen</h3>
+          <p class="karte-satz">„Der Jahresabschluss steht an.“</p>
+          <button class="karte-knopf" type="button" aria-expanded="false" aria-controls="detail-4">
+            <span>Mehr dazu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="karte-detail" id="detail-4"><div>
             <p>
               Jahresabschlüsse nach handels- und steuerrechtlichen Vorschriften, auf
               Wunsch bis zum Konzernabschluss. Dazu die Steuererklärungen für Unternehmen
               und Privatpersonen und die Vertretung gegenüber der Finanzverwaltung.
             </p>
-          </div>
+          </div></div>
         </article>
 
-        <article class="frage">
-          <h3>„Das Finanzamt hat eine Betriebsprüfung angekündigt.“</h3>
-          <div>
-            <span class="antwort-marke">Betriebsprüfung</span>
+        <article class="karte">
+          <div class="karte-bild">
+            <img src="assets/kanzlei-eingang.webp" width="1200" height="674" loading="lazy" decoding="async"
+                 alt="Eingang der Kanzlei Societät SJD in der Esperantostraße 7 in Oberkirch">
+          </div>
+          <h3 class="karte-titel">Betriebsprüfung</h3>
+          <p class="karte-satz">„Das Finanzamt hat eine Betriebsprüfung angekündigt.“</p>
+          <button class="karte-knopf" type="button" aria-expanded="false" aria-controls="detail-5">
+            <span>Mehr dazu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="karte-detail" id="detail-5"><div>
             <p>
               Wir bereiten die Prüfung vor, begleiten sie und vertreten Sie gegenüber der
               Finanzverwaltung. Wenn eine Beurteilung strittig bleibt, auch im
               finanzgerichtlichen Verfahren.
             </p>
-          </div>
+          </div></div>
         </article>
 
-        <article class="frage">
-          <h3>„Ich denke über die Übergabe meines Unternehmens nach.“</h3>
-          <div>
-            <span class="antwort-marke">Unternehmensnachfolge &amp; Testamentsvollstreckung</span>
+        <article class="karte">
+          <div class="karte-bild">
+            <img src="assets/kanzlei-team.webp" width="1200" height="1032" loading="lazy" decoding="async"
+                 alt="Kolleginnen und Kollegen der Societät SJD vor der Fachbibliothek der Kanzlei">
+          </div>
+          <h3 class="karte-titel">Unternehmensnachfolge &amp; Testamentsvollstreckung</h3>
+          <p class="karte-satz">„Ich denke über die Übergabe meines Unternehmens nach.“</p>
+          <button class="karte-knopf" type="button" aria-expanded="false" aria-controls="detail-6">
+            <span>Mehr dazu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="karte-detail" id="detail-6"><div>
             <p>
               Ob an die Familie, an langjährige Mitarbeiter oder an einen externen Käufer –
               jede Nachfolge hat ihre eigenen steuerlichen Besonderheiten. Isabelle Seiler
               ist Fachberaterin für Unternehmensnachfolge (DStV&nbsp;e.&nbsp;V.) und
               zertifizierte Testamentsvollstreckerin (AGT).
             </p>
-          </div>
+          </div></div>
         </article>
 
-        <article class="frage">
-          <h3>„Wir sind über die Grenze hinaus tätig.“</h3>
-          <div>
-            <span class="antwort-marke">Internationales Steuerrecht</span>
+        <article class="karte">
+          <div class="karte-bild">
+            <img src="assets/kanzlei-empfang.webp" width="1000" height="667" loading="lazy" decoding="async"
+                 alt="Heller Empfangsbereich der Kanzlei mit Wartezone">
+          </div>
+          <h3 class="karte-titel">Internationales Steuerrecht</h3>
+          <p class="karte-satz">„Wir sind über die Grenze hinaus tätig.“</p>
+          <button class="karte-knopf" type="button" aria-expanded="false" aria-controls="detail-7">
+            <span>Mehr dazu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="karte-detail" id="detail-7"><div>
             <p>
               Grenzüberschreitende Gewinn- und Verlustverrechnung, Umsatzsteuer im
               EU-Binnenmarkt und die Gestaltung, Dokumentation und Durchsetzung von
               Verrechnungspreisen.
             </p>
-          </div>
+          </div></div>
         </article>
 
-        <article class="frage">
-          <h3>„Unser Unternehmen soll anders aufgestellt werden.“</h3>
-          <div>
-            <span class="antwort-marke">Umstrukturierung &amp; Unternehmensverkauf</span>
+        <article class="karte">
+          <div class="karte-bild">
+            <img src="assets/kanzlei-beratung.webp" width="1000" height="667" loading="lazy" decoding="async"
+                 alt="Mitarbeiter der Societät SJD am Arbeitsplatz mit Headset">
+          </div>
+          <h3 class="karte-titel">Umstrukturierung &amp; Unternehmensverkauf</h3>
+          <p class="karte-satz">„Unser Unternehmen soll anders aufgestellt werden.“</p>
+          <button class="karte-knopf" type="button" aria-expanded="false" aria-controls="detail-8">
+            <span>Mehr dazu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="karte-detail" id="detail-8"><div>
             <p>
               Was für das Einzelunternehmen gepasst hat, stößt mit wachsendem Umsatz und
               neuen Geschäftsfeldern an Grenzen. Wir begleiten Umwandlungen und
               Umstrukturierungen – und, wenn es soweit ist, den Verkauf. Alfred Huber ist
               Sachverständiger für Unternehmensbewertung.
             </p>
-          </div>
+          </div></div>
         </article>
 
       </div>
+
+      <p class="bahn-hinweis">Zum Blättern wischen – tippen öffnet die Einzelheiten.</p>
 
       <p class="nachsatz">
         Dazu kommt, was sich schlecht in eine Überschrift fassen lässt: die laufende
@@ -441,6 +518,56 @@
     </p>
   </div>
 </footer>
+
+<script>
+/* Karten-Bahn: Detail aufklappen, am Rechner mit Pfeil-Knöpfen blättern.
+   Ohne dieses Skript fehlt der Klasse "js" am <html>, dann zeigt das
+   Stylesheet alle acht Karten als Raster mit offenen Detailtexten. */
+(function () {
+  var bahn = document.getElementById('bahn');
+  if (!bahn) return;
+  var karten = Array.prototype.slice.call(bahn.querySelectorAll('.karte'));
+
+  karten.forEach(function (karte) {
+    var knopf = karte.querySelector('.karte-knopf');
+    var text = knopf.querySelector('span');
+
+    function umschalten() {
+      var offen = knopf.getAttribute('aria-expanded') === 'true';
+      knopf.setAttribute('aria-expanded', offen ? 'false' : 'true');
+      karte.classList.toggle('offen', !offen);
+      text.textContent = offen ? 'Mehr dazu' : 'Weniger';
+    }
+
+    knopf.addEventListener('click', umschalten);
+    karte.addEventListener('click', function (e) {
+      if (e.target.closest('.karte-knopf, a')) return;
+      umschalten();
+    });
+  });
+
+  var links = document.getElementById('pfeil-links');
+  var rechts = document.getElementById('pfeil-rechts');
+
+  function schrittweite() {
+    if (karten.length < 2) return bahn.clientWidth;
+    return karten[1].offsetLeft - karten[0].offsetLeft;
+  }
+  function blaettern(richtung) {
+    bahn.scrollBy({ left: richtung * schrittweite(), behavior: 'smooth' });
+  }
+  function stand() {
+    links.disabled = bahn.scrollLeft <= 2;
+    rechts.disabled = bahn.scrollLeft >= bahn.scrollWidth - bahn.clientWidth - 2;
+  }
+
+  links.addEventListener('click', function () { blaettern(-1); });
+  rechts.addEventListener('click', function () { blaettern(1); });
+  bahn.addEventListener('scroll', stand, { passive: true });
+  window.addEventListener('resize', stand);
+  stand();
+})();
+</script>
 
 </body>
 </html>

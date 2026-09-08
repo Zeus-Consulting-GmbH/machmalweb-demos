@@ -48,7 +48,7 @@ node pruefe.js
 
 Läuft ohne Abhängigkeiten und ohne Browser über alle Demos in `public/` und meldet sich, wenn ein Slug nicht als Subdomain taugt, eine `index.html` fehlt oder ein lokaler Verweis ins Leere zeigt (mit derselben Auflösung, die [middleware.js](middleware.js) live macht — Pfade ohne Endung als `unterordner/index.html`).
 
-Zusätzlich stehen oben in der Datei unter `FAKTEN` je Demo die Angaben, die stimmen **müssen** (Telefonnummer, Öffnungszeiten, Bewertungen), und die, die **nicht** auftauchen dürfen. Das ist der Schutz davor, dass beim Umbauen still eine private Handynummer oder eine unbelegte Zahl auf einer Kundenseite landet. Neue Demos mit belegten Angaben dort eintragen.
+Zusätzlich stehen oben in der Datei unter `FAKTEN` je Demo die Angaben, die stimmen **müssen** (Telefonnummer, Öffnungszeiten, Bewertungen, bei `sjd` auch die acht Leistungen), und die, die **nicht** auftauchen dürfen. Das ist der Schutz davor, dass beim Umbauen still eine private Handynummer oder eine unbelegte Zahl auf einer Kundenseite landet. Neue Demos mit belegten Angaben dort eintragen.
 
 Bekannte Altlasten (zwei alte Demos verlinken auf nie gebaute Rechtsseiten) sind in `ALTLASTEN` vermerkt, damit die Prüfung grün ist und neue Fehler auffallen.
 
