@@ -40,11 +40,12 @@ const FAKTEN = {
       '5,0',                 // Google-Bewertung
       '7 Google-Bewertungen',
       'Anyali Rösch', 'Magdalena Kober', 'Volker Gmeiner', 'Stefan Schmiederer',
+      'HRA 706793',          // Registernummer der KG, aus dem Originalimpressum
+      'HRB 722486',          // Registernummer der Komplementär-GmbH, ebenda
     ],
     darfNicht: [
       '0178',                // private Handynummer aus dem Lead
       '+49 178',
-      'HRA 706793',          // Registernummer der KG, im Impressum nicht belegt
     ],
   },
 };
