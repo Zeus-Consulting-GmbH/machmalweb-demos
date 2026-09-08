@@ -12,3 +12,8 @@
 # Build-/Deploy-Artefakte
 node_modules/
 .vercel/
+package-lock.json
+
+# Werkstatt: Rohbilder, Schriften, Browser-Downloads beim Bau einer Demo.
+# Gehört nicht ins öffentliche Repo und wird schnell hunderte Megabyte groß.
+.arbeit/
