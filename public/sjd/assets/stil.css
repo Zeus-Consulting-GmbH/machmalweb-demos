@@ -1,0 +1,355 @@
+:root {
+  --papier: #faf8f4;
+  --papier-dunkel: #f3efe6;
+  --karte: #ffffff;
+  --tinte: #262521;
+  --tinte-mild: #5c584f;
+  --linie: #e3ddd0;
+  --akzent: #7c6a46;
+  --akzent-dunkel: #564a30;
+  --akzent-hell: #efe9d9;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--tinte);
+  background: var(--papier);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 560;
+  margin: 0 0 0.5em;
+  color: var(--tinte);
+}
+
+p { margin: 0 0 1em; }
+
+a { color: inherit; }
+
+.rahmen {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Kopfzeile */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(250, 248, 244, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--linie);
+}
+
+.kopfzeile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 24px;
+}
+
+.marke {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.marke span { color: var(--akzent-dunkel); }
+
+nav.hauptnav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+nav.hauptnav a {
+  text-decoration: none;
+  font-size: 15px;
+  color: var(--tinte-mild);
+}
+
+nav.hauptnav a:hover { color: var(--tinte); }
+
+.anruf-knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--akzent);
+  color: #fff !important;
+  padding: 10px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 160ms ease;
+}
+
+.anruf-knopf:hover { background: var(--akzent-dunkel); }
+
+/* Held / Hero */
+
+.held {
+  padding: 96px 24px 80px;
+  text-align: center;
+}
+
+.held h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.15;
+  max-width: 15ch;
+  margin: 0 auto 20px;
+}
+
+.held .fliess {
+  max-width: 52ch;
+  margin: 0 auto 32px;
+  font-size: 18px;
+  color: var(--tinte-mild);
+}
+
+.knoepfe {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.knopf.voll { background: var(--akzent); color: #fff; }
+.knopf.voll:hover { background: var(--akzent-dunkel); }
+
+.knopf.ruhig {
+  background: transparent;
+  color: var(--tinte);
+  border: 1px solid var(--linie);
+}
+.knopf.ruhig:hover { border-color: var(--akzent); }
+
+.seit {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--akzent-dunkel);
+}
+
+/* Abschnitte */
+
+section { padding: 72px 0; }
+
+section.hell { background: var(--papier-dunkel); }
+
+.kopf-mitte {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto 48px;
+}
+
+.kopf-mitte .auge {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--akzent-dunkel);
+  margin-bottom: 10px;
+}
+
+.kopf-mitte h2 { font-size: clamp(26px, 3.4vw, 34px); }
+
+.kopf-mitte .fliess { color: var(--tinte-mild); font-size: 17px; }
+
+/* Leistungen */
+
+.leistungen-raster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.leistung {
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  padding: 26px 24px;
+}
+
+.leistung h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.leistung p {
+  font-size: 14.5px;
+  color: var(--tinte-mild);
+  margin: 0;
+}
+
+/* Team */
+
+.team-raster {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+}
+
+.team-karte { text-align: center; }
+
+.team-karte img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  filter: grayscale(14%);
+}
+
+.team-karte h4 {
+  font-size: 15.5px;
+  margin-bottom: 2px;
+}
+
+.team-karte .rolle {
+  font-size: 13px;
+  color: var(--tinte-mild);
+}
+
+/* Vertrauen */
+
+.vertrauen {
+  text-align: center;
+}
+
+.sterne-abzeichen {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: 999px;
+  padding: 14px 28px;
+  margin-bottom: 18px;
+}
+
+.sterne-abzeichen .sterne { color: var(--akzent); font-size: 18px; letter-spacing: 2px; }
+
+.sterne-abzeichen .zahl { font-family: "Newsreader", Georgia, serif; font-size: 22px; font-weight: 600; }
+
+.sterne-abzeichen .text { font-size: 14px; color: var(--tinte-mild); text-align: left; }
+
+/* Kontakt */
+
+.kontakt-raster {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.kontakt-karte {
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+  padding: 36px;
+}
+
+.kontakt-zeile {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--linie);
+  font-size: 15px;
+}
+
+.kontakt-zeile:last-child { border-bottom: none; }
+
+.kontakt-zeile .label {
+  min-width: 110px;
+  color: var(--tinte-mild);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-top: 2px;
+}
+
+.kontakt-zeile a { text-decoration: none; color: var(--akzent-dunkel); font-weight: 600; }
+
+/* Fuss */
+
+footer {
+  border-top: 1px solid var(--linie);
+  padding: 32px 0;
+}
+
+.fusszeile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--tinte-mild);
+}
+
+.fusszeile a { color: var(--tinte-mild); text-decoration: underline; text-underline-offset: 2px; }
+.fusszeile .demo { display: block; margin-top: 4px; font-size: 12px; }
+
+/* Rechtstexte */
+
+.recht {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+.recht h1 { margin-bottom: 32px; }
+.recht h2 { font-size: 19px; margin-top: 2em; }
+.recht p, .recht li { color: var(--tinte-mild); font-size: 15px; }
+.recht a { color: var(--akzent-dunkel); }
+.recht .zurueck { display: inline-block; margin-bottom: 32px; font-size: 14px; text-decoration: none; color: var(--akzent-dunkel); }
+
+/* Responsiv */
+
+@media (max-width: 860px) {
+  nav.hauptnav { display: none; }
+  .leistungen-raster { grid-template-columns: repeat(2, 1fr); }
+  .team-raster { grid-template-columns: repeat(3, 1fr); }
+  .kontakt-raster { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 540px) {
+  .kopfzeile { padding: 12px 16px; }
+  .marke { font-size: 17px; }
+  .held { padding: 64px 20px 56px; }
+  section { padding: 56px 0; }
+  .leistungen-raster { grid-template-columns: 1fr; }
+  .team-raster { grid-template-columns: repeat(2, 1fr); }
+  .kontakt-karte { padding: 24px; }
+  .sterne-abzeichen { flex-direction: column; text-align: center; padding: 20px; }
+  .sterne-abzeichen .text { text-align: center; }
+}
