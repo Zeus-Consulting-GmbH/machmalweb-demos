@@ -1,0 +1,351 @@
+/* GetFitness Rastatt — Demo für machmalweb.de
+   Farben aus dem Logo und dem Theme des Studios: Grün #50E32E auf Anthrazit. */
+
+:root {
+  --gruen: #50e32e;
+  --gruen-dunkel: #32c320;
+  --schwarz: #0b0d0b;
+  --tief: #121512;
+  --karte: #191d19;
+  --linie: #2a2f2a;
+  --weiss: #f4f6f4;
+  --grau: #a8b0a8;
+  --grau-tief: #7d857d;
+
+  --schrift: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+             "Helvetica Neue", Arial, sans-serif;
+  --rahmen: 1180px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--schwarz);
+  color: var(--weiss);
+  font-family: var(--schrift);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+h1, h2, h3 {
+  margin: 0;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+h1 { font-size: clamp(2.6rem, 7.5vw, 5rem); text-transform: uppercase; }
+h2 { font-size: clamp(1.9rem, 4.4vw, 3.1rem); text-transform: uppercase; }
+h3 { font-size: 1.12rem; letter-spacing: -0.01em; }
+p { margin: 0 0 1rem; }
+
+.rahmen {
+  max-width: var(--rahmen);
+  margin: 0 auto;
+  padding: 0 clamp(1.15rem, 4vw, 2.5rem);
+}
+
+.springmarke {
+  position: absolute; left: -9999px;
+  background: var(--gruen); color: #000;
+  padding: .7rem 1.1rem; font-weight: 700; z-index: 100;
+}
+.springmarke:focus { left: 1rem; top: 1rem; }
+
+:focus-visible { outline: 3px solid var(--gruen); outline-offset: 3px; }
+
+/* Auge = kleines Label über einer Überschrift */
+.auge {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+  color: var(--gruen);
+  margin-bottom: .9rem;
+}
+
+.fliess { color: var(--grau); max-width: 56ch; font-size: 1.06rem; }
+
+/* ---------- Knöpfe ---------- */
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .95rem 1.6rem;
+  border-radius: 3px;
+  font-weight: 800;
+  font-size: .93rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background .18s, color .18s, border-color .18s, transform .18s;
+}
+.knopf.voll { background: var(--gruen); color: #06180a; }
+.knopf.voll:hover { background: #6bff45; transform: translateY(-2px); }
+.knopf.rand { border-color: var(--linie); color: var(--weiss); }
+.knopf.rand:hover { border-color: var(--gruen); color: var(--gruen); }
+.knopf.klein { padding: .6rem 1.05rem; font-size: .8rem; }
+
+.knoepfe { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+
+/* ---------- Kopfzeile ---------- */
+header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(11, 13, 11, .93);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--linie);
+}
+.kopfzeile {
+  display: flex; align-items: center; gap: 1.5rem;
+  min-height: 74px;
+}
+.marke img { height: 30px; width: auto; }
+.hauptnav { margin-left: auto; display: flex; gap: 1.7rem; }
+.hauptnav a {
+  text-decoration: none;
+  font-size: .84rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--grau);
+  padding: .4rem 0;
+  border-bottom: 2px solid transparent;
+}
+.hauptnav a:hover { color: var(--weiss); border-bottom-color: var(--gruen); }
+@media (max-width: 860px) {
+  .hauptnav { display: none; }
+  .kopfzeile .knopf { margin-left: auto; }
+}
+
+/* ---------- Held ---------- */
+.held {
+  position: relative;
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(3rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+.held::before {
+  content: "";
+  position: absolute; inset: -20% -10% auto -30%;
+  height: 70vh;
+  background: radial-gradient(60% 60% at 30% 40%, rgba(80, 227, 46, .13), transparent 70%);
+  pointer-events: none;
+}
+.held > * { position: relative; }
+.held h1 em { color: var(--gruen); font-style: normal; }
+.held .fliess { margin-top: 1.6rem; }
+
+.held-bild {
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--linie);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .6);
+}
+.held-bild img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 5; }
+@media (max-width: 900px) {
+  .held { grid-template-columns: 1fr; }
+  .held-bild img { aspect-ratio: 4 / 3; }
+}
+
+/* ---------- Zahlenleiste ---------- */
+.leiste { border-block: 1px solid var(--linie); background: var(--tief); }
+.leiste .rahmen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding-block: clamp(2rem, 4vw, 2.8rem);
+}
+.leiste-punkt strong {
+  display: block;
+  font-size: clamp(1.5rem, 2.6vw, 2.05rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.15;
+  margin: .3rem 0 .35rem;
+}
+.leiste-punkt span:first-child {
+  font-size: .74rem; font-weight: 800; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--gruen);
+}
+.leiste-punkt p { margin: 0; color: var(--grau-tief); font-size: .92rem; }
+@media (max-width: 760px) { .leiste .rahmen { grid-template-columns: 1fr; } }
+
+/* ---------- Abschnitte ---------- */
+section { padding: clamp(4rem, 9vw, 7rem) 0; }
+.kopf { max-width: 60ch; margin-bottom: clamp(2.2rem, 4vw, 3.4rem); }
+.kopf .fliess { margin-top: 1.1rem; }
+
+/* Aktion */
+.aktion { background: var(--tief); border-block: 1px solid var(--linie); }
+.aktion .rahmen {
+  display: grid; grid-template-columns: 1.05fr .95fr;
+  gap: clamp(2rem, 5vw, 4rem); align-items: center;
+}
+.aktion h2 em { color: var(--gruen); font-style: normal; display: block; }
+.aktion-bild {
+  border-radius: 4px; overflow: hidden; border: 1px solid var(--linie);
+}
+.aktion-bild img { aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+@media (max-width: 900px) { .aktion .rahmen { grid-template-columns: 1fr; } }
+
+/* Leistungen */
+.leistungen-gitter {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(228px, 1fr));
+  gap: 1px;
+  background: var(--linie);
+  border: 1px solid var(--linie);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.leistung {
+  background: var(--karte);
+  padding: 1.6rem 1.4rem;
+  display: flex; flex-direction: column; gap: .55rem;
+  transition: background .18s;
+}
+.leistung:hover { background: #20261f; }
+.leistung svg { width: 26px; height: 26px; color: var(--gruen); flex: none; }
+.leistung h3 { font-size: 1rem; font-weight: 700; }
+.leistung p { margin: 0; font-size: .89rem; color: var(--grau-tief); line-height: 1.5; }
+
+.leistungen-streifen {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+  padding: 1.5rem 1.6rem;
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-left: 3px solid var(--gruen);
+  border-radius: 4px;
+}
+.leistungen-streifen svg { width: 30px; height: 30px; color: var(--gruen); flex: none; }
+.leistungen-streifen h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .3rem; }
+.leistungen-streifen p { margin: 0; font-size: .9rem; color: var(--grau-tief); }
+.leistungen-streifen .knopf { margin-left: auto; flex: none; }
+@media (max-width: 700px) {
+  .leistungen-streifen { flex-wrap: wrap; }
+  .leistungen-streifen .knopf { margin-left: 0; }
+}
+
+/* Galerie */
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 210px;
+  gap: 12px;
+}
+.galerie figure {
+  margin: 0; position: relative; overflow: hidden; border-radius: 4px;
+  border: 1px solid var(--linie);
+}
+.galerie img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.galerie figure:hover img { transform: scale(1.045); }
+.galerie figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 1.6rem .95rem .8rem;
+  font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .82));
+}
+.galerie .breit { grid-column: span 2; }
+.galerie .hoch { grid-row: span 2; }
+@media (max-width: 860px) {
+  .galerie { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 175px; }
+  .galerie .hoch { grid-row: span 1; }
+}
+
+/* Ablauf */
+.ablauf { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.4rem, 3vw, 2.4rem); }
+.schritt { border-top: 2px solid var(--gruen); padding-top: 1.3rem; }
+.schritt b {
+  display: block; font-size: .74rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--gruen); margin-bottom: .6rem;
+}
+.schritt h3 { margin-bottom: .5rem; }
+.schritt p { margin: 0; color: var(--grau-tief); font-size: .93rem; }
+@media (max-width: 800px) { .ablauf { grid-template-columns: 1fr; } }
+
+/* Kontakt */
+.kontakt { background: var(--tief); border-top: 1px solid var(--linie); }
+.kontakt .rahmen {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+.zeiten { border: 1px solid var(--linie); border-radius: 4px; background: var(--karte); }
+.zeiten h3 {
+  padding: 1.15rem 1.4rem; margin: 0;
+  border-bottom: 1px solid var(--linie);
+  font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gruen);
+}
+.zeiten dl { margin: 0; padding: .5rem 1.4rem 1.3rem; }
+.zeiten div {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: .68rem 0; border-bottom: 1px solid var(--linie);
+}
+.zeiten div:last-child { border-bottom: 0; }
+.zeiten dt { color: var(--grau); font-size: .93rem; }
+.zeiten dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; font-size: .95rem; }
+.zeiten .hinweis {
+  padding: 0 1.4rem 1.3rem; margin: 0;
+  font-size: .84rem; color: var(--grau-tief); line-height: 1.5;
+}
+
+.anschrift { font-style: normal; font-size: 1.06rem; line-height: 1.8; }
+.anschrift a { color: var(--gruen); text-decoration: none; font-weight: 700; }
+.anschrift a:hover { text-decoration: underline; }
+.kontakt-liste { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: .55rem; }
+.kontakt-liste li { color: var(--grau); font-size: .95rem; }
+@media (max-width: 860px) { .kontakt .rahmen { grid-template-columns: 1fr; } }
+
+/* Fußzeile */
+footer {
+  background: var(--schwarz);
+  border-top: 1px solid var(--linie);
+  padding: clamp(2.5rem, 5vw, 3.5rem) 0 2rem;
+  font-size: .89rem;
+  color: var(--grau-tief);
+}
+.fuss-oben {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  align-items: center; justify-content: space-between;
+  padding-bottom: 1.8rem; border-bottom: 1px solid var(--linie);
+}
+.fuss-oben img { height: 26px; width: auto; }
+.fuss-nav { display: flex; flex-wrap: wrap; gap: 1.4rem; }
+.fuss-nav a { color: var(--grau); text-decoration: none; }
+.fuss-nav a:hover { color: var(--gruen); }
+.fuss-unten { padding-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .8rem; justify-content: space-between; }
+
+.demo-hinweis {
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-left: 3px solid var(--gruen);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  margin-top: 1.8rem;
+  font-size: .84rem;
+  color: var(--grau-tief);
+  line-height: 1.55;
+}
+
+/* Rechtsseiten */
+.rechtstext { padding: clamp(3rem, 7vw, 5rem) 0; }
+.rechtstext .rahmen { max-width: 760px; }
+.rechtstext h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 2rem; }
+.rechtstext h2 { font-size: 1.2rem; margin: 2.4rem 0 .8rem; text-transform: none; letter-spacing: -.01em; }
+.rechtstext p, .rechtstext li { color: var(--grau); font-size: .97rem; }
+.rechtstext a { color: var(--gruen); }

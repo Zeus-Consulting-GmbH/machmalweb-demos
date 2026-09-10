@@ -59,6 +59,35 @@ const FAKTEN = {
       '+49 178',
     ],
   },
+  'getfitness-rastatt': {
+    muss: [
+      '07222 5027888',       // Studionummer von get-fitness.club/rastatt
+      'tel:+4972225027888',
+      'Karlsruher Str. 27',
+      '76437 Rastatt',
+      'rastatt@get-fitness.club',
+      // Öffnungs- und Personalzeiten, wie sie auf der Studioseite stehen.
+      // Der lange Mo–Fr-Block ist das Verkaufsargument der Demo und darf
+      // beim Umbauen nicht still auf eine runde Zahl zusammenschrumpfen.
+      '06:00 – 01:00 Uhr',   // Mo–Fr geöffnet
+      '09:00 – 20:00 Uhr',   // Sa/So geöffnet
+      '11:00 – 20:00 Uhr',   // Personal Mo–Fr
+      '10:00 – 18:00 Uhr',   // Feiertage und Personal Sa/So
+      'Fitness Verwaltung II.0 GmbH',  // Betreiber aus dem Originalimpressum
+      'Julia Sajbel',
+    ],
+    darfNicht: [
+      // Die Preistabelle auf get-fitness.club/mitgliedschaft ist erkennbar
+      // Theme-Füllung (Ernährungsberatung, Sauna nur im VIP-Paket – die
+      // Rastatter Seite führt die Sauna als allgemeine Leistung). Solange
+      // die Preise nicht vom Studio bestätigt sind, gehören sie auf keine
+      // Kundenseite.
+      '29,99',
+      '49,99',
+      '79,99',
+      'pro Monat',
+    ],
+  },
 };
 
 const fehler = [];
