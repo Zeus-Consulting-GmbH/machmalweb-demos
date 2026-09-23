@@ -71,6 +71,7 @@
   --shadow:0 24px 60px -28px rgba(23,19,15,.42);
   --shadow-s:0 10px 30px -18px rgba(23,19,15,.4);
   --max:1240px;
+  --demo-h:38px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -114,7 +115,7 @@ body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .eyebrow.center::after{content:"";width:26px;height:1.5px;background:var(--accent);display:inline-block}
 
 /* ============ HEADER ============ */
-header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.5s var(--ease)}
+header{position:fixed;top:var(--demo-h);left:0;right:0;z-index:1000;transition:.5s var(--ease)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 28px;max-width:1360px;margin:0 auto;transition:.5s var(--ease)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 22px;border-radius:100px;
   background:rgba(251,247,240,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);
@@ -140,7 +141,7 @@ header.scrolled .nav{padding-top:10px;padding-bottom:10px}
 .hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.06)}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;
   background:linear-gradient(180deg,rgba(20,16,12,.55) 0%,rgba(20,16,12,.12) 30%,rgba(20,16,12,.35) 62%,rgba(20,16,12,.9) 100%)}
-.hero-inner{width:100%;max-width:var(--max);margin:0 auto;padding:120px 28px 82px;color:#fff}
+.hero-inner{width:100%;max-width:var(--max);margin:0 auto;padding:calc(120px + var(--demo-h)) 28px 82px;color:#fff}
 .hero .eyebrow{color:#fff}.hero .eyebrow::before{background:var(--accent-soft)}
 .hero-eye{color:#fff;font-family:var(--disp);font-weight:600;font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;
   display:inline-flex;align-items:center;gap:.7em;margin-bottom:26px}
@@ -350,8 +351,6 @@ footer{background:var(--dark2);color:rgba(255,255,255,.6);padding:70px 0 30px}
 .foot-col a:hover{color:var(--accent-soft);transform:translateX(3px)}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:26px;font-size:12.5px}
 .foot-bottom a{color:rgba(255,255,255,.6);text-decoration:underline;text-underline-offset:3px}
-.mmw{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.75);font-weight:500}
-.mmw .m{width:22px;height:22px;border-radius:6px;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:14px}
 
 /* ============ FAQ ============ */
 .faq{background:var(--bg)}
@@ -368,7 +367,7 @@ details.qa[open] summary::after{transform:rotate(135deg)}
 details.qa .a{padding:0 26px 24px;color:var(--ink2);font-size:15px;line-height:1.65;max-width:60ch}
 details.qa[open] .a{animation:fadeUp .5s var(--ease)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.faq-aside{position:sticky;top:104px;background:var(--ink);color:var(--cream);border-radius:var(--r);padding:34px 32px}
+.faq-aside{position:sticky;top:calc(104px + var(--demo-h));background:var(--ink);color:var(--cream);border-radius:var(--r);padding:34px 32px}
 .faq-aside .eyebrow{color:var(--accent-soft)}.faq-aside .eyebrow::before{background:var(--accent)}
 .faq-aside h3{color:#fff;font-size:23px;margin:16px 0 12px;line-height:1.15}
 .faq-aside p{color:rgba(255,255,255,.7);font-size:14.5px;margin-bottom:22px;line-height:1.6}
@@ -388,14 +387,29 @@ details.qa[open] .a{animation:fadeUp .5s var(--ease)}
 }
 
 /* ============ VORSCHAU LAYER ============ */
-.vorschau-ribbon{position:fixed;top:0;left:0;z-index:1200;background:var(--accent);color:#fff;font-family:var(--disp);font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:6px 42px;transform:rotate(-90deg) translateY(-100%);transform-origin:top left;box-shadow:2px 2px 12px rgba(0,0,0,.2)}
-@media(max-width:1400px){.vorschau-ribbon{display:none}}
+/* Demo-Leiste: immer sichtbar, oberhalb des Headers */
+.demo-bar{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--demo-h);display:flex;align-items:center;justify-content:center;gap:10px;padding:0 14px;
+  background:var(--ink);color:rgba(255,255,255,.86);font-family:var(--sans);font-size:13px;line-height:1.2;white-space:nowrap}
+.demo-bar .m{width:22px;height:22px;flex-shrink:0;border-radius:6px;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:14px}
+.demo-bar b{color:#fff;font-weight:600}
+.demo-bar a{color:#fff;background:var(--accent);font-family:var(--disp);font-weight:600;padding:4px 12px;border-radius:100px;margin-left:4px;transition:.3s}
+.demo-bar a:hover{background:var(--accent-d)}
+.demo-bar .long{overflow:hidden;text-overflow:ellipsis}
+@media(max-width:640px){.demo-bar{font-size:12px;justify-content:space-between}.demo-bar .long{display:none}}
+@media(min-width:641px){.demo-bar .short{display:none}}
+/* Hinweis im Footer */
+.mm-note{display:flex;align-items:center;gap:.8em;max-width:640px;padding:.8em 1.05em;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.72)}
+.mm-note .m{width:26px;height:26px;flex-shrink:0;border-radius:7px;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:16px}
+.mm-note b{color:#fff}
+.foot-bottom .mm-note a{color:#fff;font-weight:600;text-decoration-color:var(--accent-soft)}
+.foot-legal{display:flex;gap:20px}
 .demo-pop{position:fixed;right:22px;bottom:22px;z-index:1300;max-width:362px;background:var(--ink);color:var(--cream);border-radius:20px;padding:24px 24px 20px;box-shadow:0 30px 70px -20px rgba(0,0,0,.62);transform:translateY(170%);transition:.75s var(--ease);border:1px solid rgba(255,255,255,.1)}
 .demo-pop.show{transform:none}
 .demo-pop .dp-close{position:absolute;top:15px;right:15px;background:none;border:0;color:rgba(255,255,255,.5);font-size:22px;line-height:1;cursor:pointer;transition:.3s;padding:2px 6px}
 .demo-pop .dp-close:hover{color:#fff}
-.demo-pop b{font-family:var(--disp);font-size:16.5px;color:#fff;display:flex;align-items:center;gap:10px;padding-right:20px;letter-spacing:-.01em}
+.demo-pop>b{font-family:var(--disp);font-size:16.5px;color:#fff;display:flex;align-items:center;gap:10px;padding-right:20px;letter-spacing:-.01em}
 .demo-pop .m{width:26px;height:26px;flex-shrink:0;border-radius:7px;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:16px}
+.demo-pop p b{color:#fff}
 .demo-pop p{font-size:13.5px;color:rgba(255,255,255,.74);margin:13px 0 18px;line-height:1.55}
 .demo-pop .row{display:flex;gap:10px}
 .demo-pop .row a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;text-align:center;font-family:var(--disp);font-weight:600;font-size:13.5px;padding:12px 10px;border-radius:100px;transition:.35s var(--ease)}
@@ -404,17 +418,6 @@ details.qa[open] .a{animation:fadeUp .5s var(--ease)}
 .demo-pop .dp-primary:hover{background:var(--accent-d);transform:translateY(-1px)}
 .demo-pop .dp-call{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.18)}
 .demo-pop .dp-call:hover{background:rgba(255,255,255,.2)}
-.demo-pop .dp-mail{display:block;text-align:center;margin-top:13px;font-size:12px;color:rgba(255,255,255,.5);text-decoration:underline;text-underline-offset:3px;transition:.3s}
-.demo-pop .dp-mail:hover{color:rgba(255,255,255,.82)}
-.legal{position:fixed;inset:0;z-index:1400;background:rgba(20,16,12,.6);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:.4s}
-.legal:target{opacity:1;visibility:visible}
-.legal-card{background:var(--cream);border-radius:var(--r);max-width:560px;width:100%;padding:40px;max-height:82vh;overflow:auto;transform:translateY(20px);transition:.4s var(--ease)}
-.legal:target .legal-card{transform:none}
-.legal-card h3{font-size:26px;margin-bottom:16px}
-.legal-card p{font-size:14px;color:var(--ink2);margin-bottom:12px}
-.legal-card .close{float:right;font-size:26px;color:var(--muted);line-height:1}
-.legal-card .attr{margin-top:20px;padding:14px 16px;background:var(--bg2);border-radius:10px;font-size:12.5px;color:var(--muted)}
-
 /* ============ RESPONSIVE ============ */
 @media(max-width:960px){
   .navlinks,.nav-phone{display:none}
@@ -438,7 +441,7 @@ details.qa[open] .a{animation:fadeUp .5s var(--ease)}
   .nav-inner{padding:9px 12px}
   .brand span{display:none}
   .brand img{height:40px}
-  .hero-inner{padding:100px 22px 60px}
+  .hero-inner{padding:calc(100px + var(--demo-h)) 22px 60px}
   .hero h1{font-size:clamp(40px,10.5vw,60px)}
   .hero-cta{flex-direction:column;align-items:stretch}
   .hero-cta .btn{justify-content:center}
@@ -455,7 +458,12 @@ details.qa[open] .a{animation:fadeUp .5s var(--ease)}
 </head>
 <body>
 
-<div class="vorschau-ribbon">Vorschau · Entwurf</div>
+<div class="demo-bar" role="note">
+  <span class="m" aria-hidden="true">m.</span>
+  <span class="long"><b>Design-Vorschau</b> von machmalweb für Westermann Sanierung · keine offizielle Website</span>
+  <span class="short"><b>Design-Vorschau</b> von machmalweb</span>
+  <a href="mailto:hallo@machmalweb.de?subject=Website-Vorschau%20Westermann%20Sanierung">Gefällt mir</a>
+</div>
 
 <!-- ============ HEADER ============ -->
 <header id="header">
@@ -971,8 +979,11 @@ details.qa[open] .a{animation:fadeUp .5s var(--ease)}
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Westermann Sanierung · <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a></span>
-      <span class="mmw"><span class="m">m.</span> Vorschau &amp; Design von machmalweb</span>
+      <p class="mm-note"><span class="m" aria-hidden="true">m.</span><span>Unverbindliche <b>Design-Vorschau</b> von <a href="https://machmalweb.de" target="_blank" rel="noopener">machmalweb</a> für Westermann Sanierung. Keine offizielle Website. Die Angaben zum Betrieb stammen von <a href="https://www.westermann-sanierung.de/" target="_blank" rel="noopener">westermann-sanierung.de</a>, Bewertungen von MyHammer. Kontakt machmalweb: <a href="tel:+4915565586614">0155 65586614</a> · <a href="mailto:hallo@machmalweb.de">hallo@machmalweb.de</a></span></p>
+      <nav class="foot-legal" aria-label="Rechtliches">
+        <a href="https://machmalweb.de/impressum" target="_blank" rel="noopener">Impressum</a>
+        <a href="https://machmalweb.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+      </nav>
     </div>
   </div>
 </footer>
@@ -992,31 +1003,10 @@ details.qa[open] .a{animation:fadeUp .5s var(--ease)}
   <b><span class="m">m.</span> Das ist eine Design-Vorschau</b>
   <p>Diese Website hat <b>machmalweb</b> als unverbindlichen Entwurf für Westermann Sanierung gestaltet. Gefällt Ihnen der Auftritt?</p>
   <div class="row">
-    <a class="dp-primary" href="https://wa.me/4915565586614?text=Hallo%20machmalweb%2C%20die%20Design-Vorschau%20f%C3%BCr%20Westermann%20Sanierung%20gef%C3%A4llt%20mir%20%E2%80%93%20ich%20h%C3%A4tte%20gerne%20so%20eine%20Website." target="_blank" rel="noopener">Ja, überzeugt mich!</a>
-    <a class="dp-call" href="tel:+4915565586614">
+    <a class="dp-primary" id="dpCta" href="mailto:hallo@machmalweb.de?subject=Website-Vorschau%20Westermann%20Sanierung&amp;body=Hallo%20machmalweb-Team%2C%0Adie%20Vorschau%20gef%C3%A4llt%20uns%20%E2%80%93%20bitte%20meldet%20euch%20bei%20uns.%0A%0AViele%20Gr%C3%BC%C3%9Fe">Ja, überzeugt mich!</a>
+    <a class="dp-call" id="dpCall" href="tel:+4915565586614">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       Anrufen</a>
-  </div>
-  <a class="dp-mail" href="mailto:hallo@machmalweb.de?subject=Anfrage%20%C3%BCber%20die%20Westermann-Vorschau&body=Hallo%20machmalweb%2C%0Adie%20Design-Vorschau%20gef%C3%A4llt%20mir.%20Bitte%20meldet%20euch%20bei%20mir.">oder per E-Mail: hallo@machmalweb.de</a>
-</div>
-
-<!-- ============ LEGAL PLACEHOLDERS ============ -->
-<div class="legal" id="impressum">
-  <div class="legal-card">
-    <a href="#top" class="close">×</a>
-    <h3>Impressum</h3>
-    <p><b>Westermann Sanierung</b><br>Efeuweg 6<br>76470 Ötigheim</p>
-    <p>Telefon: 0151 16025619</p>
-    <p>Angaben gemäß § 5 TMG werden im finalen Live-Betrieb vollständig ergänzt (u. a. Rechtsform, Umsatzsteuer-ID, verantwortliche Person).</p>
-    <div class="attr">Platzhalter-Rechtstext · Diese Vorschau dient ausschließlich der Design-Präsentation durch machmalweb.</div>
-  </div>
-</div>
-<div class="legal" id="datenschutz">
-  <div class="legal-card">
-    <a href="#top" class="close">×</a>
-    <h3>Datenschutz</h3>
-    <p>Der Schutz Ihrer Daten ist uns wichtig. Im Live-Betrieb wird hier eine vollständige Datenschutzerklärung gemäß DSGVO eingebunden – inklusive Angaben zu Kontaktformular, Hosting und Ihren Rechten.</p>
-    <div class="attr">Platzhalter-Rechtstext · Diese Vorschau dient ausschließlich der Design-Präsentation durch machmalweb.</div>
   </div>
 </div>
 
@@ -1130,9 +1120,11 @@ details.qa[open] .a{animation:fadeUp .5s var(--ease)}
   var pop = document.getElementById('demoPop'), popShown = false;
   var dismissed = function(){ try{ return sessionStorage.getItem('mmwDemoDismissed')==='1'; }catch(e){ return false; } };
   window.dismissDemo = function(){ if(pop) pop.classList.remove('show'); try{ sessionStorage.setItem('mmwDemoDismissed','1'); }catch(e){} };
-  window.addEventListener('scroll', function(){
-    if(!popShown && !dismissed() && window.scrollY > 620){ pop.classList.add('show'); popShown = true; }
-  }, {passive:true});
+  var showPop = function(){ if(popShown || dismissed()) return; pop.classList.add('show'); popShown = true; };
+  window.addEventListener('scroll', function(){ if(window.scrollY > 320) showPop(); }, {passive:true});
+  /* Desktop: wer nicht scrollt, sieht den Hinweis nach 12 Sekunden trotzdem */
+  if(window.innerWidth > 700) setTimeout(showPop, 12000);
+  ['dpCta','dpCall'].forEach(function(id){ var el = document.getElementById(id); if(el) el.addEventListener('click', window.dismissDemo); });
 
   /* ---- Fake submit feedback ---- */
   var fs = document.getElementById('fakeSubmit');
