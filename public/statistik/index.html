@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Demo-Besuche</title>
+<style>
+  :root { --grund:#f6f5f2; --flaeche:#fff; --text:#1d1d1b; --leise:#6b6a66; --linie:#e4e2dc; --akzent:#1f6f5c; --warm:#b4541f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --grund:#161615; --flaeche:#21211f; --text:#eeede9; --leise:#a09e98; --linie:#34332f; --akzent:#5cc3a6; --warm:#f0935c; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--grund); color:var(--text); font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { max-width:960px; margin:0 auto; padding:24px 16px 64px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .unter { color:var(--leise); margin:0 0 24px; }
+  form[hidden] { display:none; }
+  form { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+  input { flex:1 1 220px; padding:10px 12px; border:1px solid var(--linie); border-radius:8px; background:var(--flaeche); color:var(--text); font:inherit; }
+  button { padding:10px 16px; border:0; border-radius:8px; background:var(--akzent); color:#fff; font:inherit; font-weight:600; cursor:pointer; }
+  .hinweis { background:var(--flaeche); border:1px solid var(--linie); border-radius:10px; padding:14px 16px; margin-bottom:16px; }
+  .demo { background:var(--flaeche); border:1px solid var(--linie); border-radius:12px; padding:18px 18px 8px; margin-bottom:18px; }
+  .demo h2 { font-size:18px; margin:0; }
+  .demo h2 a { color:inherit; }
+  .zahlen { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; margin:14px 0; }
+  .zahl b { display:block; font-size:22px; font-variant-numeric:tabular-nums; }
+  .zahl span { color:var(--leise); font-size:13px; }
+  .tabelle { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:14px; font-variant-numeric:tabular-nums; }
+  th, td { text-align:left; padding:8px 8px 8px 0; border-top:1px solid var(--linie); vertical-align:top; white-space:nowrap; }
+  th { color:var(--leise); font-weight:500; font-size:12px; }
+  td.klicks { white-space:normal; }
+  tr.kurz td { color:var(--leise); }
+  .marke { display:inline-block; padding:1px 7px; border-radius:99px; background:color-mix(in srgb,var(--warm) 15%,transparent); color:var(--warm); font-size:12px; font-weight:600; margin:0 4px 2px 0; }
+  .leise { color:var(--leise); font-size:13px; }
+  details { margin-top:28px; }
+  summary { cursor:pointer; color:var(--leise); }
+  details ul { padding-left:18px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Demo-Besuche</h1>
+  <p class="unter">Wer die verschickten Demos aufruft, wie lange und was angeklickt wird. Ohne Cookies, ohne IP-Adressen.</p>
+
+  <form id="anmelden" hidden>
+    <input id="schluessel" type="password" placeholder="Schlüssel" autocomplete="current-password">
+    <button>Anzeigen</button>
+  </form>
+  <div id="meldung"></div>
+  <div id="liste"></div>
+
+  <details>
+    <summary>So lesen sich die Zahlen</summary>
+    <ul>
+      <li><b>Dauer</b> zählt nur, solange die Seite sichtbar im Vordergrund ist.</li>
+      <li>Besuche unter 5 Sekunden sind grau. Das sind oft Link-Prüfungen von Mailprogrammen oder ein kurzes Antippen.</li>
+      <li><b>Ort</b> ist die grobe Stadt aus dem Internetanschluss und kann danebenliegen (Mobilfunk landet oft in Frankfurt oder München).</li>
+      <li><b>Anruf-Button</b>, <b>WhatsApp-Button</b> und <b>Mail-Button</b> sind die Kontaktknöpfe des Kunden in der Demo. <b>Anruf machmalweb</b> und <b>Mail an machmalweb</b> sind unsere Kontaktdaten im Demo-Hinweis.</li>
+      <li><b>Gefällt mir</b> heißt, dass der Knopf oben gedrückt wurde. Ob die Mail danach wirklich abgeschickt wurde, sieht man nur im Postfach.</li>
+      <li>Eigene Besuche ausblenden: die Demo einmal mit <code>?nicht-zaehlen</code> am Ende aufrufen, z.&nbsp;B. <code>neininger.machmalweb.de/?nicht-zaehlen</code>. Gilt für diesen Browser und diese Demo.</li>
+    </ul>
+  </details>
+</main>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var schluessel = '';
+  try { schluessel = localStorage.getItem('mmw-statistik') || ''; } catch (e) {}
+
+  var zeit = new Intl.DateTimeFormat('de-DE', { weekday:'short', day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
+  function dauer(s) {
+    s = s || 0;
+    if (s < 60) return s + ' s';
+    var m = Math.floor(s / 60), r = s % 60;
+    if (m < 60) return m + ' min ' + (r ? r + ' s' : '');
+    return Math.floor(m / 60) + ' h ' + (m % 60) + ' min';
+  }
+  function esc(t) { var d = document.createElement('div'); d.textContent = t == null ? '' : String(t); return d.innerHTML; }
+  function klickListe(k) {
+    return Object.keys(k).map(function (a) { return '<span class="marke">' + esc(a) + (k[a] > 1 ? ' ×' + k[a] : '') + '</span>'; }).join('');
+  }
+
+  function zeige(besuche) {
+    var nachDemo = {};
+    besuche.forEach(function (b) { (nachDemo[b.demo] = nachDemo[b.demo] || []).push(b); });
+    var demos = Object.keys(nachDemo).sort(function (a, b) {
+      return Math.max.apply(null, nachDemo[b].map(function (x) { return x.ende || x.start; })) -
+             Math.max.apply(null, nachDemo[a].map(function (x) { return x.ende || x.start; }));
+    });
+    if (!demos.length) {
+      $('liste').innerHTML = '<div class="hinweis">Noch keine Besuche gezählt. Sobald jemand eine Demo öffnet, steht er hier.</div>';
+      return;
+    }
+    $('liste').innerHTML = demos.map(function (d) {
+      var l = nachDemo[d].sort(function (a, b) { return b.start - a.start; });
+      var echt = l.filter(function (b) { return b.sek >= 5; });
+      var summe = echt.reduce(function (s, b) { return s + b.sek; }, 0);
+      var laengster = echt.reduce(function (m, b) { return Math.max(m, b.sek); }, 0);
+      var klicks = {};
+      l.forEach(function (b) { for (var a in b.klicks) klicks[a] = (klicks[a] || 0) + b.klicks[a]; });
+      var zeilen = l.map(function (b) {
+        return '<tr class="' + (b.sek < 5 ? 'kurz' : '') + '"><td>' + zeit.format(new Date(b.start)) + '</td><td>' + dauer(b.sek) +
+          '</td><td>' + (b.scroll || 0) + ' %</td><td>' + esc(b.geraet) + '</td><td>' + esc([b.ort, b.land].filter(Boolean).join(', ') || '–') +
+          '</td><td class="klicks">' + (klickListe(b.klicks) || '<span class="leise">–</span>') + '</td></tr>';
+      }).join('');
+      return '<section class="demo"><h2><a href="https://' + esc(d) + '.machmalweb.de/?nicht-zaehlen" target="_blank" rel="noopener">' + esc(d) + '.machmalweb.de</a></h2>' +
+        '<div class="zahlen">' +
+          '<div class="zahl"><b>' + echt.length + '</b><span>Besuche ab 5 s' + (l.length > echt.length ? ' (+' + (l.length - echt.length) + ' kurz)' : '') + '</span></div>' +
+          '<div class="zahl"><b>' + dauer(summe) + '</b><span>Zeit insgesamt</span></div>' +
+          '<div class="zahl"><b>' + dauer(laengster) + '</b><span>längster Besuch</span></div>' +
+          '<div class="zahl"><b>' + zeit.format(new Date(l[0].ende || l[0].start)) + '</b><span>zuletzt aktiv</span></div>' +
+        '</div>' +
+        (Object.keys(klicks).length ? '<p>' + klickListe(klicks) + '</p>' : '') +
+        '<div class="tabelle"><table><thead><tr><th>Beginn</th><th>Dauer</th><th>Gescrollt</th><th>Gerät</th><th>Ort</th><th>Klicks</th></tr></thead><tbody>' + zeilen + '</tbody></table></div></section>';
+    }).join('');
+  }
+
+  function lade() {
+    fetch('/api/statistik', { headers: { 'x-schluessel': schluessel }, cache: 'no-store' })
+      .then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
+      .then(function (x) {
+        $('meldung').innerHTML = '';
+        if (x.status === 401) { $('anmelden').hidden = false; if (schluessel) $('meldung').innerHTML = '<div class="hinweis">Der Schlüssel stimmt nicht.</div>'; return; }
+        if (x.status === 503) {
+          $('meldung').innerHTML = '<div class="hinweis">Die Statistik ist noch nicht eingerichtet: in Vercel fehlt ' +
+            (x.j.fehlt === 'speicher' ? 'der Redis-Speicher (Storage → Upstash Redis, mit dem Projekt verbinden).' : 'die Umgebungsvariable STATISTIK_SCHLUESSEL.') + '</div>';
+          return;
+        }
+        $('anmelden').hidden = true;
+        try { localStorage.setItem('mmw-statistik', schluessel); } catch (e) {}
+        zeige(x.j.besuche || []);
+      })
+      .catch(function () { $('meldung').innerHTML = '<div class="hinweis">Keine Verbindung. Seite neu laden.</div>'; });
+  }
+
+  $('anmelden').addEventListener('submit', function (e) { e.preventDefault(); schluessel = $('schluessel').value.trim(); lade(); });
+  lade();
+  setInterval(function () { if (!document.hidden && $('anmelden').hidden) lade(); }, 60000);
+})();
+</script>
+</body>
+</html>

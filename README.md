@@ -52,6 +52,25 @@ Zusätzlich stehen oben in der Datei unter `FAKTEN` je Demo die Angaben, die sti
 
 Bekannte Altlasten (zwei alte Demos verlinken auf nie gebaute Rechtsseiten) sind in `ALTLASTEN` vermerkt, damit die Prüfung grün ist und neue Fehler auffallen.
 
+## Besuche zählen
+
+Eine Demo zählt ihre Besuche, wenn vor `</body>` diese Zeile steht:
+
+```
+<script src="/mmw-zaehler.js" defer></script>
+```
+
+Das Skript ([public/mmw-zaehler.js](public/mmw-zaehler.js)) setzt keine Cookies und speichert keine IP. Es meldet an [api/t.js](api/t.js): Beginn, sichtbare Verweildauer, Scrolltiefe, Handy oder Computer, grobe Stadt, Klicks auf Telefon, WhatsApp, Mail und „Gefällt mir“. Browser-Roboter (`navigator.webdriver`) zählen nicht.
+
+Auswertung: `https://statistik.machmalweb.de` (Ordner `public/statistik/`, Daten über [api/statistik.js](api/statistik.js)).
+
+Braucht im Vercel-Projekt einmalig:
+
+- einen Upstash-Redis-Speicher (Storage → Upstash Redis, mit dem Projekt verbinden; setzt `KV_REST_API_URL` und `KV_REST_API_TOKEN`)
+- die Umgebungsvariable `STATISTIK_SCHLUESSEL` mit einem frei gewählten Passwort für die Auswertung
+
+Eigene Besuche ausblenden: die Demo einmal mit `?nicht-zaehlen` aufrufen (gilt pro Browser und Demo), `?zaehlen` hebt es wieder auf.
+
 ## Demo entfernen
 
 Ordner löschen und pushen. Die Subdomain liefert danach nichts Sinnvolles mehr aus; die Wildcard-Domain selbst bleibt bestehen.

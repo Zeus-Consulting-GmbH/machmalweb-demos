@@ -22,6 +22,11 @@ export default function middleware(request) {
     });
   }
 
+  // Besuchszähler: Endpunkte unter api/ und das gemeinsame Skript für alle Demos
+  if (url.pathname.startsWith('/api/') || url.pathname === '/mmw-zaehler.js') {
+    return next();
+  }
+
   // <slug>.machmalweb.de/<pfad> -> Ordner /<slug>/<pfad>
   // Pfade ohne Dateiendung (Seiten wie / oder /datenschutz) auf index.html aufloesen
   let path = url.pathname;

@@ -17,6 +17,10 @@ const path = require('path');
 const WURZEL = path.join(__dirname, 'public');
 const RESERVIERT = ['www', 'machmalweb'];
 
+// Dateien, die middleware.js für alle Demos gemeinsam aus public/ ausliefert
+// statt aus dem Demo-Ordner (der Besuchszähler)
+const GEMEINSAM = new Set(['/mmw-zaehler.js']);
+
 // Bekannte Altlasten aus früheren Demos: diese beiden verlinken auf
 // Rechtsseiten, die es nie gab. Bis sie nachgezogen sind, bleiben sie
 // hier stehen, damit die Prüfung neue Fehler sichtbar macht statt im
@@ -130,6 +134,7 @@ for (const demo of demos) {
     // \s davor, damit data-src="…" und ähnliche Attribute nicht mitgelesen werden
     for (const [, verweis] of html.matchAll(/\s(?:src|href)="([^"]*)"/g)) {
       if (/^(https?:|mailto:|tel:|data:|#|\/\/)/.test(verweis)) continue;
+      if (GEMEINSAM.has(verweis) && fs.existsSync(path.join(WURZEL, verweis))) continue;
       if (loest(ordner, verweis, path.dirname(datei))) continue;
       if (ALTLASTEN.has(`${kurz} -> ${verweis}`)) continue;
       meldung(demo, `${kurz} verweist ins Leere: ${verweis}`);
