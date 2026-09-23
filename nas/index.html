@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>Demo-Besuche</title>
 <style>
   :root { --grund:#f6f5f2; --flaeche:#fff; --text:#1d1d1b; --leise:#6b6a66; --linie:#e4e2dc; --akzent:#1f6f5c; --warm:#b4541f; }
@@ -15,10 +14,6 @@
   main { max-width:960px; margin:0 auto; padding:24px 16px 64px; }
   h1 { font-size:22px; margin:0 0 4px; }
   .unter { color:var(--leise); margin:0 0 24px; }
-  form[hidden] { display:none; }
-  form { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
-  input { flex:1 1 220px; padding:10px 12px; border:1px solid var(--linie); border-radius:8px; background:var(--flaeche); color:var(--text); font:inherit; }
-  button { padding:10px 16px; border:0; border-radius:8px; background:var(--akzent); color:#fff; font:inherit; font-weight:600; cursor:pointer; }
   .hinweis { background:var(--flaeche); border:1px solid var(--linie); border-radius:10px; padding:14px 16px; margin-bottom:16px; }
   .demo { background:var(--flaeche); border:1px solid var(--linie); border-radius:12px; padding:18px 18px 8px; margin-bottom:18px; }
   .demo h2 { font-size:18px; margin:0; }
@@ -42,12 +37,8 @@
 <body>
 <main>
   <h1>Demo-Besuche</h1>
-  <p class="unter">Wer die verschickten Demos aufruft, wie lange und was angeklickt wird. Ohne Cookies, ohne IP-Adressen.</p>
+  <p class="unter">Wer die verschickten Demos aufruft, wie lange und was angeklickt wird. Ohne Cookies, ohne IP-Adressen. Diese Seite läuft nur auf der NAS im Büronetz.</p>
 
-  <form id="anmelden" hidden>
-    <input id="schluessel" type="password" placeholder="Schlüssel" autocomplete="current-password">
-    <button>Anzeigen</button>
-  </form>
   <div id="meldung"></div>
   <div id="liste"></div>
 
@@ -66,8 +57,6 @@
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
-  var schluessel = '';
-  try { schluessel = localStorage.getItem('mmw-statistik') || ''; } catch (e) {}
 
   var zeit = new Intl.DateTimeFormat('de-DE', { weekday:'short', day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
   function dauer(s) {
@@ -118,26 +107,18 @@
   }
 
   function lade() {
-    fetch('/api/statistik', { headers: { 'x-schluessel': schluessel }, cache: 'no-store' })
-      .then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
+    fetch('daten', { cache: 'no-store' })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) {
-        $('meldung').innerHTML = '';
-        if (x.status === 401) { $('anmelden').hidden = false; if (schluessel) $('meldung').innerHTML = '<div class="hinweis">Der Schlüssel stimmt nicht.</div>'; return; }
-        if (x.status === 503) {
-          $('meldung').innerHTML = '<div class="hinweis">Die Statistik ist noch nicht eingerichtet: in Vercel fehlt ' +
-            (x.j.fehlt === 'speicher' ? 'der Redis-Speicher (Storage → Upstash Redis, mit dem Projekt verbinden).' : 'die Umgebungsvariable STATISTIK_SCHLUESSEL.') + '</div>';
-          return;
-        }
-        $('anmelden').hidden = true;
-        try { localStorage.setItem('mmw-statistik', schluessel); } catch (e) {}
+        if (!x.ok) { $('meldung').innerHTML = '<div class="hinweis">' + esc(x.j.fehler || 'Keine Daten.') + '</div>'; return; }
+        $('meldung').innerHTML = '<p class="leise">Stand ' + zeit.format(new Date()) + ', aktualisiert sich jede Minute.</p>';
         zeige(x.j.besuche || []);
       })
-      .catch(function () { $('meldung').innerHTML = '<div class="hinweis">Keine Verbindung. Seite neu laden.</div>'; });
+      .catch(function () { $('meldung').innerHTML = '<div class="hinweis">Keine Verbindung zum Statistik-Container.</div>'; });
   }
 
-  $('anmelden').addEventListener('submit', function (e) { e.preventDefault(); schluessel = $('schluessel').value.trim(); lade(); });
   lade();
-  setInterval(function () { if (!document.hidden && $('anmelden').hidden) lade(); }, 60000);
+  setInterval(function () { if (!document.hidden) lade(); }, 60000);
 })();
 </script>
 </body>

@@ -62,12 +62,9 @@ Eine Demo zählt ihre Besuche, wenn vor `</body>` diese Zeile steht:
 
 Das Skript ([public/mmw-zaehler.js](public/mmw-zaehler.js)) setzt keine Cookies und speichert keine IP. Es meldet an [api/t.js](api/t.js): Beginn, sichtbare Verweildauer, Scrolltiefe, Handy oder Computer, grobe Stadt, Klicks auf Telefon, WhatsApp, Mail und „Gefällt mir“. Browser-Roboter (`navigator.webdriver`) zählen nicht.
 
-Auswertung: `https://statistik.machmalweb.de` (Ordner `public/statistik/`, Daten über [api/statistik.js](api/statistik.js)).
+Auswertung: nur im Büronetz auf der NAS, Ordner [nas/](nas/) als Docker-Container (Anleitung in [nas/compose.yaml](nas/compose.yaml)). Online gibt es bewusst keine Statistikseite. Die NAS liest mit dem Nur-Lese-Schlüssel des Speichers.
 
-Braucht im Vercel-Projekt einmalig:
-
-- einen Upstash-Redis-Speicher (Storage → Upstash Redis, mit dem Projekt verbinden; setzt `KV_REST_API_URL` und `KV_REST_API_TOKEN`)
-- die Umgebungsvariable `STATISTIK_SCHLUESSEL` mit einem frei gewählten Passwort für die Auswertung
+Braucht im Vercel-Projekt einmalig einen Upstash-Redis-Speicher (Storage → Upstash Redis, mit dem Projekt verbinden; setzt `KV_REST_API_URL`, `KV_REST_API_TOKEN` und `KV_REST_API_READ_ONLY_TOKEN`).
 
 Eigene Besuche ausblenden: die Demo einmal mit `?nicht-zaehlen` aufrufen (gilt pro Browser und Demo), `?zaehlen` hebt es wieder auf.
 
