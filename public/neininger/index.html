@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Neininger Malerfachbetrieb · Seit 1888 · Rastatt</title>
+  <meta name="description" content="Alfons Neininger Malermeister in Rastatt. Meisterbetrieb seit 1888 für Malerarbeiten, Fassade und Renovierung.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand-red: #C02020;
+      --brand-gold: #F9A61A;
+      --brand-blue: #005A93;
+      --ink: #1B1D1F;
+      --paper: #F7F4EF;
+      --chalk: #FFFCFA;
+      --muted: #5A534C;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+      /* Kalkputz statt Creme; Wandtöne gemessen aus den Fotos */
+      --kalk: #ECEDE8;
+      --kreide: #FAFAF7;
+      --grau: #585C58;
+      --terracotta: #A75B37;
+      --sand: #D4C2A2;
+      --salbei: #8E9A80;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --r: 18px;
+      --maxw: 1180px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--kalk);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4.5vw, 40px);
+    }
+
+    /* ===== Header ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 14px 0;
+      transition: background .35s var(--ease), box-shadow .35s var(--ease), padding .35s;
+    }
+    header.scrolled {
+      background: rgba(255,252,250,.96);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 2px 22px rgba(20,20,20,.07);
+      padding: 10px 0;
+    }
+    header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand-logo { height: 48px; width: auto; }
+    @media (min-width: 769px) { .brand-logo { height: 54px; } }
+
+    .brand-logo--dark { display: none; }
+    .hero-dark .brand-logo--light { display: none; }
+    .hero-dark .brand-logo--dark { display: block; }
+    header.scrolled .brand-logo--light { display: block; }
+    header.scrolled .brand-logo--dark { display: none; }
+
+    nav { display: flex; align-items: center; gap: 6px; }
+    nav a.nav-link {
+      display: none;
+      padding: .55em .9em;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--ink);
+      border-radius: 8px;
+      transition: color .25s, background .25s;
+    }
+    @media (min-width: 820px) { nav a.nav-link { display: inline-block; } }
+    header.hero-dark:not(.scrolled) nav a.nav-link { color: rgba(255,255,255,.92); }
+    nav a.nav-link:hover { background: rgba(0,90,147,.08); color: var(--brand-blue); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55em;
+      padding: .85em 1.45em;
+      font-family: var(--font-sans);
+      font-size: .95rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform .25s var(--ease), box-shadow .25s, background .25s, color .25s;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    /* Solid Anrufen — never white-on-white */
+    .btn-primary {
+      background: var(--brand-blue);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0,90,147,.28);
+    }
+    .btn-primary:hover {
+      background: #004a7a;
+      box-shadow: 0 10px 28px rgba(0,90,147,.34);
+      color: #fff;
+    }
+
+    /* Secondary on photo: solid soft dark, not fragile ghost */
+    .btn-hero-secondary {
+      background: rgba(20,20,20,.55);
+      color: #fff;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .btn-hero-secondary:hover {
+      background: rgba(20,20,20,.72);
+      color: #fff;
+    }
+
+    header .btn-primary { padding: .7em 1.2em; font-size: .88rem; }
+
+    /* ===== Hero 100vh, no chalk gap ===== */
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #1c1e20;
+      /* Blend-Gruppe: das Projektionslicht mischt sich nur mit dem Raumfoto */
+      isolation: isolate;
+
+      /* ---- Projektor-Regler ---- */
+      --beam-light:   0.94;   /* Leuchtkraft */
+      --beam-bloom:   0.40;   /* Streulicht */
+      --beam-blur:    11px;   /* Radius des Streulichts */
+      --beam-focus:   0.35px; /* Restunschärfe der Optik */
+      --beam-field:   0.035;  /* sichtbares Beam-Rechteck (Schwarzwert) */
+      --beam-falloff: 0.90;   /* Lichtabfall zur Wandecke */
+      --beam-g:       246;    /* Farbtemperatur: Grünanteil */
+      --beam-b:       231;    /* Farbtemperatur: Blauanteil */
+      --room-dim:     0.36;   /* Raum abdunkeln, weil der Projektor läuft */
+      --proj-run:     1;      /* wie weit der Beam in die Wand läuft */
+    }
+    .hero-media { position: absolute; inset: 0; z-index: 0; }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .hero-media::after { content: none; display: none !important; }
+
+    /* Raum ist dunkler, weil der Projektor läuft — Abfall zum Fenster hin */
+    .room-dim {
+      position: absolute;
+      inset: 0;
+      z-index: 3;            /* über den umgefärbten Wandebenen (z 1–2) */
+      pointer-events: none;
+      background: linear-gradient(100deg,
+        rgba(22,9,3,var(--room-dim))                 0%,
+        rgba(22,9,3,calc(var(--room-dim) * .88))    26%,
+        rgba(22,9,3,calc(var(--room-dim) * .62))    46%,
+        rgba(22,9,3,calc(var(--room-dim) * .26))    64%,
+        rgba(22,9,3,0)                              82%);
+    }
+
+    .hero-inner {
+      position: relative;
+      width: 100%;
+      /* unten mehr als oben: Block sitzt etwas über der Mitte der Wand */
+      padding: 110px 0 136px;
+    }
+    .hero .wrap { display: flex; justify-content: flex-start; }
+
+    .hero-copy {
+      position: relative;
+      max-width: min(36rem, 94vw);
+      padding: 8px 12px 12px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* ===== Projektion auf die Wand =====
+       Die Geometrie wird zur Laufzeit aus der gemessenen Wandflucht von
+       hero.png berechnet und als --proj-matrix gesetzt (Script am Seitenende).
+       Dadurch stimmt der Fluchtpunkt bei jeder Viewport-Größe. */
+    .hero-projected {
+      position: relative;
+      width: 100%;
+      transform-origin: 0 0;
+      transform: var(--proj-matrix, none);
+      /* Licht addiert sich auf die Wand — es deckt sie nicht ab */
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+    /* flow-root: sonst rutscht das negative Margin von .proj-core aus dem
+       Container und das Streulicht landet 70 px über dem Text (helle Flecken) */
+    .beam-inner { position: relative; display: flow-root; }
+    .roller-anchor { display: inline-block; width: 0; height: .7em; vertical-align: baseline; }
+    /* Ein Projektor wirft kein reines Schwarz — das Rechteck bleibt sichtbar.
+       Weiche Kante durch Blur statt harter Box: so liest es sich als Licht
+       und nicht als abgedunkelter Kasten. */
+    .beam-field {
+      position: absolute;
+      inset: -92px -150px -104px -88px;
+      pointer-events: none;
+      filter: blur(38px);
+      background: linear-gradient(104deg,
+        rgba(255,246,232,calc(var(--beam-field) * 1.45))  0%,
+        rgba(255,246,232,var(--beam-field))              52%,
+        rgba(255,246,232,calc(var(--beam-field) * .58)) 100%);
+    }
+    /* Streulicht um die Glyphen */
+    .proj-bloom {
+      position: absolute;
+      left: 0; top: 0; right: 0;
+      filter: blur(var(--beam-blur));
+      opacity: var(--beam-bloom);
+      pointer-events: none;
+    }
+    /* Das eigentliche Licht */
+    .proj-core { position: relative; filter: blur(var(--beam-focus)); }
+
+    /* Licht wird zur Ecke hin schwächer: die Wand ist dort weiter weg.
+       Die Maske sitzt auf den Schriftebenen, nicht auf .beam-inner — sonst
+       schneidet sie das überstehende Beam-Feld am Elementrand ab. */
+    .proj-bloom, .proj-core {
+      -webkit-mask-image: linear-gradient(96deg, #000 0%, rgba(0,0,0,var(--beam-falloff)) 100%);
+              mask-image: linear-gradient(96deg, #000 0%, rgba(0,0,0,var(--beam-falloff)) 100%);
+      -webkit-mask-repeat: no-repeat;  mask-repeat: no-repeat;
+      -webkit-mask-size: 100% 100%;    mask-size: 100% 100%;
+      /* Die Maske endet am Rand der Box. Padding macht die Box größer als das
+         Streulicht, das negative Margin nimmt den Platz wieder zurück —
+         sonst bekommt der Schein eine harte Kante. */
+      padding: 70px 80px;
+      margin: -70px -80px;
+    }
+
+    .proj-bloom .eyebrow, .proj-bloom h1, .proj-bloom .hero-sub,
+    .proj-core  .eyebrow, .proj-core  h1, .proj-core  .hero-sub {
+      /* Licht wirft keinen Schlagschatten auf die Fläche, die es trifft */
+      text-shadow: none;
+      background: none;
+      -webkit-background-clip: border-box;
+              background-clip: border-box;
+      color:                 rgb(255 var(--beam-g) var(--beam-b) / var(--beam-light));
+      -webkit-text-fill-color: rgb(255 var(--beam-g) var(--beam-b) / var(--beam-light));
+    }
+    .proj-bloom .eyebrow, .proj-core .eyebrow {
+      color:                 rgb(255 var(--beam-g) var(--beam-b) / calc(var(--beam-light) * .92));
+      -webkit-text-fill-color: rgb(255 var(--beam-g) var(--beam-b) / calc(var(--beam-light) * .92));
+    }
+    /* Der Ockerstrich ist mitprojiziertes Licht, kein Farbauftrag */
+    .proj-bloom .paint-stroke, .proj-core .paint-stroke {
+      mix-blend-mode: normal;
+      opacity: .95;
+    }
+
+    @media (max-width: 700px) {
+      .hero { --proj-run: .94; --beam-field: .04; --beam-falloff: .88; }
+      /* Block ein Stück höher, damit die Trust-Zeile über der Sockelleiste bleibt */
+      .hero-inner { padding-bottom: 124px; }
+    }
+
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.92);
+      margin-bottom: 14px;
+      opacity: 1;
+      animation: none;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 22px; height: 2px;
+      background: var(--brand-gold);
+      border-radius: 2px;
+    }
+
+    .hero-copy h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.55rem, 5.6vw, 3.85rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin-bottom: 16px;
+      opacity: 1;
+      animation: fadeUp .8s var(--ease) .35s forwards;
+    }
+    .hero-copy h1 em.paint-word {
+      font-style: italic;
+      font-weight: 500;
+      color: inherit;
+      -webkit-text-fill-color: inherit;
+      position: relative;
+      display: inline-block;
+      /* thin ochre dry-brush UNDERLINE only — not a full glyph highlighter */
+      padding: 0 0.02em 0.08em;
+      margin: 0 0.08em 0 0.02em;
+      letter-spacing: 0.005em;
+      line-height: 1;
+      vertical-align: baseline;
+      z-index: 0;
+    }
+    .hero-copy h1 em.paint-word .paint-label {
+      position: relative;
+      z-index: 1;
+    }
+    /* Echter Pinselstrich: Borsten, rauer Rand, trocken auslaufendes Ende */
+    .hero-copy h1 em.paint-word .paint-stroke {
+      position: absolute;
+      left: -0.1em;
+      right: auto;
+      top: auto;
+      bottom: -0.2em;
+      width: calc(100% + 0.3em);
+      height: 0.44em;
+      z-index: 0;
+      pointer-events: none;
+      overflow: visible;
+      opacity: 0.92;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,.88);
+      max-width: 28rem;
+      margin-bottom: 28px;
+      opacity: 1;
+      animation: fadeUp .8s var(--ease) .45s forwards;
+    }
+    /* CTAs + Trust sind nicht projiziert (kein Screen-Blend, volle Deckkraft),
+       sitzen aber wie montiert auf derselben Wandebene. */
+    .hero-copy .hero-actions,
+    .hero-copy .hero-trust {
+      position: relative;
+      z-index: 3;
+      /* montiert auf derselben Wandebene wie der Text (Script setzt die Matrix) */
+      transform-origin: 0 0;
+      transform: var(--proj-matrix, none);
+    }
+    .hero-copy .hero-trust {
+      color: rgba(255, 247, 240, .93);
+      text-shadow: 0 1px 3px rgba(28, 11, 4, .55);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+      opacity: 1;
+      animation: fadeUp .8s var(--ease) .55s forwards;
+    }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      font-size: .82rem;
+      color: rgba(255,255,255,.78);
+      opacity: 1;
+      animation: fadeUp .8s var(--ease) .65s forwards;
+    }
+    .hero-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .hero-trust span::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--brand-gold);
+      opacity: .9;
+    }
+
+    .hero-accent {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 3px;
+      z-index: 5;
+      display: flex;
+    }
+    .hero-accent span {
+      flex: 1;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      animation: accentIn .7s var(--ease) forwards;
+    }
+    .hero-accent span:nth-child(1) { background: var(--brand-red); animation-delay: .3s; }
+    .hero-accent span:nth-child(2) { background: var(--brand-gold); animation-delay: .42s; }
+    .hero-accent span:nth-child(3) { background: var(--brand-blue); animation-delay: .54s; }
+    @keyframes accentIn { to { transform: scaleY(1); } }
+    @keyframes fadeUp {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 700px) {
+      .hero-copy { max-width: 100%; text-align: center; align-items: center; }
+      .hero-copy h1 { text-align: center; }
+      .hero-sub { text-align: center; }
+      .hero-actions { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .eyebrow { justify-content: center; }
+      .hero .wrap { justify-content: center; }
+    }
+
+    /* ===== Seite unter dem Hero =====
+       Leitidee: alles, was hier an Farbe auftaucht, kommt aus den Fotos
+       (gemessen) oder aus dem Logo. Farbtonkarten statt Icon-Kacheln. */
+
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .05s; } .d2 { transition-delay: .12s; }
+    .d3 { transition-delay: .18s; } .d4 { transition-delay: .24s; }
+
+    .kicker {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono);
+      font-size: .74rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--grau);
+      margin-bottom: 18px;
+    }
+    .kicker::before {
+      content: ""; width: 22px; height: 2px; border-radius: 2px;
+      background: var(--brand-gold);
+    }
+    .sec-title {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+      line-height: 1.04;
+      letter-spacing: -0.012em;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .sec-lead {
+      margin-top: 18px;
+      max-width: 34rem;
+      font-size: 1.06rem;
+      line-height: 1.6;
+      color: var(--grau);
+    }
+
+    /* ---------- Vorher / Nachher ---------- */
+    .ba-section { padding: clamp(80px, 11vw, 140px) 0 clamp(60px, 8vw, 100px); }
+    .ba-layout {
+      display: grid;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+    }
+    @media (min-width: 960px) { .ba-layout { grid-template-columns: 5fr 8fr; } }
+
+    .swatches { display: grid; justify-content: start; gap: 10px; margin-top: 32px; }
+    .swatch {
+      display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center;
+      padding: 8px 16px 8px 8px;
+      background: var(--kreide);
+      border-radius: 10px;
+      box-shadow: 0 1px 0 rgba(27,29,31,.06), 0 6px 18px rgba(27,29,31,.06);
+    }
+    .swatch i {
+      display: block; width: 44px; height: 44px; border-radius: 6px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+    }
+    .swatch b { display: block; font-size: .9rem; font-weight: 600; color: var(--ink); }
+    .swatch small { font-family: var(--font-mono); font-size: .72rem; color: var(--grau); }
+
+    .ba-container {
+      position: relative;
+      aspect-ratio: 14 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: ew-resize;
+      user-select: none;
+      touch-action: pan-y;
+      box-shadow: 0 30px 70px -30px rgba(27,29,31,.45);
+      background: #ccc;
+    }
+    .ba-container:focus-visible { outline: 3px solid var(--brand-blue); outline-offset: 4px; }
+    .ba-container img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .ba-after { clip-path: inset(0 0 0 50%); }
+    .ba-handle {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 2px; margin-left: -1px;
+      background: #fff;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.08);
+    }
+    .ba-knob {
+      position: absolute; top: 50%; left: 50%;
+      width: 46px; height: 46px; margin: -23px 0 0 -23px;
+      border-radius: 50%;
+      background: var(--brand-gold);
+      color: #2a1a00;
+      display: grid; place-items: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+      transition: transform .2s var(--ease);
+    }
+    .ba-knob svg { width: 22px; height: 22px; }
+    .ba-container.dragging .ba-knob { transform: scale(1.08); }
+    .ba-labels {
+      position: absolute; left: 16px; right: 16px; bottom: 16px;
+      display: flex; justify-content: space-between; pointer-events: none;
+    }
+    .ba-label {
+      font-family: var(--font-mono);
+      font-size: .72rem; letter-spacing: .06em; text-transform: uppercase;
+      color: #fff;
+      background: rgba(27,29,31,.62);
+      padding: 6px 10px; border-radius: 6px;
+    }
+
+    /* ---------- Leistungen: Farbtonkarten ---------- */
+    .svc-section { padding: clamp(60px, 8vw, 110px) 0 clamp(90px, 12vw, 150px); }
+    .svc-head { max-width: 40rem; }
+
+    .fan {
+      list-style: none;
+      margin-top: clamp(40px, 6vw, 72px);
+      display: grid;
+      gap: 18px;
+    }
+    @media (min-width: 900px) {
+      .fan { grid-template-columns: repeat(4, 1fr); gap: 0; padding: 0 12px; }
+    }
+
+    .chip {
+      position: relative;
+      display: flex; flex-direction: column;
+      background: var(--kreide);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 0 rgba(27,29,31,.06), 0 18px 40px -22px rgba(27,29,31,.45);
+      transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+    }
+    .chip-color {
+      height: clamp(150px, 17vw, 230px);
+      background: var(--c);
+      position: relative;
+    }
+    /* feine Rollspur: der Ton ist gestrichen, nicht gedruckt */
+    .chip-color::after {
+      content: ""; position: absolute; inset: 0;
+      background: repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 2px, rgba(0,0,0,.03) 2px 5px);
+      mix-blend-mode: soft-light;
+    }
+    .chip-body { padding: 18px 22px 26px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .chip-tone {
+      font-family: var(--font-mono);
+      font-size: .7rem; letter-spacing: .04em;
+      color: var(--grau);
+      display: flex; justify-content: space-between; gap: 8px;
+    }
+    .chip h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.62rem;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-top: 6px;
+    }
+    .chip p { font-size: .96rem; line-height: 1.55; color: var(--grau); }
+    /* Niete, an der der Farbfächer zusammenhängt */
+    .chip-rivet {
+      position: absolute; left: 50%; bottom: 10px;
+      width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%;
+      background: #d9dad5;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.25);
+    }
+
+    @media (min-width: 900px) {
+      .chip { margin: 0 -6px; transform-origin: 50% calc(100% - 14px); }
+      .fan li:nth-child(1) .chip { transform: rotate(-3deg); }
+      .fan li:nth-child(2) .chip { transform: rotate(-1deg) translateY(-6px); }
+      .fan li:nth-child(3) .chip { transform: rotate(1deg) translateY(-6px); }
+      .fan li:nth-child(4) .chip { transform: rotate(3deg); }
+      .fan li { position: relative; z-index: 1; }
+      .fan li:hover, .fan li:focus-within { z-index: 5; }
+      .fan li:hover .chip, .fan li:focus-within .chip {
+        transform: rotate(0) translateY(-16px);
+        box-shadow: 0 1px 0 rgba(27,29,31,.06), 0 34px 60px -26px rgba(27,29,31,.55);
+      }
+    }
+    @media (max-width: 899px) {
+      .chip { flex-direction: row; }
+      .chip-color { height: auto; width: 34%; min-height: 150px; flex: none; }
+      .chip-rivet { display: none; }
+    }
+
+    /* ---------- Kontakt: dieselbe Wand wie oben ---------- */
+    .contact-wall {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      padding: clamp(90px, 12vw, 160px) 0 clamp(70px, 9vw, 120px);
+      background:
+        linear-gradient(100deg, #8a4527 0%, #9e5433 45%, #ad603c 100%);
+    }
+    /* Putzstruktur */
+    .contact-wall::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      mix-blend-mode: multiply;
+    }
+    .contact-wall .wrap { position: relative; }
+    .contact-wall .kicker { color: rgba(255,244,234,.86); }
+    .phone-big {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(3.1rem, 10vw, 8rem);
+      line-height: .95;
+      letter-spacing: -0.02em;
+      color: #fff;
+      text-decoration: none;
+      margin-top: 4px;
+      border-bottom: 2px solid rgba(249,166,26,.0);
+      transition: border-color .3s, color .3s;
+    }
+    .phone-big:hover { border-bottom-color: var(--brand-gold); }
+    .phone-big:focus-visible { outline: 3px solid #fff; outline-offset: 8px; border-radius: 4px; }
+    .contact-note { margin-top: 22px; max-width: 30rem; font-size: 1.08rem; line-height: 1.6; color: rgba(255,247,240,.92); }
+
+    .contact-grid {
+      display: grid; gap: 28px 48px;
+      margin-top: clamp(48px, 7vw, 88px);
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,240,228,.28);
+    }
+    @media (min-width: 760px) { .contact-grid { grid-template-columns: repeat(3, auto); justify-content: start; } }
+    .contact-grid h3 {
+      font-family: var(--font-mono);
+      font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,240,228,.78);
+      margin-bottom: 10px;
+    }
+    .contact-grid p, .contact-grid a { font-size: 1.02rem; line-height: 1.6; color: #fff; }
+    .contact-grid a { text-decoration: underline; text-decoration-color: rgba(249,166,26,.7); text-underline-offset: 4px; }
+    .contact-grid a:hover { text-decoration-color: #fff; }
+
+    /* ---------- Footer ---------- */
+    footer { background: var(--ink); color: rgba(255,255,255,.72); padding: 40px 0 44px; font-size: .88rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; }
+    footer .wrap.foot-bottom { align-items: center; }
+    footer img { height: 40px; width: auto; }
+    footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+    footer a { color: rgba(255,255,255,.86); }
+    footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ===== Farbrolle: Wandfarbe ausprobieren ===== */
+    .wall-paint {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 40%;
+      pointer-events: none;
+    }
+    .roller {
+      position: absolute; left: 0; top: 0; z-index: 6;
+      transform: translate(var(--rx, -999px), var(--ry, -999px));
+      --roll: #B06645;
+    }
+    .roller-btn {
+      position: relative;
+      display: flex; align-items: center; gap: 10px;
+      padding: 4px;
+      background: none; border: 0; cursor: pointer;
+      border-radius: 14px;
+    }
+    .roller-btn svg {
+      display: block; width: 92px; height: auto; flex: none;
+      transform: rotate(-9deg); transform-origin: 30% 30%;
+      filter: drop-shadow(0 10px 10px rgba(20,8,2,.4));
+      transition: transform .35s var(--ease);
+      animation: rollerNudge 3.2s var(--ease) 1.4s 3;
+    }
+    .roller-btn:hover svg, .roller-btn[aria-expanded="true"] svg { transform: rotate(-3deg) translate(3px, -3px); animation: none; }
+    .roller-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+    .roll-cyl { fill: var(--roll); transition: fill .6s var(--ease); }
+    .roller-tip {
+      white-space: nowrap;
+      font-family: var(--font-mono); font-size: .74rem; font-weight: 500; letter-spacing: .03em;
+      color: #1b1d1f; background: var(--brand-gold);
+      padding: 7px 12px 7px 10px; border-radius: 999px;
+      box-shadow: 0 6px 16px rgba(20,8,2,.3);
+      pointer-events: none;
+    }
+    .roller-tip::before {
+      content: "←"; margin-right: 6px; font-weight: 600;
+    }
+    @keyframes rollerNudge {
+      0%, 62%, 100% { transform: rotate(-9deg); }
+      70% { transform: rotate(-9deg) translate(-7px, 2px); }
+      80% { transform: rotate(-9deg) translate(6px, -2px); }
+      90% { transform: rotate(-9deg) translate(-2px, 1px); }
+    }
+
+    .roller-palette {
+      position: absolute; top: calc(100% + 8px); left: var(--px, 0px);
+      width: 272px;
+      padding: 16px 16px 14px;
+      background: var(--kreide);
+      border-radius: 14px;
+      box-shadow: 0 24px 60px -18px rgba(20,8,2,.55), 0 1px 0 rgba(0,0,0,.05);
+      color: var(--ink);
+    }
+    .roller-palette[hidden] { display: none; }
+    .roller-title {
+      font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--grau); margin-bottom: 12px;
+    }
+    .roller-swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 8px; }
+    .roller-swatches button {
+      display: grid; justify-items: center; gap: 6px;
+      padding: 0; background: none; border: 0; cursor: pointer;
+      font: 500 .74rem/1.2 var(--font-sans); color: var(--ink);
+    }
+    .roller-swatches i {
+      display: block; width: 100%; height: 42px; border-radius: 7px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+      transition: transform .2s var(--ease);
+    }
+    .roller-swatches button:hover i { transform: translateY(-2px); }
+    .roller-swatches button[aria-pressed="true"] i { box-shadow: 0 0 0 2px var(--kreide), 0 0 0 4px var(--brand-gold); }
+    .roller-swatches button:focus-visible { outline: none; }
+    .roller-swatches button:focus-visible i { box-shadow: 0 0 0 2px var(--kreide), 0 0 0 4px var(--brand-blue); }
+
+    /* Rolle, die beim Streichen über die Wand fährt */
+    .roller-travel {
+      position: absolute; left: 0; top: 0; z-index: 6; pointer-events: none;
+      width: 96px; opacity: 0;
+      transform: translate(var(--tx, -999px), var(--ty, -999px));
+      filter: drop-shadow(0 10px 10px rgba(20,8,2,.35));
+    }
+    .roller-travel svg { display: block; width: 100%; height: auto; }
+
+    @media (max-width: 700px) {
+      .roller-btn svg { width: 62px; }
+      .roller-tip { display: none; }
+      .roller-palette { width: min(272px, calc(100vw - 32px)); }
+    }
+
+    /* ===== machmalweb-Demo: Hinweis, Rechtliches, Popup ===== */
+    .mm-mark {
+      width: 26px; height: 26px; flex: 0 0 auto;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 7px; background: var(--ink); color: #fff;
+      font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; line-height: 1;
+    }
+    footer .mm-mark { background: #fff; color: var(--ink); }
+    .mm-note {
+      display: flex; align-items: center; gap: .8em;
+      max-width: 560px;
+      padding: .8em 1.05em;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      font-size: .82rem; line-height: 1.55; color: rgba(255,255,255,.78);
+    }
+    .mm-note b { color: #fff; }
+    .mm-note a { color: #fff; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(249,166,26,.7); text-underline-offset: 3px; }
+    .foot-bottom {
+      margin-top: 28px; padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px;
+    }
+
+    .legal {
+      position: fixed; inset: 0; z-index: 120;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      background: rgba(27,29,31,.55);
+      backdrop-filter: blur(4px);
+      opacity: 0; visibility: hidden;
+      transition: opacity .35s var(--ease), visibility .35s;
+    }
+    .legal:target { opacity: 1; visibility: visible; }
+    .legal-box {
+      width: 100%; max-width: 640px; max-height: 82vh; overflow: auto;
+      background: var(--kreide);
+      border-radius: 18px;
+      padding: 38px clamp(24px, 4vw, 44px);
+      color: var(--ink);
+    }
+    .legal-box h3 { font-family: var(--font-display); font-weight: 500; font-size: 2rem; margin-bottom: .4em; }
+    .legal-box h4 { font-size: .98rem; font-weight: 600; margin: 1.4em 0 .3em; }
+    .legal-box p { font-size: .94rem; line-height: 1.6; color: var(--grau); }
+    .legal-box .close { float: right; font-size: 1.7rem; line-height: 1; margin-top: -8px; color: var(--grau); }
+    .legal-box .close:hover { color: var(--ink); }
+    .legal-box .amp { display: inline-block; margin-top: 24px; font-size: .8rem; color: var(--grau); }
+
+    .demo-pop {
+      position: fixed; right: 20px; bottom: 20px; z-index: 110;
+      max-width: 392px;
+      padding: 20px 20px 18px;
+      background: #fff;
+      border: 1px solid rgba(27,29,31,.08);
+      border-radius: 18px;
+      box-shadow: 0 30px 70px -24px rgba(27,29,31,.45), 0 2px 8px rgba(27,29,31,.06);
+      color: var(--ink);
+      transform: translateY(30px) scale(.96); opacity: 0; visibility: hidden;
+      transition: transform .5s var(--ease), opacity .5s var(--ease), visibility .5s;
+    }
+    .demo-pop.show { transform: none; opacity: 1; visibility: visible; }
+    .dp-top { display: flex; align-items: center; gap: 10px; margin: 0 28px 10px 0; }
+    .dp-top h5 { margin: 0; font-size: 1.02rem; font-weight: 600; }
+    .demo-pop p { margin: 0 0 14px; font-size: .88rem; line-height: 1.6; color: var(--grau); }
+    .demo-pop p b { color: var(--ink); }
+    .dp-x {
+      position: absolute; top: 12px; right: 12px; width: 30px; height: 30px;
+      background: none; border: 0; cursor: pointer; border-radius: 8px;
+      font-size: 1.4rem; line-height: 1; color: var(--grau);
+    }
+    .dp-x:hover { color: var(--ink); background: rgba(27,29,31,.05); }
+    .dp-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .dp-actions .btn { font-size: .88rem; padding: .74em 1.2em; }
+    .btn-red { background: var(--brand-red); color: #fff; box-shadow: 0 8px 22px rgba(192,32,32,.3); }
+    .btn-red:hover { background: #a51a1a; color: #fff; }
+    .btn-ink { background: var(--ink); color: #fff; }
+    .btn-ink:hover { background: #000; color: #fff; }
+    @media (max-width: 560px) { .demo-pop { left: 14px; right: 14px; max-width: none; } }
+
+    :focus-visible { outline: 3px solid var(--brand-blue); outline-offset: 3px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .chip, .ba-knob, .btn { transition: none !important; }
+      .roller-btn svg { animation: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <header id="header" class="hero-dark">
+    <div class="wrap">
+      <a href="#" class="brand" aria-label="Neininger Malerfachbetrieb">
+        <img class="brand-logo brand-logo--light" src="img/logo.png" alt="Neininger Malerfachbetrieb seit 1888" width="786" height="111">
+        <img class="brand-logo brand-logo--dark" src="img/logo-on-dark.png" alt="Neininger Malerfachbetrieb seit 1888" width="786" height="111">
+      </a>
+      <nav>
+        <a class="nav-link" href="#leistungen">Leistungen</a>
+        <a class="nav-link" href="#vorher-nachher">Ergebnisse</a>
+        <a class="nav-link" href="#kontakt">Kontakt</a>
+        <a class="btn btn-primary" href="tel:+49722221675">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Anrufen
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-media">
+      <img src="img/hero.png" alt="Frisch gestaltetes Wohnzimmer – Malerarbeiten Neininger" width="1920" height="1080">
+      <img class="wall-paint" id="wallPaintA" alt="" aria-hidden="true" hidden>
+      <img class="wall-paint" id="wallPaintB" alt="" aria-hidden="true" hidden>
+      <div class="room-dim" aria-hidden="true"></div>
+    </div>
+    <div class="hero-accent" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="roller" id="roller" hidden>
+      <div class="roller-palette" id="wallPalette" role="group" aria-label="Wandfarbe wählen" hidden>
+        <p class="roller-title">Wandfarbe ausprobieren</p>
+        <div class="roller-swatches">
+          <button type="button" data-color="original" data-roll="#B06645" aria-pressed="true"><i style="background:#B06645"></i>Terracotta</button>
+          <button type="button" data-color="#74826A" aria-pressed="false"><i style="background:#74826A"></i>Salbei</button>
+          <button type="button" data-color="#5F7890" aria-pressed="false"><i style="background:#5F7890"></i>Taubenblau</button>
+          <button type="button" data-color="#3F6E70" aria-pressed="false"><i style="background:#3F6E70"></i>Petrol</button>
+          <button type="button" data-color="#8A4545" aria-pressed="false"><i style="background:#8A4545"></i>Ochsenblut</button>
+          <button type="button" data-color="#8C7A4A" aria-pressed="false"><i style="background:#8C7A4A"></i>Olivbraun</button>
+        </div>
+      </div>
+      <button class="roller-btn" type="button" aria-expanded="false" aria-controls="wallPalette" aria-label="Wandfarbe ändern">
+        <svg viewBox="0 0 120 70" aria-hidden="true">
+          <defs><pattern id="rollNap" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#000" opacity=".14"/></pattern></defs>
+          <rect class="roll-cyl" x="4" y="6" width="86" height="28" rx="13"/>
+          <rect x="4" y="6" width="86" height="28" rx="13" fill="url(#rollNap)"/>
+          <rect x="11" y="10" width="72" height="5" rx="2.5" fill="#fff" opacity=".22"/>
+          <path d="M90 20h9v22L72 50v5" fill="none" stroke="#D5D8DC" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="66" y="52" width="50" height="13" rx="6.5" fill="#005A93" transform="rotate(20 70 58)"/>
+          <rect x="72" y="55" width="36" height="3" rx="1.5" fill="#fff" opacity=".25" transform="rotate(20 70 58)"/>
+        </svg>
+        <span class="roller-tip">Wandfarbe ändern</span>
+      </button>
+    </div>
+    <div class="roller-travel" id="rollerTravel" aria-hidden="true">
+      <svg viewBox="0 0 120 64">
+        <rect class="roll-cyl" x="4" y="4" width="86" height="26" rx="12"/>
+        <rect x="4" y="4" width="86" height="26" rx="12" fill="url(#rollNap)"/>
+        <path d="M90 17h8v20L70 44v6" fill="none" stroke="#C9CDD2" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="64" y="48" width="48" height="12" rx="6" fill="#005A93" transform="rotate(18 70 54)"/>
+      </svg>
+    </div>
+    <div class="hero-inner">
+      <div class="wrap">
+        <div class="hero-copy">
+          <div class="hero-projected">
+            <div class="beam-inner">
+              <div class="beam-field" aria-hidden="true"></div>
+              <!-- .proj-bloom (Streulicht) wird aus .proj-core geklont -->
+              <div class="proj-core">
+    <div class="eyebrow">Meisterbetrieb seit 1888</div>
+    <h1>Farbe, die Ihr<span class="roller-anchor" aria-hidden="true"></span><br><em class="paint-word"><svg class="paint-stroke" viewBox="0 0 400 44" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="brushPaint" x1="0" x2="400" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FBB33A"/><stop offset=".55" stop-color="#F9A61A"/><stop offset="1" stop-color="#E8930E"/></linearGradient><linearGradient id="brushDryG" x1="0" x2="400" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#fff"/><stop offset=".86" stop-color="#8a8a8a"/><stop offset="1" stop-color="#333"/></linearGradient><mask id="brushDry" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="44"><rect width="400" height="44" fill="url(#brushDryG)"/></mask><filter id="brushFx" x="-4%" y="-60%" width="108%" height="220%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.55" numOctaves="3" seed="4" result="streak"/><feTurbulence type="fractalNoise" baseFrequency="0.09 0.35" numOctaves="2" seed="11" result="rough"/><feDisplacementMap in="SourceGraphic" in2="rough" scale="5" xChannelSelector="R" yChannelSelector="G" result="ragged"/><feColorMatrix in="streak" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.6 0 0 0 -0.55" result="streakA"/><feComposite in="ragged" in2="streakA" operator="in" result="bristled"/><feComponentTransfer in="bristled" result="hard"><feFuncA type="table" tableValues="0 0 .35 .85 1 1"/></feComponentTransfer><feMorphology in="hard" operator="erode" radius=".6" result="inner"/><feComposite in="hard" in2="inner" operator="out" result="rim"/><feColorMatrix in="rim" type="matrix" values=".82 0 0 0 0  0 .78 0 0 0  0 0 .7 0 0  0 0 0 .55 0" result="rimDark"/><feMerge><feMergeNode in="hard"/><feMergeNode in="rimDark"/></feMerge></filter></defs><g filter="url(#brushFx)" mask="url(#brushDry)"><path fill="url(#brushPaint)" d="M9 24 C5 15 16 10 34 10.5 C90 9 170 7.5 250 8.2 C300 8.6 345 9.8 386 12.5 C393 13 396 15 393 17.5 C360 19.5 322 22.5 282 24.5 C205 28 125 30.5 52 31.5 C26 32 12 30 9 24 Z"/></g></svg><span class="paint-label">Zuhause</span></em> verdient</h1>
+    <p class="hero-sub">Willkommen beim Malerfachbetrieb Neininger in Rastatt — ruhige Beratung, präzise Ausführung, Räume zum Ankommen.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="#kontakt" class="btn btn-primary">
+              Kostenlose Beratung
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#vorher-nachher" class="btn btn-hero-secondary">Ergebnisse ansehen</a>
+          </div>
+          <div class="hero-trust">
+            <span>Seit 1888</span>
+            <span>Rastatt &amp; Umgebung</span>
+            <span>Persönlich vor Ort</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ba-section" id="vorher-nachher">
+    <div class="wrap ba-layout">
+      <div class="reveal">
+        <div class="kicker">Vorher · Nachher</div>
+        <h2 class="sec-title">Derselbe Raum. Eine andere Wand.</h2>
+        <p class="sec-lead">Ziehen Sie den Regler: gleiche Möbel, gleiches Licht, gleicher Boden. Nur die Wand ist neu gestrichen.</p>
+        <div class="swatches">
+          <div class="swatch"><i style="background:#D4C2A2"></i><span><b>Vorher</b><small>Sandbeige, fleckig · #D4C2A2</small></span></div>
+          <div class="swatch"><i style="background:#8E9A80"></i><span><b>Nachher</b><small>Salbeigrün · #8E9A80</small></span></div>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="ba-container" id="baSlider" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Vorher-Nachher-Vergleich, mit Pfeiltasten verschieben" tabindex="0">
+          <img src="img/before.jpg" alt="Vorher: Wohnzimmer mit fleckiger, sandbeiger Wand" class="ba-before" width="1400" height="900" draggable="false">
+          <img src="img/after.jpg" alt="Nachher: dieselbe Wand in Salbeigrün gestrichen" class="ba-after" width="1400" height="900" draggable="false">
+          <div class="ba-handle">
+            <div class="ba-knob" aria-hidden="true">
+              <svg fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 8L22 12L18 16"/><path d="M6 8L2 12L6 16"/></svg>
+            </div>
+          </div>
+          <div class="ba-labels" aria-hidden="true">
+            <span class="ba-label">Vorher</span>
+            <span class="ba-label">Nachher</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc-section" id="leistungen">
+    <div class="wrap">
+      <div class="svc-head reveal">
+        <div class="kicker">Leistungen</div>
+        <h2 class="sec-title">Vom einzelnen Zimmer bis zur ganzen Fassade</h2>
+        <p class="sec-lead">Wir kommen vorbei, schauen uns Untergrund und Raum an und besprechen mit Ihnen, was wirklich nötig ist.</p>
+      </div>
+      <ul class="fan">
+        <li class="reveal d1">
+          <article class="chip" style="--c:#BE734F">
+            <div class="chip-color"></div>
+            <div class="chip-body">
+              <div class="chip-tone"><span>Terracotta</span><span>#BE734F</span></div>
+              <h3>Innenarbeiten</h3>
+              <p>Wände, Decken, Lack. Farben, die sich nach Zuhause anfühlen.</p>
+            </div>
+            <span class="chip-rivet" aria-hidden="true"></span>
+          </article>
+        </li>
+        <li class="reveal d2">
+          <article class="chip" style="--c:#D4C2A2">
+            <div class="chip-color"></div>
+            <div class="chip-body">
+              <div class="chip-tone"><span>Sandstein</span><span>#D4C2A2</span></div>
+              <h3>Fassade</h3>
+              <p>Schutz und Ausdruck für Ihr Haus, vom Untergrund bis zum letzten Anstrich.</p>
+            </div>
+            <span class="chip-rivet" aria-hidden="true"></span>
+          </article>
+        </li>
+        <li class="reveal d3">
+          <article class="chip" style="--c:#B7B4AB">
+            <div class="chip-color"></div>
+            <div class="chip-body">
+              <div class="chip-tone"><span>Kalkgrau</span><span>#B7B4AB</span></div>
+              <h3>Spachtel &amp; Struktur</h3>
+              <p>Oberflächen mit Charakter: glatt, fein oder mit dekorativer Note.</p>
+            </div>
+            <span class="chip-rivet" aria-hidden="true"></span>
+          </article>
+        </li>
+        <li class="reveal d4">
+          <article class="chip" style="--c:#8E9A80">
+            <div class="chip-color"></div>
+            <div class="chip-body">
+              <div class="chip-tone"><span>Salbei</span><span>#8E9A80</span></div>
+              <h3>Renovierung</h3>
+              <p>Teilweise oder komplett. Wir bringen Räume wieder in Form.</p>
+            </div>
+            <span class="chip-rivet" aria-hidden="true"></span>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact-wall" id="kontakt">
+    <div class="wrap">
+      <div class="kicker reveal">Kontakt</div>
+      <h2 class="reveal d1"><a class="phone-big" href="tel:+49722221675" aria-label="Anrufen: 07222 21675">07222 / 21675</a></h2>
+      <p class="contact-note reveal d2">Rufen Sie an und schildern Sie kurz, was Sie vorhaben. Alfons Neininger berät Sie persönlich, auf Wunsch direkt bei Ihnen vor Ort.</p>
+      <div class="contact-grid reveal d3">
+        <div>
+          <h3>Anschrift</h3>
+          <p>Alfons Neininger, Malermeister<br>Dr.-Schleyer-Strasse 13<br>76437 Rastatt</p>
+        </div>
+        <div>
+          <h3>E-Mail</h3>
+          <p><a href="mailto:maler.a.neininger@t-online.de">maler.a.neininger@t-online.de</a></p>
+        </div>
+        <div>
+          <h3>Meisterbetrieb</h3>
+          <p>Malerfachbetrieb<br>seit 1888 in Rastatt</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <img src="img/logo-on-dark.png" alt="Neininger Malerfachbetrieb seit 1888" width="786" height="111">
+      <nav aria-label="Fußzeile">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#vorher-nachher">Ergebnisse</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="wrap foot-bottom">
+      <p class="mm-note"><span class="mm-mark" aria-hidden="true">m.</span><span>Unverbindliche <b>Vorschau</b>, gestaltet von <a href="https://machmalweb.de" target="_blank" rel="noopener">machmalweb</a> für Malerfachbetrieb Neininger. Keine offizielle Website. Inhalte &amp; reale Angaben stammen von <a href="http://www.maler-neininger.de/" target="_blank" rel="noopener">maler-neininger.de</a>. Kontakt machmalweb: <a href="tel:+4915567021934">0155 67021934</a> · <a href="mailto:hallo@machmalweb.de">hallo@machmalweb.de</a>.</span></p>
+      <p>© 2026 Neininger Malerfachbetrieb</p>
+    </div>
+  </footer>
+
+  <!-- ============ Rechtliches (Overlays) ============ -->
+  <div class="legal" id="impressum" role="dialog" aria-label="Impressum">
+    <div class="legal-box">
+      <a class="close" href="#_" aria-label="Schließen">&times;</a>
+      <h3>Impressum</h3>
+      <h4>Angaben gemäß § 5 DDG</h4>
+      <p>Alfons Neininger<br>Malermeister<br>Dr.-Schleyer-Strasse 13<br>76437 Rastatt</p>
+      <h4>Kontakt</h4>
+      <p>Telefon: 07222 / 2 16 75<br>Telefax: 07222 / 2 60 96<br>E-Mail: maler.a.neininger@t-online.de</p>
+      <h4>Umsatzsteuer-ID</h4>
+      <p>USt-IdNr.: DE 143991519</p>
+      <span class="amp">Angaben übernommen von maler-neininger.de · Darstellung als Vorschau.</span>
+    </div>
+  </div>
+  <div class="legal" id="datenschutz" role="dialog" aria-label="Datenschutz">
+    <div class="legal-box">
+      <a class="close" href="#_" aria-label="Schließen">&times;</a>
+      <h3>Datenschutz</h3>
+      <p>Diese Seite ist eine unverbindliche Gestaltungs-Vorschau (Demo) von machmalweb. Sie hat kein Kontaktformular und speichert selbst keine personenbezogenen Daten.</p>
+      <h4>Schriften</h4>
+      <p>Die Schriften werden von Google Fonts geladen. Dabei überträgt Ihr Browser Ihre IP-Adresse an Google.</p>
+      <h4>Verantwortlich im Live-Betrieb</h4>
+      <p>Alfons Neininger, Malermeister, Dr.-Schleyer-Strasse 13, 76437 Rastatt.</p>
+      <span class="amp">Platzhaltertext für die Vorschau.</span>
+    </div>
+  </div>
+
+  <!-- ============ Demo-Popup ============ -->
+  <div class="demo-pop" id="demoPop" role="dialog" aria-label="Hinweis zur Design-Vorschau">
+    <button class="dp-x" id="dpX" type="button" aria-label="Schließen">&times;</button>
+    <div class="dp-top"><span class="mm-mark" aria-hidden="true">m.</span><h5>Das ist eine Design-Vorschau</h5></div>
+    <p>Diese Website hat <b>machmalweb</b> als unverbindlichen Entwurf für Malerfachbetrieb Neininger gestaltet. Gefällt Ihnen der Auftritt?</p>
+    <div class="dp-actions">
+      <a class="btn btn-red" id="dpCta" href="mailto:hallo@machmalweb.de?subject=Website-Vorschau%20Malerfachbetrieb%20Neininger&amp;body=Hallo%20machmalweb-Team%2C%0Adie%20Vorschau%20gef%C3%A4llt%20uns%20%E2%80%93%20bitte%20meldet%20euch%20bei%20uns.%0A%0AViele%20Gr%C3%BC%C3%9Fe">Ja, überzeugt mich!</a>
+      <a class="btn btn-ink" id="dpCall" href="tel:+4915567021934">Anrufen</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+      var header = document.getElementById('header');
+      function updateHeader() {
+        var y = window.pageYOffset || 0;
+        if (y > 72) {
+          header.classList.add('scrolled');
+          header.classList.remove('hero-dark');
+        } else {
+          header.classList.remove('scrolled');
+          header.classList.add('hero-dark');
+        }
+      }
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      updateHeader();
+
+      var ba = document.getElementById('baSlider');
+      if (ba) {
+        var after = ba.querySelector('.ba-after');
+        var handle = ba.querySelector('.ba-handle');
+        var dragging = false;
+
+        function setPos(clientX) {
+          var rect = ba.getBoundingClientRect();
+          var pct = ((clientX - rect.left) / rect.width) * 100;
+          pct = Math.max(2, Math.min(98, pct));
+          after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+          handle.style.left = pct + '%';
+          ba.setAttribute('aria-valuenow', Math.round(pct));
+        }
+
+        function onDown(e) {
+          dragging = true;
+          ba.classList.add('dragging');
+          var x = e.touches ? e.touches[0].clientX : e.clientX;
+          setPos(x);
+          e.preventDefault();
+        }
+        function onMove(e) {
+          if (!dragging) return;
+          var x = e.touches ? e.touches[0].clientX : e.clientX;
+          setPos(x);
+        }
+        function onUp() {
+          dragging = false;
+          ba.classList.remove('dragging');
+        }
+
+        ba.addEventListener('mousedown', onDown);
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('mouseup', onUp);
+        ba.addEventListener('touchstart', onDown, { passive: false });
+        window.addEventListener('touchmove', onMove, { passive: true });
+        window.addEventListener('touchend', onUp);
+
+        ba.addEventListener('keydown', function (e) {
+          var cur = parseFloat(ba.getAttribute('aria-valuenow') || '50');
+          if (e.key === 'ArrowLeft') { setPos(ba.getBoundingClientRect().left + ((cur - 3) / 100) * ba.offsetWidth); e.preventDefault(); }
+          if (e.key === 'ArrowRight') { setPos(ba.getBoundingClientRect().left + ((cur + 3) / 100) * ba.offsetWidth); e.preventDefault(); }
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+          });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      }
+    })();
+  </script>
+  <script>
+  /* ===== Projektion: Wandflucht ===== ------------------------------------
+     Die Konstanten sind aus img/hero.png gemessen (Sockelleiste und
+     Decken-Anschluss der Terracotta-Wand, in Bildkoordinaten 1280x720).
+     Daraus folgt der echte Fluchtpunkt der Wand; die Matrix wird bei jeder
+     Viewport-Größe neu berechnet, damit die Flucht immer stimmt.            */
+  window.NEININGER_WALL = {
+    img:  { w: 1280, h: 720 },
+    base: { m: -0.114368, b:  610.268 },   /* Sockelleiste       */
+    ceil: { m:  0.190000, b:  -80.500 },   /* Decken-Anschluss   */
+    objectPosition: { x: 0.5, y: 0.40 }    /* muss zu .hero-media img passen */
+  };
+
+  (function () {
+    var hero  = document.querySelector('.hero');
+    var block = document.querySelector('.hero-projected');
+    var core  = document.querySelector('.proj-core');
+    var inner = document.querySelector('.beam-inner');
+    if (!hero || !block || !core || !inner) return;
+
+    /* Streulicht-Ebene aus dem Kern klonen — hält das Markup frei von
+       doppelten Überschriften und doppelten SVG-IDs. */
+    var bloom = core.cloneNode(true);
+    bloom.className = 'proj-bloom';
+    bloom.setAttribute('aria-hidden', 'true');
+    bloom.querySelectorAll('[id]').forEach(function (n) { n.removeAttribute('id'); });
+    bloom.querySelectorAll('svg').forEach(function (n) { n.remove(); });
+    inner.insertBefore(bloom, core);
+
+    /* Alles, was auf der Wand sitzt: der projizierte Text und — als
+       "an der Wand montiert" — Buttons und Trust-Zeile. Alle bekommen
+       dieselbe Wandebene, damit sie gemeinsam zur Ecke hin fluchten. */
+    var onWall = [block].concat([].slice.call(
+      document.querySelectorAll('.hero-copy .hero-actions, .hero-copy .hero-trust')));
+
+    function mul(A, B) {
+      var C = [[0,0,0],[0,0,0],[0,0,0]];
+      for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++)
+        for (var n = 0; n < 3; n++) C[i][j] += A[i][n] * B[n][j];
+      return C;
+    }
+    function toMatrix3d(M) {
+      var w = M[2][2];
+      return 'matrix3d(' + M[0][0]/w + ',' + M[1][0]/w + ',0,' + M[2][0]/w + ',' +
+                           M[0][1]/w + ',' + M[1][1]/w + ',0,' + M[2][1]/w + ',' +
+                           '0,0,1,0,' + M[0][2]/w + ',' + M[1][2]/w + ',0,1)';
+    }
+
+    function apply() {
+      var W = window.NEININGER_WALL;
+      onWall.forEach(function (el) { el.style.setProperty('--proj-matrix', 'none'); });
+
+      var hr = hero.getBoundingClientRect();
+      var br = block.getBoundingClientRect();
+      if (!hr.width || !br.width) return;
+      var rects = onWall.map(function (el) { return el.getBoundingClientRect(); });
+
+      /* Bild -> Bühne (object-fit: cover) */
+      var s  = Math.max(hr.width / W.img.w, hr.height / W.img.h);
+      var ox = (hr.width  - W.img.w * s) * W.objectPosition.x;
+      var oy = (hr.height - W.img.h * s) * W.objectPosition.y;
+
+      /* Fluchtpunkt der Wand: Schnittpunkt von Sockelleiste und Decke */
+      var vxI = (W.ceil.b - W.base.b) / (W.base.m - W.ceil.m);
+      var vyI = W.base.m * vxI + W.base.b;
+
+      /* Anker ist die linke obere Ecke des Textblocks */
+      var vx = vxI * s + ox + hr.left - br.left;
+      var vy = vyI * s + oy + hr.top  - br.top;
+
+      var w   = br.width;
+      var run = parseFloat(getComputedStyle(hero).getPropertyValue('--proj-run')) || 1;
+      var R   = w * run;
+
+      /* Fluchtpunkt zu nah: Perspektive würde kippen — lieber flach lassen */
+      if (!isFinite(vx) || !isFinite(vy) || vx < R + 120) return;
+
+      /* Wandebene im Anker-System, Senkrechte bleiben senkrecht:
+           X = (vx*k*x) / (k*x + 1)
+           Y = (vy*k*x + y) / (k*x + 1)                                     */
+      var k = R / (w * (vx - R));
+      var H = [[vx * k, 0, 0], [vy * k, 1, 0], [k, 0, 1]];
+
+      /* Für jedes Element: in Anker-Koordinaten verschieben, abbilden,
+         zurück in eigene Koordinaten */
+      onWall.forEach(function (el, i) {
+        var dx = rects[i].left - br.left, dy = rects[i].top - br.top;
+        var M = mul([[1,0,-dx],[0,1,-dy],[0,0,1]], mul(H, [[1,0,dx],[0,1,dy],[0,0,1]]));
+        el.style.setProperty('--proj-matrix', toMatrix3d(M));
+      });
+    }
+
+    var raf;
+    function schedule() { cancelAnimationFrame(raf); raf = requestAnimationFrame(apply); }
+
+    apply();
+    if (window.ResizeObserver) new ResizeObserver(schedule).observe(hero);
+    addEventListener('resize', schedule);
+    addEventListener('orientationchange', schedule);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(apply);
+    addEventListener('load', apply);
+  })();
+  </script>
+
+  <script>
+  /* ===== Farbrolle: Wand neu streichen =====
+     Die Wand wird aus hero.png freigestellt (Wandebene aus den gemessenen
+     Linien + Terracotta-Farbton, dadurch bleiben Pflanze, Leiste und Boden
+     unberührt) und in der neuen Farbe eingefärbt. Die Helligkeit jedes
+     Pixels relativ zum Wandmittel bleibt erhalten — Licht, Schatten und
+     Putzstruktur bleiben also sichtbar. */
+  (function () {
+    var hero   = document.querySelector('.hero');
+    var base   = document.querySelector('.hero-media img');
+    var roller = document.getElementById('roller');
+    var travel = document.getElementById('rollerTravel');
+    var layers = [document.getElementById('wallPaintA'), document.getElementById('wallPaintB')];
+    if (!hero || !base || !roller || !travel || !layers[0]) return;
+
+    var btn     = roller.querySelector('.roller-btn');
+    var palette = document.getElementById('wallPalette');
+    var swatches = [].slice.call(palette.querySelectorAll('button'));
+    var W = window.NEININGER_WALL;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---- Bild <-> Bühne ---- */
+    function map() {
+      var hr = hero.getBoundingClientRect();
+      var s  = Math.max(hr.width / W.img.w, hr.height / W.img.h);
+      return { s: s, h: hr.height,
+               ox: (hr.width  - W.img.w * s) * W.objectPosition.x,
+               oy: (hr.height - W.img.h * s) * W.objectPosition.y };
+    }
+    var CORNER_X = 802;                       /* Wandecke in Bildkoordinaten (oberhalb der Pflanze gemessen) */
+    function baseY(xi) { return W.base.m * xi + W.base.b; }
+    function ceilY(xi) { return W.ceil.m * xi + W.ceil.b; }
+
+    /* ---- Rolle direkt hinter "Ihr" platzieren ---- */
+    var anchor = document.querySelector('.proj-core .roller-anchor');
+    function place() {
+      if (!anchor) return;
+      var hr = hero.getBoundingClientRect();
+      var ar = anchor.getBoundingClientRect();
+      var svg = btn.querySelector('svg');
+      var sh = svg.getBoundingClientRect().height || 54;
+      var gap = innerWidth <= 700 ? 6 : 14;
+      var x = ar.right - hr.left + gap;
+      var y = ar.top + ar.height * .5 - hr.top - sh * .42;
+      /* auf schmalen Schirmen nicht über den Rand hinaus */
+      var maxX = hr.width - btn.offsetWidth - 8;
+      roller.style.setProperty('--rx', Math.round(Math.min(x, maxX)) + 'px');
+      roller.style.setProperty('--ry', Math.round(y) + 'px');
+      /* Palette im Bild halten */
+      var pw = palette.offsetWidth || 272;
+      var left = 0, abs = Math.min(x, maxX);
+      if (abs + pw > innerWidth - 12) left = (innerWidth - 12) - (abs + pw);
+      roller.style.setProperty('--px', Math.round(left) + 'px');
+    }
+
+    /* ---- Wandmaske und Einfärben ---- */
+    var src = null, weight = null, lum = null, meanY = 0, cv, cx, cache = {};
+    var S2L = new Float32Array(256);
+    for (var i = 0; i < 256; i++) { var c = i / 255; S2L[i] = c <= .04045 ? c / 12.92 : Math.pow((c + .055) / 1.055, 2.4); }
+    var L2S = new Uint8ClampedArray(4096);
+    for (i = 0; i < 4096; i++) { var l = i / 4095; L2S[i] = Math.round(255 * (l <= .0031308 ? l * 12.92 : 1.055 * Math.pow(l, 1 / 2.4) - .055)); }
+    function smooth(a, b, x) { var t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
+
+    function prepare() {
+      if (src) return true;
+      cv = document.createElement('canvas');
+      cv.width = base.naturalWidth; cv.height = base.naturalHeight;
+      cx = cv.getContext('2d', { willReadFrequently: true });
+      cx.drawImage(base, 0, 0);
+      try { src = cx.getImageData(0, 0, cv.width, cv.height); } catch (e) { return false; }
+      var d = src.data, n = cv.width * cv.height, sx = cv.width / W.img.w;
+      weight = new Float32Array(n); lum = new Float32Array(n);
+      var sumY = 0, sumW = 0;
+      for (var p = 0, y = 0; y < cv.height; y++) {
+        var yi = y / sx;
+        for (var x = 0; x < cv.width; x++, p++) {
+          var r = d[p * 4], g = d[p * 4 + 1], b = d[p * 4 + 2];
+          var Y = .2126 * S2L[r] + .7152 * S2L[g] + .0722 * S2L[b];
+          lum[p] = Y;
+          var xi = x / sx;
+          if (xi > CORNER_X || yi < ceilY(xi) - 2 || yi > baseY(xi) + 2) continue;
+          /* Terracotta-Ton: rot vor grün vor blau, und kräftig gesättigt —
+             so fallen auch der rötliche Widerschein am Topf und der Holzboden raus */
+          var gr = g / (r || 1);
+          var w = smooth(30, 62, r - b) * smooth(8, 30, r - g) * smooth(.36, .48, (r - b) / (r || 1))
+                * (1 - smooth(.63, .68, gr));      /* Wand: g/r ≤ 0,61 · Topf im Schatten: ≈ 0,69 */
+          weight[p] = w;
+          if (w > .9) { sumY += Y; sumW++; }
+        }
+      }
+      meanY = sumY / Math.max(1, sumW);
+      return true;
+    }
+
+    function recolor(hex) {
+      if (cache[hex]) return Promise.resolve(cache[hex]);
+      var tr = S2L[parseInt(hex.substr(1, 2), 16)], tg = S2L[parseInt(hex.substr(3, 2), 16)], tb = S2L[parseInt(hex.substr(5, 2), 16)];
+      var d = src.data, out = cx.createImageData(cv.width, cv.height), o = out.data, n = weight.length;
+      for (var p = 0; p < n; p++) {
+        var q = p * 4, w = weight[p];
+        o[q + 3] = 255;
+        if (w <= 0) { o[q] = d[q]; o[q + 1] = d[q + 1]; o[q + 2] = d[q + 2]; continue; }
+        var k = lum[p] / meanY;
+        var nr = L2S[Math.min(4095, (tr * k * 4095) | 0)];
+        var ng = L2S[Math.min(4095, (tg * k * 4095) | 0)];
+        var nb = L2S[Math.min(4095, (tb * k * 4095) | 0)];
+        o[q]     = d[q]     + (nr - d[q])     * w;
+        o[q + 1] = d[q + 1] + (ng - d[q + 1]) * w;
+        o[q + 2] = d[q + 2] + (nb - d[q + 2]) * w;
+      }
+      cx.putImageData(out, 0, 0);
+      return new Promise(function (res) {
+        cv.toBlob(function (b) { cache[hex] = URL.createObjectURL(b); res(cache[hex]); }, 'image/jpeg', .92);
+      });
+    }
+
+    /* ---- Streichen ---- */
+    var cur = null, busy = false;
+    function paint(url, rollColor, isOriginal) {
+      busy = true;
+      var next = layers[0] === cur ? layers[1] : layers[0];
+      var go = function () {
+        next.hidden = false;
+        next.style.zIndex = 2; if (cur) cur.style.zIndex = 1;
+        roller.style.setProperty('--roll', rollColor);
+        travel.style.setProperty('--roll', rollColor);
+        travel.querySelector('.roll-cyl').style.fill = rollColor;
+
+        function done() {
+          next.style.webkitMaskImage = next.style.maskImage = '';
+          travel.style.opacity = 0;
+          if (cur) cur.hidden = true;
+          cur = next;
+          if (isOriginal) { cur.hidden = true; cur = null; }
+          busy = false;
+        }
+        if (reduce) { done(); return; }
+
+        var m = map();
+        var endX = CORNER_X * m.s + m.ox + 90, startX = -60;
+        var t0 = performance.now(), dur = 1500;
+        travel.style.opacity = 1;
+        (function frame(now) {
+          var t = Math.min(1, (now - t0) / dur);
+          var e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+          var px = startX + (endX - startX) * e;
+          var mask = 'linear-gradient(90deg,#000 0,#000 ' + (px - 30) + 'px,transparent ' + (px + 30) + 'px)';
+          next.style.webkitMaskImage = next.style.maskImage = mask;
+          /* Rolle fährt auf und ab, wie beim echten Streichen */
+          var xi = Math.min(CORNER_X, Math.max(0, (px - m.ox) / m.s));
+          var top = Math.max(ceilY(xi) * m.s + m.oy + 40, 90);
+          var bot = baseY(xi) * m.s + m.oy - 70;
+          var y = top + (bot - top) * (.5 + .5 * Math.sin(t * Math.PI * 7 - Math.PI / 2));
+          travel.style.setProperty('--tx', Math.round(px - 30) + 'px');
+          travel.style.setProperty('--ty', Math.round(y - 20) + 'px');
+          if (t < 1) requestAnimationFrame(frame); else done();
+        })(t0);
+      };
+      var started = false;
+      var once = function () { if (!started) { started = true; go(); } };
+      next.onload = once;
+      next.src = url;
+      if (next.complete && next.naturalWidth) once();
+      else if (next.decode) next.decode().then(once, function () {});
+    }
+
+    /* ---- Palette ---- */
+    function open(v) {
+      palette.hidden = !v;
+      btn.setAttribute('aria-expanded', String(v));
+      if (v) { place(); (palette.querySelector('[aria-pressed="true"]') || swatches[0]).focus(); }
+    }
+    btn.addEventListener('click', function () { open(palette.hidden); });
+    document.addEventListener('click', function (e) { if (!palette.hidden && !roller.contains(e.target)) open(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !palette.hidden) { open(false); btn.focus(); } });
+
+    swatches.forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (busy || b.getAttribute('aria-pressed') === 'true') { open(false); return; }
+        swatches.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        open(false);
+        var c = b.dataset.color;
+        if (c === 'original') { paint(base.currentSrc || base.src, b.dataset.roll, true); return; }
+        recolor(c).then(function (url) { paint(url, c, false); });
+      });
+    });
+
+    /* ---- Start ---- */
+    function init() {
+      if (!prepare()) return;          /* z. B. file:// — dann keine Rolle */
+      roller.hidden = false;
+      place();
+      var raf;
+      var again = function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(place); };
+      if (window.ResizeObserver) new ResizeObserver(again).observe(hero);
+      addEventListener('resize', again);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(again);
+      setTimeout(again, 400);
+    }
+    if (base.complete && base.naturalWidth) init(); else base.addEventListener('load', init);
+  })();
+  </script>
+
+  <script>
+  /* machmalweb-Demo-Popup: erscheint einmal, sobald jemand weiter scrollt */
+  (function () {
+    var pop = document.getElementById('demoPop');
+    if (!pop) return;
+    var shown = false;
+    function maybe() {
+      if (shown) return;
+      if ((window.pageYOffset || document.documentElement.scrollTop) > 700) {
+        shown = true; pop.classList.add('show');
+        removeEventListener('scroll', maybe);
+      }
+    }
+    addEventListener('scroll', maybe, { passive: true });
+    ['dpX', 'dpCta', 'dpCall'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', function () { pop.classList.remove('show'); });
+    });
+  })();
+  </script>
+</body>
+</html>
