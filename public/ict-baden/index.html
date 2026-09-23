@@ -14,6 +14,13 @@
 </head>
 <body>
 
+<div class="demo-bar" role="note">
+    <span class="mm-mark" aria-hidden="true">m.</span>
+    <span class="long"><b>Design-Vorschau</b> von machmalweb für ICT Baden · keine offizielle Website</span>
+    <span class="short"><b>Design-Vorschau</b> von machmalweb</span>
+    <a href="mailto:hallo@machmalweb.de?subject=Website-Vorschau%20ICT%20Baden">Gefällt mir</a>
+</div>
+
 <header class="site-header">
     <div class="container header-inner">
         <a class="brand" href="#start" aria-label="ICT Baden – Startseite">
@@ -443,23 +450,31 @@
                 <p>Seboldstraße 9<br>76227 Karlsruhe-Durlach</p>
             </div>
             <div>
-                <p class="footer-title">Pflichtangaben</p>
-                <p>Geschäftsführer: Frank Pfattheicher<br>
-                   Amtsgericht Mannheim · HRB 706949<br>
-                   USt-IdNr. DE 265276745</p>
-            </div>
-            <div>
                 <p class="footer-title">Kontakt</p>
                 <p><a href="mailto:fpf@ict-baden.de">fpf@ict-baden.de</a><br>
                    +49 721 9415787</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© <span id="year">2026</span> ICT Baden GmbH</span>
-            <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+            <p class="mm-note"><span class="mm-mark" aria-hidden="true">m.</span><span>Unverbindliche <b>Design-Vorschau</b> von <a href="https://machmalweb.de" target="_blank" rel="noopener">machmalweb</a> für ICT Baden. Keine offizielle Website. Die Angaben zum Unternehmen stammen von <a href="https://ict-baden.de/" target="_blank" rel="noopener">ict-baden.de</a>. Kontakt machmalweb: <a href="tel:+4915565586614">0155 65586614</a> · <a href="mailto:hallo@machmalweb.de">hallo@machmalweb.de</a></span></p>
+            <nav class="footer-legal" aria-label="Rechtliches">
+                <a href="https://machmalweb.de/impressum" target="_blank" rel="noopener">Impressum</a>
+                <a href="https://machmalweb.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+            </nav>
         </div>
     </div>
 </footer>
+
+<!-- ============ Demo-Popup ============ -->
+<div class="demo-pop" id="demoPop" role="dialog" aria-label="Hinweis zur Design-Vorschau">
+    <button class="dp-x" id="dpX" type="button" aria-label="Schließen">&times;</button>
+    <div class="dp-top"><span class="mm-mark" aria-hidden="true">m.</span><h5>Das ist eine Design-Vorschau</h5></div>
+    <p>Diese Website hat <b>machmalweb</b> als unverbindlichen Entwurf für ICT Baden gestaltet. Gefällt Ihnen der Auftritt?</p>
+    <div class="dp-actions">
+        <a class="btn btn-primary" id="dpCta" href="mailto:hallo@machmalweb.de?subject=Website-Vorschau%20ICT%20Baden&amp;body=Hallo%20machmalweb-Team%2C%0Adie%20Vorschau%20gef%C3%A4llt%20uns%20%E2%80%93%20bitte%20meldet%20euch%20bei%20uns.%0A%0AViele%20Gr%C3%BC%C3%9Fe">Ja, überzeugt mich!</a>
+        <a class="btn btn-ink" id="dpCall" href="tel:+4915565586614">Anrufen</a>
+    </div>
+</div>
 
 <script src="script.js"></script>
 </body>

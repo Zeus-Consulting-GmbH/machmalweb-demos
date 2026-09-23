@@ -106,7 +106,25 @@
     });
     if (document.getElementById('pulse')) { calc(); }
 
-    document.getElementById('year').textContent = String(new Date().getFullYear());
+    // machmalweb-Demo-Popup: erscheint einmal, wenn jemand scrollt, die Seite
+    // wechselt oder am Desktop 12 Sekunden bleibt
+    var pop = document.getElementById('demoPop');
+    var popShown = false;
+    function showPop() {
+        if (popShown || !pop) { return; }
+        popShown = true;
+        pop.classList.add('show');
+    }
+    window.addEventListener('scroll', function () {
+        if ((window.pageYOffset || document.documentElement.scrollTop) > 320) { showPop(); }
+    }, { passive: true });
+    window.addEventListener('hashchange', function () { setTimeout(showPop, 1500); });
+    if (window.innerWidth > 700) { setTimeout(showPop, 12000); }
+    ['dpX', 'dpCta', 'dpCall'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) { el.addEventListener('click', function () { pop.classList.remove('show'); }); }
+    });
+
 
     route();
 })();
