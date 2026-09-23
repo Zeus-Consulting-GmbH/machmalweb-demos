@@ -645,9 +645,21 @@
     }
     .roller-travel svg { display: block; width: 100%; height: auto; }
 
+    .roller.up .roller-palette { top: auto; bottom: calc(100% + 10px); }
+    /* Handy: kein Platz hinter "Ihr" — die Rolle steht als deutlicher
+       Button unter dem Textblock, mit Label */
     @media (max-width: 700px) {
-      .roller-btn svg { width: 62px; }
-      .roller-tip { display: none; }
+      .roller-btn {
+        gap: 8px;
+        padding: 5px 6px 5px 12px;
+        border-radius: 999px;
+        background: rgba(22,12,6,.62);
+        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 10px 28px rgba(20,8,2,.35), inset 0 0 0 1px rgba(255,255,255,.14);
+      }
+      .roller-btn svg { width: 60px; filter: drop-shadow(0 4px 5px rgba(20,8,2,.4)); }
+      .roller-tip { font-size: .78rem; padding: 8px 14px; box-shadow: none; }
+      .roller-tip::before { content: ""; margin: 0; }
       .roller-palette { width: min(272px, calc(100vw - 32px)); }
     }
 
@@ -1124,9 +1136,19 @@
       var ar = anchor.getBoundingClientRect();
       var svg = btn.querySelector('svg');
       var sh = svg.getBoundingClientRect().height || 54;
-      var gap = innerWidth <= 700 ? 6 : 14;
-      var x = ar.right - hr.left + gap;
-      var y = ar.top + ar.height * .5 - hr.top - sh * .42;
+      var small = innerWidth <= 700;
+      var x, y;
+      if (small) {
+        /* Handy: mittig unter der Trust-Zeile */
+        var trust = document.querySelector('.hero-copy .hero-trust');
+        var tb = trust ? trust.getBoundingClientRect().bottom - hr.top : hr.height - 140;
+        x = (hr.width - btn.offsetWidth) / 2;
+        y = Math.min(tb + 26, hr.height - btn.offsetHeight - 24);
+      } else {
+        x = ar.right - hr.left + 14;
+        y = ar.top + ar.height * .5 - hr.top - sh * .42;
+      }
+      roller.classList.toggle('up', small);
       /* auf schmalen Schirmen nicht über den Rand hinaus */
       var maxX = hr.width - btn.offsetWidth - 8;
       roller.style.setProperty('--rx', Math.round(Math.min(x, maxX)) + 'px');
@@ -1302,8 +1324,9 @@
       removeEventListener('scroll', maybe);
     }
     addEventListener('scroll', maybe, { passive: true });
-    /* wer nicht scrollt, sieht den Hinweis nach 12 Sekunden trotzdem */
-    setTimeout(show, 12000);
+    /* Desktop: wer nicht scrollt, sieht den Hinweis nach 12 Sekunden trotzdem.
+       Am Handy nicht — dort läge das Popup über dem Farbrollen-Button. */
+    if (innerWidth > 700) setTimeout(show, 12000);
     ['dpX', 'dpCta', 'dpCall'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.addEventListener('click', function () { pop.classList.remove('show'); });
