@@ -33,6 +33,7 @@
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
       --r: 18px;
       --maxw: 1180px;
+      --demo-h: 38px;
     }
 
     html { scroll-behavior: smooth; }
@@ -56,7 +57,7 @@
     /* ===== Header ===== */
     header {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: var(--demo-h); left: 0; right: 0;
       z-index: 100;
       padding: 14px 0;
       transition: background .35s var(--ease), box-shadow .35s var(--ease), padding .35s;
@@ -192,7 +193,7 @@
       position: relative;
       width: 100%;
       /* unten mehr als oben: Block sitzt etwas über der Mitte der Wand */
-      padding: 110px 0 136px;
+      padding: calc(110px + var(--demo-h)) 0 136px;
     }
     .hero .wrap { display: flex; justify-content: flex-start; }
 
@@ -547,138 +548,12 @@
       padding: 6px 10px; border-radius: 6px;
     }
 
-    /* ---------- Leistungen: Farbtonkarten ---------- */
-    .svc-section { padding: clamp(60px, 8vw, 110px) 0 clamp(90px, 12vw, 150px); }
-    .svc-head { max-width: 40rem; }
-
-    .fan {
-      list-style: none;
-      margin-top: clamp(40px, 6vw, 72px);
-      display: grid;
-      gap: 18px;
-    }
-    @media (min-width: 900px) {
-      .fan { grid-template-columns: repeat(4, 1fr); gap: 0; padding: 0 12px; }
-    }
-
-    .chip {
-      position: relative;
-      display: flex; flex-direction: column;
-      background: var(--kreide);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 1px 0 rgba(27,29,31,.06), 0 18px 40px -22px rgba(27,29,31,.45);
-      transition: transform .45s var(--ease), box-shadow .45s var(--ease);
-    }
-    .chip-color {
-      height: clamp(150px, 17vw, 230px);
-      background: var(--c);
-      position: relative;
-    }
-    /* feine Rollspur: der Ton ist gestrichen, nicht gedruckt */
-    .chip-color::after {
-      content: ""; position: absolute; inset: 0;
-      background: repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 2px, rgba(0,0,0,.03) 2px 5px);
-      mix-blend-mode: soft-light;
-    }
-    .chip-body { padding: 18px 22px 26px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-    .chip-tone {
-      font-family: var(--font-mono);
-      font-size: .7rem; letter-spacing: .04em;
-      color: var(--grau);
-      display: flex; justify-content: space-between; gap: 8px;
-    }
-    .chip h3 {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.62rem;
-      line-height: 1.1;
-      color: var(--ink);
-      margin-top: 6px;
-    }
-    .chip p { font-size: .96rem; line-height: 1.55; color: var(--grau); }
-    /* Niete, an der der Farbfächer zusammenhängt */
-    .chip-rivet {
-      position: absolute; left: 50%; bottom: 10px;
-      width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%;
-      background: #d9dad5;
-      box-shadow: inset 0 1px 1px rgba(0,0,0,.25);
-    }
-
-    @media (min-width: 900px) {
-      .chip { margin: 0 -6px; transform-origin: 50% calc(100% - 14px); }
-      .fan li:nth-child(1) .chip { transform: rotate(-3deg); }
-      .fan li:nth-child(2) .chip { transform: rotate(-1deg) translateY(-6px); }
-      .fan li:nth-child(3) .chip { transform: rotate(1deg) translateY(-6px); }
-      .fan li:nth-child(4) .chip { transform: rotate(3deg); }
-      .fan li { position: relative; z-index: 1; }
-      .fan li:hover, .fan li:focus-within { z-index: 5; }
-      .fan li:hover .chip, .fan li:focus-within .chip {
-        transform: rotate(0) translateY(-16px);
-        box-shadow: 0 1px 0 rgba(27,29,31,.06), 0 34px 60px -26px rgba(27,29,31,.55);
-      }
-    }
-    @media (max-width: 899px) {
-      .chip { flex-direction: row; }
-      .chip-color { height: auto; width: 34%; min-height: 150px; flex: none; }
-      .chip-rivet { display: none; }
-    }
-
-    /* ---------- Kontakt: dieselbe Wand wie oben ---------- */
-    .contact-wall {
-      position: relative;
-      overflow: hidden;
-      color: #fff;
-      padding: clamp(90px, 12vw, 160px) 0 clamp(70px, 9vw, 120px);
-      background:
-        linear-gradient(100deg, #8a4527 0%, #9e5433 45%, #ad603c 100%);
-    }
-    /* Putzstruktur */
-    .contact-wall::before {
-      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-      mix-blend-mode: multiply;
-    }
-    .contact-wall .wrap { position: relative; }
-    .contact-wall .kicker { color: rgba(255,244,234,.86); }
-    .phone-big {
-      display: inline-block;
-      font-family: var(--font-display);
-      font-weight: 500;
-      font-size: clamp(3.1rem, 10vw, 8rem);
-      line-height: .95;
-      letter-spacing: -0.02em;
-      color: #fff;
-      text-decoration: none;
-      margin-top: 4px;
-      border-bottom: 2px solid rgba(249,166,26,.0);
-      transition: border-color .3s, color .3s;
-    }
-    .phone-big:hover { border-bottom-color: var(--brand-gold); }
-    .phone-big:focus-visible { outline: 3px solid #fff; outline-offset: 8px; border-radius: 4px; }
-    .contact-note { margin-top: 22px; max-width: 30rem; font-size: 1.08rem; line-height: 1.6; color: rgba(255,247,240,.92); }
-
-    .contact-grid {
-      display: grid; gap: 28px 48px;
-      margin-top: clamp(48px, 7vw, 88px);
-      padding-top: 32px;
-      border-top: 1px solid rgba(255,240,228,.28);
-    }
-    @media (min-width: 760px) { .contact-grid { grid-template-columns: repeat(3, auto); justify-content: start; } }
-    .contact-grid h3 {
-      font-family: var(--font-mono);
-      font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
-      color: rgba(255,240,228,.78);
-      margin-bottom: 10px;
-    }
-    .contact-grid p, .contact-grid a { font-size: 1.02rem; line-height: 1.6; color: #fff; }
-    .contact-grid a { text-decoration: underline; text-decoration-color: rgba(249,166,26,.7); text-underline-offset: 4px; }
-    .contact-grid a:hover { text-decoration-color: #fff; }
-
     /* ---------- Footer ---------- */
     footer { background: var(--ink); color: rgba(255,255,255,.72); padding: 40px 0 44px; font-size: .88rem; }
     footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; }
     footer .wrap.foot-bottom { align-items: center; }
+    .foot-contact { font-size: .9rem; line-height: 1.7; color: rgba(255,255,255,.72); text-align: right; }
+    @media (max-width: 700px) { .foot-contact { text-align: left; } }
     footer img { height: 40px; width: auto; }
     footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
     footer a { color: rgba(255,255,255,.86); }
@@ -776,6 +651,40 @@
       .roller-palette { width: min(272px, calc(100vw - 32px)); }
     }
 
+    /* ===== Demo-Leiste: immer sichtbar, oberhalb des Headers ===== */
+    .demo-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 105;
+      height: var(--demo-h);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 0 14px;
+      background: var(--ink); color: rgba(255,255,255,.86);
+      font-size: .8rem; line-height: 1.2; white-space: nowrap;
+    }
+    .demo-bar .mm-mark { width: 22px; height: 22px; font-size: .95rem; background: #fff; color: var(--ink); }
+    .demo-bar b { color: #fff; font-weight: 600; }
+    .demo-bar a {
+      color: #1b1d1f; background: var(--brand-gold);
+      font-weight: 600; padding: 4px 10px; border-radius: 999px; margin-left: 4px;
+    }
+    .demo-bar a:hover { background: #ffb938; }
+    .demo-bar .long { overflow: hidden; text-overflow: ellipsis; }
+    @media (max-width: 640px) {
+      .demo-bar { font-size: .74rem; justify-content: space-between; }
+      .demo-bar .long { display: none; }
+    }
+    @media (min-width: 641px) { .demo-bar .short { display: none; } }
+
+    /* Anrufen: am Handy nur als rundes Icon, damit das Logo Platz hat */
+    @media (max-width: 560px) {
+      header .nav-call { width: 44px; height: 44px; padding: 0; border-radius: 50%; flex: none; }
+      header .nav-call svg { width: 19px; height: 19px; }
+      .nav-call-txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+      .brand-logo { height: 40px; }
+      header .wrap { gap: 12px; }
+      .brand { min-width: 0; }
+      .brand-logo { max-width: 100%; }
+    }
+
     /* ===== machmalweb-Demo: Hinweis, Rechtliches, Popup ===== */
     .mm-mark {
       width: 26px; height: 26px; flex: 0 0 auto;
@@ -800,30 +709,6 @@
       border-top: 1px solid rgba(255,255,255,.12);
       display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px;
     }
-
-    .legal {
-      position: fixed; inset: 0; z-index: 120;
-      display: flex; align-items: center; justify-content: center;
-      padding: 20px;
-      background: rgba(27,29,31,.55);
-      backdrop-filter: blur(4px);
-      opacity: 0; visibility: hidden;
-      transition: opacity .35s var(--ease), visibility .35s;
-    }
-    .legal:target { opacity: 1; visibility: visible; }
-    .legal-box {
-      width: 100%; max-width: 640px; max-height: 82vh; overflow: auto;
-      background: var(--kreide);
-      border-radius: 18px;
-      padding: 38px clamp(24px, 4vw, 44px);
-      color: var(--ink);
-    }
-    .legal-box h3 { font-family: var(--font-display); font-weight: 500; font-size: 2rem; margin-bottom: .4em; }
-    .legal-box h4 { font-size: .98rem; font-weight: 600; margin: 1.4em 0 .3em; }
-    .legal-box p { font-size: .94rem; line-height: 1.6; color: var(--grau); }
-    .legal-box .close { float: right; font-size: 1.7rem; line-height: 1; margin-top: -8px; color: var(--grau); }
-    .legal-box .close:hover { color: var(--ink); }
-    .legal-box .amp { display: inline-block; margin-top: 24px; font-size: .8rem; color: var(--grau); }
 
     .demo-pop {
       position: fixed; right: 20px; bottom: 20px; z-index: 110;
@@ -859,7 +744,7 @@
     :focus-visible { outline: 3px solid var(--brand-blue); outline-offset: 3px; }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .chip, .ba-knob, .btn { transition: none !important; }
+      .reveal, .ba-knob, .btn { transition: none !important; }
       .roller-btn svg { animation: none !important; }
       .reveal { opacity: 1; transform: none; }
       html { scroll-behavior: auto; }
@@ -869,6 +754,13 @@
 <body>
 
 
+  <div class="demo-bar" role="note">
+    <span class="mm-mark" aria-hidden="true">m.</span>
+    <span class="long"><b>Design-Vorschau</b> von machmalweb für Malerfachbetrieb Neininger · keine offizielle Website</span>
+    <span class="short"><b>Design-Vorschau</b> von machmalweb</span>
+    <a href="mailto:hallo@machmalweb.de?subject=Website-Vorschau%20Malerfachbetrieb%20Neininger">Gefällt mir</a>
+  </div>
+
   <header id="header" class="hero-dark">
     <div class="wrap">
       <a href="#" class="brand" aria-label="Neininger Malerfachbetrieb">
@@ -876,12 +768,10 @@
         <img class="brand-logo brand-logo--dark" src="img/logo-on-dark.png" alt="Neininger Malerfachbetrieb seit 1888" width="786" height="111">
       </a>
       <nav>
-        <a class="nav-link" href="#leistungen">Leistungen</a>
-        <a class="nav-link" href="#vorher-nachher">Ergebnisse</a>
-        <a class="nav-link" href="#kontakt">Kontakt</a>
-        <a class="btn btn-primary" href="tel:+49722221675">
+        <a class="nav-link" href="#vorher-nachher">Vorher · Nachher</a>
+        <a class="btn btn-primary nav-call" href="tel:+49722221675" aria-label="Anrufen: 07222 21675">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Anrufen
+          <span class="nav-call-txt">Anrufen</span>
         </a>
       </nav>
     </div>
@@ -943,7 +833,7 @@
             </div>
           </div>
           <div class="hero-actions">
-            <a href="#kontakt" class="btn btn-primary">
+            <a href="tel:+49722221675" class="btn btn-primary">
               Kostenlose Beratung
               <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -988,127 +878,20 @@
     </div>
   </section>
 
-  <section class="svc-section" id="leistungen">
-    <div class="wrap">
-      <div class="svc-head reveal">
-        <div class="kicker">Leistungen</div>
-        <h2 class="sec-title">Vom einzelnen Zimmer bis zur ganzen Fassade</h2>
-        <p class="sec-lead">Wir kommen vorbei, schauen uns Untergrund und Raum an und besprechen mit Ihnen, was wirklich nötig ist.</p>
-      </div>
-      <ul class="fan">
-        <li class="reveal d1">
-          <article class="chip" style="--c:#BE734F">
-            <div class="chip-color"></div>
-            <div class="chip-body">
-              <div class="chip-tone"><span>Terracotta</span><span>#BE734F</span></div>
-              <h3>Innenarbeiten</h3>
-              <p>Wände, Decken, Lack. Farben, die sich nach Zuhause anfühlen.</p>
-            </div>
-            <span class="chip-rivet" aria-hidden="true"></span>
-          </article>
-        </li>
-        <li class="reveal d2">
-          <article class="chip" style="--c:#D4C2A2">
-            <div class="chip-color"></div>
-            <div class="chip-body">
-              <div class="chip-tone"><span>Sandstein</span><span>#D4C2A2</span></div>
-              <h3>Fassade</h3>
-              <p>Schutz und Ausdruck für Ihr Haus, vom Untergrund bis zum letzten Anstrich.</p>
-            </div>
-            <span class="chip-rivet" aria-hidden="true"></span>
-          </article>
-        </li>
-        <li class="reveal d3">
-          <article class="chip" style="--c:#B7B4AB">
-            <div class="chip-color"></div>
-            <div class="chip-body">
-              <div class="chip-tone"><span>Kalkgrau</span><span>#B7B4AB</span></div>
-              <h3>Spachtel &amp; Struktur</h3>
-              <p>Oberflächen mit Charakter: glatt, fein oder mit dekorativer Note.</p>
-            </div>
-            <span class="chip-rivet" aria-hidden="true"></span>
-          </article>
-        </li>
-        <li class="reveal d4">
-          <article class="chip" style="--c:#8E9A80">
-            <div class="chip-color"></div>
-            <div class="chip-body">
-              <div class="chip-tone"><span>Salbei</span><span>#8E9A80</span></div>
-              <h3>Renovierung</h3>
-              <p>Teilweise oder komplett. Wir bringen Räume wieder in Form.</p>
-            </div>
-            <span class="chip-rivet" aria-hidden="true"></span>
-          </article>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="contact-wall" id="kontakt">
-    <div class="wrap">
-      <div class="kicker reveal">Kontakt</div>
-      <h2 class="reveal d1"><a class="phone-big" href="tel:+49722221675" aria-label="Anrufen: 07222 21675">07222 / 21675</a></h2>
-      <p class="contact-note reveal d2">Rufen Sie an und schildern Sie kurz, was Sie vorhaben. Alfons Neininger berät Sie persönlich, auf Wunsch direkt bei Ihnen vor Ort.</p>
-      <div class="contact-grid reveal d3">
-        <div>
-          <h3>Anschrift</h3>
-          <p>Alfons Neininger, Malermeister<br>Dr.-Schleyer-Strasse 13<br>76437 Rastatt</p>
-        </div>
-        <div>
-          <h3>E-Mail</h3>
-          <p><a href="mailto:maler.a.neininger@t-online.de">maler.a.neininger@t-online.de</a></p>
-        </div>
-        <div>
-          <h3>Meisterbetrieb</h3>
-          <p>Malerfachbetrieb<br>seit 1888 in Rastatt</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer>
     <div class="wrap">
       <img src="img/logo-on-dark.png" alt="Neininger Malerfachbetrieb seit 1888" width="786" height="111">
-      <nav aria-label="Fußzeile">
-        <a href="#leistungen">Leistungen</a>
-        <a href="#vorher-nachher">Ergebnisse</a>
-        <a href="#kontakt">Kontakt</a>
-        <a href="#impressum">Impressum</a>
-        <a href="#datenschutz">Datenschutz</a>
-      </nav>
+      <p class="foot-contact">Alfons Neininger, Malermeister · Dr.-Schleyer-Strasse 13, 76437 Rastatt<br>
+        <a href="tel:+49722221675">07222 / 21675</a> · <a href="mailto:maler.a.neininger@t-online.de">maler.a.neininger@t-online.de</a></p>
     </div>
     <div class="wrap foot-bottom">
-      <p class="mm-note"><span class="mm-mark" aria-hidden="true">m.</span><span>Unverbindliche <b>Vorschau</b>, gestaltet von <a href="https://machmalweb.de" target="_blank" rel="noopener">machmalweb</a> für Malerfachbetrieb Neininger. Keine offizielle Website. Inhalte &amp; reale Angaben stammen von <a href="http://www.maler-neininger.de/" target="_blank" rel="noopener">maler-neininger.de</a>. Kontakt machmalweb: <a href="tel:+4915567021934">0155 67021934</a> · <a href="mailto:hallo@machmalweb.de">hallo@machmalweb.de</a>.</span></p>
-      <p>© 2026 Neininger Malerfachbetrieb</p>
+      <p class="mm-note"><span class="mm-mark" aria-hidden="true">m.</span><span>Unverbindliche <b>Design-Vorschau</b> von <a href="https://machmalweb.de" target="_blank" rel="noopener">machmalweb</a> für Malerfachbetrieb Neininger. Keine offizielle Website. Die Angaben zum Betrieb stammen von <a href="http://www.maler-neininger.de/" target="_blank" rel="noopener">maler-neininger.de</a>. Kontakt machmalweb: <a href="tel:+4915567021934">0155 67021934</a> · <a href="mailto:hallo@machmalweb.de">hallo@machmalweb.de</a></span></p>
+      <nav aria-label="Rechtliches">
+        <a href="https://machmalweb.de/impressum" target="_blank" rel="noopener">Impressum</a>
+        <a href="https://machmalweb.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+      </nav>
     </div>
   </footer>
-
-  <!-- ============ Rechtliches (Overlays) ============ -->
-  <div class="legal" id="impressum" role="dialog" aria-label="Impressum">
-    <div class="legal-box">
-      <a class="close" href="#_" aria-label="Schließen">&times;</a>
-      <h3>Impressum</h3>
-      <h4>Angaben gemäß § 5 DDG</h4>
-      <p>Alfons Neininger<br>Malermeister<br>Dr.-Schleyer-Strasse 13<br>76437 Rastatt</p>
-      <h4>Kontakt</h4>
-      <p>Telefon: 07222 / 2 16 75<br>Telefax: 07222 / 2 60 96<br>E-Mail: maler.a.neininger@t-online.de</p>
-      <h4>Umsatzsteuer-ID</h4>
-      <p>USt-IdNr.: DE 143991519</p>
-      <span class="amp">Angaben übernommen von maler-neininger.de · Darstellung als Vorschau.</span>
-    </div>
-  </div>
-  <div class="legal" id="datenschutz" role="dialog" aria-label="Datenschutz">
-    <div class="legal-box">
-      <a class="close" href="#_" aria-label="Schließen">&times;</a>
-      <h3>Datenschutz</h3>
-      <p>Diese Seite ist eine unverbindliche Gestaltungs-Vorschau (Demo) von machmalweb. Sie hat kein Kontaktformular und speichert selbst keine personenbezogenen Daten.</p>
-      <h4>Schriften</h4>
-      <p>Die Schriften werden von Google Fonts geladen. Dabei überträgt Ihr Browser Ihre IP-Adresse an Google.</p>
-      <h4>Verantwortlich im Live-Betrieb</h4>
-      <p>Alfons Neininger, Malermeister, Dr.-Schleyer-Strasse 13, 76437 Rastatt.</p>
-      <span class="amp">Platzhaltertext für die Vorschau.</span>
-    </div>
-  </div>
 
   <!-- ============ Demo-Popup ============ -->
   <div class="demo-pop" id="demoPop" role="dialog" aria-label="Hinweis zur Design-Vorschau">
@@ -1511,12 +1294,16 @@
     var shown = false;
     function maybe() {
       if (shown) return;
-      if ((window.pageYOffset || document.documentElement.scrollTop) > 700) {
-        shown = true; pop.classList.add('show');
-        removeEventListener('scroll', maybe);
-      }
+      if ((window.pageYOffset || document.documentElement.scrollTop) > 320) show();
+    }
+    function show() {
+      if (shown) return;
+      shown = true; pop.classList.add('show');
+      removeEventListener('scroll', maybe);
     }
     addEventListener('scroll', maybe, { passive: true });
+    /* wer nicht scrollt, sieht den Hinweis nach 12 Sekunden trotzdem */
+    setTimeout(show, 12000);
     ['dpX', 'dpCta', 'dpCall'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.addEventListener('click', function () { pop.classList.remove('show'); });
