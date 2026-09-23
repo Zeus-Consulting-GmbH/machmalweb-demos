@@ -9,7 +9,7 @@ const KLICKS = ['Anruf machmalweb', 'Anruf-Button', 'WhatsApp-Button', 'Gefällt
 function demoAus(host) {
   const h = String(host || '').split(':')[0].toLowerCase();
   const m = h.match(/^([a-z0-9-]{1,63})\.machmalweb\.de$/);
-  if (!m || ['www', 'machmalweb'].includes(m[1])) return null;
+  if (!m || ['www', 'machmalweb', 'statistik'].includes(m[1])) return null;
   return m[1];
 }
 

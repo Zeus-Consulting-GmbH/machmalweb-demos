@@ -3,8 +3,8 @@
 //
 // Ohne Cookies und ohne IP: pro Browser-Tab eine zufällige Besuchs-ID
 // (sessionStorage), dazu sichtbare Verweildauer, Scrolltiefe und Klicks auf
-// Telefon, WhatsApp und Mail-Links. Die Auswertung läuft nur im Büronetz
-// auf der NAS (Ordner nas/).
+// Telefon, WhatsApp und Mail-Links. Die Auswertung steht auf
+// statistik.machmalweb.de.
 //
 // Eigene Besuche ausblenden: einmal <slug>.machmalweb.de/?nicht-zaehlen
 // aufrufen (gilt für diesen Browser und diese Demo), ?zaehlen hebt es auf.
