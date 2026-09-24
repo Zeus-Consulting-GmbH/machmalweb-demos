@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Zigarren, Davidoff-Depot und S.T. Dupont-Point. Sortiment ansehen und unverbindlich anfragen.">
+    <title>Anfrageliste · Geschäftsname (Entwurf)</title>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="altersabfrage" id="altersabfrage" role="dialog" aria-modal="true" aria-labelledby="alterTitel">
+    <div class="alters-box">
+        <div class="logo-ph">Logo</div>
+        <div class="alters-frage">
+            <h2 id="alterTitel">Bist du mindestens 18&nbsp;Jahre alt?</h2>
+            <p>Auf dieser Website zeigen wir Tabakwaren und Spirituosen. Sie ist nur für Erwachsene bestimmt.</p>
+            <div class="alters-knoepfe">
+                <button class="btn btn-gold" id="alterJa" type="button">Ja, ich bin 18+</button>
+                <button class="btn btn-line" id="alterNein" type="button">Nein</button>
+            </div>
+            <small>Deine Auswahl wird nur in deinem Browser gespeichert. <a href="/datenschutz">Datenschutz</a> · <a href="/impressum">Impressum</a></small>
+        </div>
+        <div class="alters-nein">
+            <h2>Leider kein Zugang</h2>
+            <p>Diese Website ist erst ab 18&nbsp;Jahren. Schau gern wieder vorbei, wenn es so weit ist.</p>
+            <div class="alters-knoepfe"><button class="btn btn-line" id="alterZurueck" type="button">Zurück</button></div>
+        </div>
+    </div>
+</div>
+<script>try{if(localStorage.getItem('alter-18-bestaetigt')!=='ja')document.documentElement.classList.add('gesperrt')}catch(e){document.documentElement.classList.add('gesperrt')}</script>
+<div class="demo-bar" role="note">
+    <span class="mm-mark" aria-hidden="true">m.</span>
+    <span class="long"><b>Erster Entwurf</b> von machmalweb · noch nicht online</span>
+    <span class="short"><b>Erster Entwurf</b></span>
+    <span class="legende"><i aria-hidden="true"></i><span>= kommt noch vom Kunden</span></span>
+    <a href="mailto:hallo@machmalweb.de?subject=Feedback%20zum%20Entwurf%20Zigarren-Website">Feedback</a>
+</div>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Startseite">
+            <span class="logo-ph">Logo</span>
+            <span><span class="brand-name"><span class="ph">Geschäftsname</span></span><span class="brand-sub">Davidoff-Depot · S.T. Dupont-Point</span></span>
+        </a>
+        <nav class="site-nav" id="siteNav" aria-label="Hauptnavigation">
+            <a href="/sortiment">Sortiment</a>
+<a href="/sortiment/zigarren">Zigarren</a>
+<a href="/events">Events</a>
+<a href="/ueber-uns">Über uns</a>
+            <a href="/anfrage" class="liste-link" aria-current="page">Anfrageliste <span class="zaehler" data-leer>0</span></a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<main>
+
+<section class="seitenkopf">
+    <div class="container">
+        <div class="krumen"><a href="/">Start</a> / Anfrageliste</div>
+        <span class="eyebrow">Unverbindlich anfragen</span>
+        <h1>Ihre Anfrageliste</h1>
+        <p class="lead">Kein Warenkorb, keine Bezahlung. Sie schicken uns Ihre Wünsche, wir melden uns mit Verfügbarkeit und Preis.</p>
+    </div>
+</section>
+<section>
+    <div class="container anfrage-grid">
+        <div class="liste">
+            <div class="liste-kopf"><h2>Angefragte Artikel</h2><span class="zaehler" data-leer>0</span></div>
+            <ul id="anfrageListe"></ul>
+            <div class="liste-leer" id="listeLeer">
+                <p>Ihre Liste ist noch leer.</p>
+                <a class="btn btn-dark btn-klein" href="/sortiment">Sortiment ansehen</a>
+            </div>
+            <div class="liste-fuss"><a href="/sortiment">+ Weitere Artikel hinzufügen</a><button type="button" id="listeLeeren" class="entfernen" style="font-size:13px">Liste leeren</button></div>
+        </div>
+
+        <form class="formular" data-entwurf="Das ist ein Entwurf: Die Anfrage wird noch nicht verschickt. In der fertigen Website geht sie per E-Mail an das Geschäft." novalidate>
+            <div class="voll"><h2 style="font-size:2rem;margin-bottom:.2em">Anfrage absenden</h2><p style="color:var(--grau);margin:0">Felder mit * sind Pflicht.</p></div>
+            <div class="feld"><label for="name">Name *</label><input id="name" name="name" autocomplete="name" required></div>
+            <div class="feld"><label for="email">E-Mail *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="feld voll"><label for="tel">Telefon <span class="opt">(optional)</span></label><input id="tel" name="telefon" type="tel" autocomplete="tel"></div>
+            <div class="feld voll"><label for="produkteFeld">Angefragte Produkte und Menge *</label><textarea id="produkteFeld" name="produkte" required placeholder="Wird aus Ihrer Anfrageliste übernommen, Sie können es auch selbst eintragen."></textarea></div>
+            <div class="feld voll"><label for="nachricht">Nachricht <span class="opt">(optional)</span></label><textarea id="nachricht" name="nachricht" style="min-height:100px"></textarea></div>
+            <label class="check voll"><input type="checkbox" name="datenschutz" required><span>Ich habe die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> gelesen und bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. *</span></label>
+            <div class="form-meldung voll" role="status"></div>
+            <div class="voll" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+                <button class="btn btn-gold" type="submit">Anfrage unverbindlich senden</button>
+                <span style="font-size:14px;color:var(--grau)">oder direkt per <a id="mailtoAnfrage" href="mailto:">E-Mail</a> (<span class="ph">E-Mail-Adresse folgt</span>)</span>
+            </div>
+        </form>
+    </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="brand-name" style="color:var(--creme)"><span class="ph">Geschäftsname</span></div>
+                <p style="margin-top:12px">Davidoff-Depot und S.T. Dupont-Point.<br>Kein Onlineshop: Sie fragen an, wir melden uns.</p>
+                <div class="hinweis-18"><b>18+</b> Abgabe von Tabak und Alkohol nur an Erwachsene.</div>
+            </div>
+            <div>
+                <h4>Sortiment</h4>
+                <ul><li><a href="/sortiment/zigarren">Zigarren</a></li>
+<li><a href="/sortiment/dupont">S.T. Dupont</a></li>
+<li><a href="/sortiment/spirituosen">Spirituosen</a></li>
+<li><a href="/sortiment/raucherbedarf">Raucherbedarf</a></li>
+<li><a href="/sortiment/fck-fanshop">FCK Fanshop</a></li>
+<li><a href="/sortiment/zeitschriften">Zeitschriften</a></li></ul>
+            </div>
+            <div>
+                <h4>Seiten</h4>
+                <ul>
+                    <li><a href="/anfrage">Anfrageliste</a></li>
+                    <li><a href="/events">Events</a></li>
+                    <li><a href="/ueber-uns">Über uns &amp; Team</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><span class="ph">Straße und Hausnummer</span></li>
+                    <li><span class="ph">PLZ Ort</span></li>
+                    <li><span class="ph">Telefon folgt</span></li>
+                    <li><span class="ph">E-Mail-Adresse folgt</span></li>
+                    <li>Öffnungszeiten: <span class="ph">folgen</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-unten">
+            <span>© 2026 <span class="ph">Geschäftsname</span></span>
+            <nav><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></nav>
+        </div>
+        <p class="mm-note"><span class="mm-mark" aria-hidden="true">m.</span><span>Erster Entwurf von <a href="https://machmalweb.de" target="_blank" rel="noopener">machmalweb</a>. Gestrichelt markierte Stellen (Name, Logo, Bilder, Texte, Kontaktdaten) werden durch die Angaben des Kunden ersetzt.</span></p>
+    </div>
+</footer>
+<script src="/app.js" defer></script>
+</body>
+</html>
