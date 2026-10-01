@@ -92,6 +92,25 @@ const FAKTEN = {
       'pro Monat',
     ],
   },
+  'finanzmakler-ulrich': {
+    muss: [
+      // Aus dem Impressum von finanzmakler-ulrich.de. Im Kopf der alten
+      // Seite steht die Faxnummer neben dem Telefonsymbol – maßgeblich ist
+      // das Impressum: Telefon …50, Telefax …525.
+      '0941 89965150',
+      'tel:+4994189965150',
+      'Frankenstraße 9',
+      '93059 Regensburg',
+      'michael.ulrich@kabelmail.de',
+      'D-3Y9D-ZORXN-14',     // Versicherungsvermittler-Register
+      'D-F-155-8QVA-81',     // Finanzanlagenvermittler-Register
+      '§ 34d Abs. 1 GewO',
+      '§ 34f Abs. 1 S. 1 Nr. 1 GewO',
+    ],
+    darfNicht: [
+      'tel:+49941899651525', // Faxnummer als Anruf-Link
+    ],
+  },
 };
 
 const fehler = [];
