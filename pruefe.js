@@ -35,6 +35,19 @@ const ALTLASTEN = new Set([
 // Belegte Angaben je Demo. Kommt eine Zahl in "muss" nicht mehr vor oder
 // taucht etwas aus "darfNicht" auf, schlägt die Prüfung fehl.
 const FAKTEN = {
+  zain: {
+    muss: [
+      '0179 3253742',        // Nummer von Start- und Kontaktseite leistungsservice.com
+      'tel:+491793253742',
+      'Winkelriedstr. 4',
+      '76185 Karlsruhe',
+      'leistungsservicezain@gmail.com',
+      'Dina Zain',           // Inhaberin laut Originalimpressum
+    ],
+    darfNicht: [
+      '017932537442',        // Tippfehler im Originalimpressum (eine Ziffer zu viel)
+    ],
+  },
   sjd: {
     muss: [
       '(07802) 9295-0',      // Kanzleinummer von steuerberater-sjd.de

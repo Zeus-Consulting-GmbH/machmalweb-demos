@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Leistungsservice Zain – Entrümpelung, Reinigung, Umzug, Hausmeisterservice in Karlsruhe (Demo)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4f1ea'/%3E%3Cpolyline points='5,23 16,9 27,23' fill='none' stroke='%23c8342c' stroke-width='5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f1ea; --paper-2:#e9e4d8; --ink:#191817; --ink-2:#55514a; --line:#cfc8b8;
+  --red:#c8342c; --grey:#8f8f8f;
+  --mmw-forest:#0e2c1e; --mmw-green:#2bd17e;
+  --bar:34px;
+  --serif:"Fraunces", Georgia, "Times New Roman", serif;
+  --sans:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;padding-top:var(--bar)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* Demo-Leiste (machmalweb) */
+.demobar{position:fixed;inset:0 0 auto 0;height:var(--bar);z-index:50;background:var(--mmw-forest);color:#e8f5ee;font-size:13px;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 12px;white-space:nowrap}
+.demobar i{width:7px;height:7px;border-radius:50%;background:var(--mmw-green);flex:none}
+.demobar b{font-weight:600}
+.demobar .long{overflow:hidden;text-overflow:ellipsis}
+.demobar button{font:inherit;color:var(--mmw-forest);background:var(--mmw-green);border:0;border-radius:99px;padding:2px 10px;font-weight:600;cursor:pointer}
+
+/* Kopf */
+.head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 28px;position:absolute;top:var(--bar);left:0;right:0;z-index:6}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo svg{width:64px;height:auto;flex:none}
+.logo span{font-family:var(--serif);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:15px;line-height:1.1;color:var(--red)}
+.logo span small{display:block;color:var(--ink);font-size:11px;letter-spacing:.14em;font-family:var(--sans);font-weight:500}
+.nav{display:flex;align-items:center;gap:26px;font-size:15px}
+.nav a{text-decoration:none}
+.nav a:hover{text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;padding:12px 20px;border:2px solid var(--ink);font-size:16px;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--red);border-color:var(--red)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.nav .btn{padding:9px 16px;font-size:15px;white-space:nowrap}
+.nav .btn .n{display:none}
+
+/* Erzählstrecke */
+.story{display:grid;grid-template-columns:minmax(0,54fr) minmax(0,46fr);border-bottom:1px solid var(--line)}
+.chapters{padding:0 max(28px, calc((100vw - 1320px)/2)) 0 64px}
+.chapter{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:60px 0;max-width:540px}
+.chapter.hero{min-height:calc(100vh - var(--bar));padding-top:110px}
+.hero h1{font-size:clamp(44px,5.6vw,84px)}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lead{font-size:20px;color:var(--ink-2);margin-top:26px;max-width:30em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hint{margin-top:44px;font-size:14px;color:var(--ink-2);display:flex;align-items:center;gap:10px}
+.hint svg{width:14px;height:20px}
+.num{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-2);margin-bottom:18px}
+.num svg{width:30px;height:16px}
+.chapter h2{font-size:clamp(34px,3.6vw,52px)}
+.chapter p{margin-top:20px;color:var(--ink-2);font-size:18px}
+.chapter ul{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--line)}
+.chapter li{padding:9px 0;border-bottom:1px solid var(--line);font-weight:500;display:flex;justify-content:space-between;gap:12px}
+.chapter li::after{content:"";width:8px;height:8px;border-right:2px solid var(--red);border-top:2px solid var(--red);transform:rotate(-45deg);margin-top:11px;flex:none}
+.stage{position:sticky;top:var(--bar);height:calc(100vh - var(--bar));background:var(--sky,#f4f1ea);overflow:hidden;border-right:1px solid var(--line)}
+.stage > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.stage .tag{position:absolute;left:28px;bottom:22px;z-index:2;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);background:var(--paper);padding:5px 10px;border:1px solid var(--ink)}
+.stage .big{position:absolute;right:30px;top:84px;font-family:var(--serif);font-weight:600;font-size:clamp(120px,15vw,230px);line-height:.8;letter-spacing:-.04em;color:var(--ink);opacity:.1;pointer-events:none;user-select:none}
+.rail{position:absolute;right:28px;bottom:24px;z-index:2;display:flex;gap:6px}
+.rail svg{width:26px;height:14px;fill:none;stroke:var(--ink);stroke-width:4;opacity:.2;transition:opacity .3s,stroke .3s}
+.rail svg.on{opacity:1;stroke:var(--red)}
+.rail svg.done{opacity:1}
+.out,.in,.wheel,.puff,.tw{transform-box:fill-box;transform-origin:50% 100%}
+.wheel,.tw{transform-origin:center}
+.tw{animation:tw 1.8s ease-in-out infinite}
+@keyframes tw{0%,100%{transform:scale(1)}50%{transform:scale(.55) rotate(45deg)}}
+.puff{transform-origin:center;animation:puff 4.2s linear infinite}
+@keyframes puff{0%{transform:translate(0,0) scale(.5);opacity:0}15%{opacity:.95}100%{transform:translate(34px,-96px) scale(2);opacity:0}}
+.more{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin-top:28px;font-weight:600;text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:3px}
+.more::after{content:"→";transition:transform .2s}
+.more:hover{color:var(--red)}
+.more:hover::after{transform:translateX(5px)}
+::selection{background:var(--red);color:#fff}
+a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.hero > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero > :nth-child(2){animation-delay:.1s}.hero > :nth-child(3){animation-delay:.2s}.hero > :nth-child(4){animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+.hint svg{animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(4px)}}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .rv.on{opacity:1;transform:none}
+.callbar{display:none}
+.flake{animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(720px)}}
+
+/* Zahlen */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.facts div{padding:54px 28px;border-left:1px solid var(--line)}
+.facts div:first-child{border-left:0}
+.facts b{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(52px,7vw,96px);line-height:1;letter-spacing:-.03em}
+.facts span{display:block;margin-top:10px;color:var(--ink-2)}
+
+/* Ablauf */
+.sec{padding:110px 0}
+.sec h2{font-size:clamp(34px,4.2vw,58px);max-width:14em}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:2px solid var(--ink)}
+.steps li{list-style:none;padding:26px 28px 0 0}
+.steps b{font-family:var(--serif);font-size:22px;font-weight:600;display:block;margin:10px 0 8px}
+.steps i{font-style:normal;font-size:13px;letter-spacing:.14em;font-weight:600;color:var(--red)}
+.steps p{color:var(--ink-2)}
+ol.steps{padding:0;margin-bottom:0}
+
+/* Leistungsverzeichnis */
+.index{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.index .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:56px}
+.index h3{font-size:20px;padding-bottom:12px;border-bottom:2px solid var(--ink);display:flex;align-items:flex-end;gap:10px}
+.index h3 svg{width:26px;height:14px;margin-bottom:4px}
+.index ul{list-style:none;padding:0;margin:14px 0 0}
+.index li{padding:5px 0;color:var(--ink-2)}
+
+/* Kontakt */
+.contact{background:var(--ink);color:var(--paper)}
+.contact .cols{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.contact h2{font-size:clamp(34px,4.2vw,58px)}
+.tel{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(40px,5.4vw,76px);letter-spacing:-.02em;line-height:1;text-decoration:none;margin-top:38px;white-space:nowrap}
+.tel:hover{color:#f0a49f}
+.contact dl{margin:36px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 22px;font-size:17px}
+.contact dt{color:#a9a399}
+.contact dd{margin:0}
+form{border:1px solid #4a4741;padding:30px}
+form legend,form label{display:block;font-size:14px;color:#c9c3b8;margin-bottom:8px;padding:0}
+fieldset{border:0;padding:0;margin:0 0 22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{margin:0;cursor:pointer}
+.chips input{position:absolute;opacity:0}
+.chips span{display:block;padding:9px 14px;border:1px solid #6b675f;color:var(--paper);font-size:15px}
+.chips input:checked + span{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.chips input:focus-visible + span{outline:2px solid var(--red);outline-offset:2px}
+form input[type=text],form textarea{width:100%;background:transparent;border:0;border-bottom:1px solid #6b675f;color:var(--paper);font:inherit;padding:8px 0 10px;margin-bottom:22px;border-radius:0}
+form input:focus,form textarea:focus{outline:0;border-bottom-color:var(--paper)}
+form .btn{background:var(--red);border-color:var(--red);color:#fff;width:100%;justify-content:center}
+form .btn:hover{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.note{font-size:14px;color:#c9c3b8;margin-top:14px;min-height:1.5em}
+
+/* Fuß */
+footer{padding:44px 0 60px;font-size:14px;color:var(--ink-2)}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start}
+footer .demo{margin-top:30px;padding-top:20px;border-top:1px solid var(--line)}
+
+/* Demo-Hinweis */
+.pop{position:fixed;right:20px;bottom:20px;z-index:60;width:min(360px,calc(100vw - 40px));background:var(--mmw-forest);color:#e8f5ee;padding:22px 22px 20px;transform:translateY(calc(100% + 90px));transition:transform .35s ease;font-size:15px}
+.pop.on{transform:none}
+.pop h4{margin:0 0 8px;font-family:var(--sans);font-size:17px;font-weight:600;color:#fff}
+.pop h4 em{font-style:normal;color:var(--mmw-green)}
+.pop .x{position:absolute;right:6px;top:6px;width:36px;height:36px;border:0;background:none;color:#e8f5ee;font-size:22px;line-height:1;cursor:pointer}
+.pop a{display:inline-block;margin-top:14px;background:var(--mmw-green);color:var(--mmw-forest);font-weight:600;text-decoration:none;padding:9px 16px;border-radius:99px}
+
+@media (max-width:900px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .head{padding:12px 20px;position:static}
+  .nav a:not(.btn){display:none}
+  .logo svg{width:48px}
+  .logo span{font-size:12px;white-space:nowrap}
+  .logo{gap:8px}
+  .nav .btn .w{display:none}
+  .nav .btn .n{display:inline}
+  .nav .btn{padding:8px 11px;font-size:14px}
+  .contact dl{font-size:15px;gap:8px 14px}
+  .contact dd{overflow-wrap:anywhere}
+  .demobar .long{display:none}
+  .story{display:block}
+  .stage{height:min(66vw,36svh);z-index:5;border-right:0;border-bottom:1px solid var(--ink);border-top:1px solid var(--line)}
+  .stage .tag{left:12px;top:10px;bottom:auto;font-size:11px}
+  .stage .big{display:none}
+  .rail{right:12px;top:16px;bottom:auto}
+  .rail svg{width:20px;height:11px}
+  .callbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;height:54px;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;font-weight:600;text-decoration:none;transform:translateY(100%);transition:transform .3s ease}
+  .callbar.on{transform:none}
+  .pop{bottom:66px}
+  .chapters{padding:0 20px}
+  .chapter,.chapter.hero{min-height:78svh;padding:34px 0;justify-content:flex-start;max-width:none}
+  .chapter.hero{min-height:0;padding:34px 0 70px}
+  .hero .lead{font-size:18px;margin-top:18px}
+  .hint{margin-top:28px}
+  .facts{grid-template-columns:1fr}
+  .facts div{border-left:0;border-top:1px solid var(--line);padding:30px 20px}
+  .facts div:first-child{border-top:0}
+  .sec{padding:70px 0}
+  .steps{grid-template-columns:1fr}
+  .steps li{padding:22px 0 6px}
+  .index .grid{grid-template-columns:1fr 1fr;gap:34px 22px}
+  .contact .cols{grid-template-columns:1fr;gap:44px}
+  form{padding:22px}
+  .pop{right:12px;width:calc(100vw - 24px)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.flake,.tw,.puff,.hero > *,.hint svg{animation:none}.pop{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="demobar">
+  <i></i><span><b>Demo</b><span class="long"> · So könnte die neue Website von Leistungsservice Zain aussehen · ein Vorschlag von machmalweb</span></span>
+  <button type="button" id="what">Was ist das?</button>
+</div>
+
+<header class="head">
+  <a class="logo" href="#top" aria-label="Leistungsservice Zain – Startseite">
+    <svg viewBox="0 0 128 52" aria-hidden="true"><polyline points="62,50 92,12 122,50" fill="none" stroke="#a9a9a9" stroke-width="7"/><polyline points="36,50 68,8 100,50" fill="none" stroke="#191817" stroke-width="7"/><polygon points="6,52 40,6 74,52" fill="#f4f1ea"/><polyline points="6,50 40,6 74,50" fill="none" stroke="#c8342c" stroke-width="7"/><path d="M33 32h6v6h-6zM41 32h6v6h-6zM33 40h6v6h-6zM41 40h6v6h-6z" fill="#8f8f8f"/></svg>
+    <span>Leistungsservice Zain<small>Karlsruhe</small></span>
+  </a>
+  <nav class="nav">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#ablauf">Ablauf</a>
+    <a href="#kontakt">Kontakt</a>
+    <a class="btn" href="tel:+491793253742"><span class="w">0179 3253742</span><span class="n">Anrufen</span></a>
+  </nav>
+</header>
+
+<main id="top">
+<section class="story" id="leistungen">
+  <div class="stage" id="stage" aria-hidden="true">
+    <div class="big" id="big"></div>
+    <span class="tag" id="tag">Vorher</span>
+    <div class="rail" id="rail"><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15"/></svg><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15"/></svg><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15"/></svg><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15"/></svg></div>
+    <svg viewBox="0 0 800 640" preserveAspectRatio="xMidYMax meet">
+      <defs>
+        <clipPath id="wipe"><rect id="wipeRect" x="84" y="270" width="466" height="290"/></clipPath>
+        <clipPath id="room"><rect x="84" y="284" width="452" height="244"/></clipPath>
+        <clipPath id="snowClip"><rect id="snowRect" x="550" y="520" width="1400" height="60"/></clipPath>
+      </defs>
+      <g id="flakes"></g>
+      <rect x="-2000" y="560" width="4800" height="400" fill="#d8d2c4"/>
+      <rect x="-2000" y="560" width="4800" height="3" fill="#191817"/>
+      <rect x="-2000" y="576" width="4800" height="2" fill="#c6bfae"/>
+
+      <!-- Haus -->
+      <g id="smoke" opacity="0" fill="#f7f5f0"><circle class="puff" cx="447" cy="98" r="9"/><circle class="puff" cx="447" cy="98" r="9" style="animation-delay:-1.4s"/><circle class="puff" cx="447" cy="98" r="9" style="animation-delay:-2.8s"/></g>
+      <rect x="431" y="118" width="32" height="90" fill="#191817"/><rect x="425" y="112" width="44" height="9" fill="#191817"/>
+      <rect id="chimSnow" x="424" y="105" width="46" height="9" rx="4.5" fill="#fff" opacity="0"/>
+      <polygon points="70,272 310,106 550,272" fill="#e3ddd0"/>
+      <path d="M291 186h17v17h-17zM312 186h17v17h-17zM291 207h17v17h-17zM312 207h17v17h-17z" fill="#8f8f8f"/>
+      <rect x="70" y="270" width="480" height="290" fill="#191817"/>
+      <rect id="wall" x="84" y="284" width="452" height="256" fill="#efeadf"/>
+      <rect x="84" y="521" width="452" height="7" fill="#ddd5c2"/>
+      <rect x="536" y="392" width="14" height="148" fill="#efeadf"/>
+      <rect x="84" y="528" width="466" height="12" fill="#b79f7c"/>
+      <path d="M150 528v12M226 528v12M302 528v12M378 528v12M454 528v12M530 528v12" stroke="#9c8562" stroke-width="1.5"/>
+      <!-- Fenster -->
+      <rect x="112" y="318" width="124" height="124" fill="#191817"/>
+      <rect id="pane" x="120" y="326" width="108" height="108" fill="#bcd3da"/>
+      <path d="M134 372l34-34M146 384l52-52" stroke="#fff" stroke-width="5" opacity=".7"/>
+      <rect x="172" y="326" width="4" height="108" fill="#191817"/><rect x="120" y="378" width="108" height="4" fill="#191817"/>
+      <rect x="104" y="442" width="140" height="8" fill="#191817"/>
+
+      <!-- Schmutz (wird weggewischt) -->
+      <g clip-path="url(#wipe)">
+        <rect x="120" y="326" width="108" height="108" fill="#7d735c" opacity=".72"/>
+        <path d="M128 340l40 70M150 332l52 92M190 334l30 54" stroke="#a79c84" stroke-width="3" opacity=".7"/>
+        <rect x="172" y="326" width="4" height="108" fill="#191817"/><rect x="120" y="378" width="108" height="4" fill="#191817"/>
+        <path d="M352 318c30-14 86-8 96 12 8 16-14 26-22 30-4 16 2 34-8 36-10 0-4-22-12-30-30 6-70-2-74-22-2-12 8-20 20-26z" fill="#d6cbb2"/>
+        <path d="M270 400c18-8 44-2 44 12 0 12-16 16-30 16-4 12-2 26-8 26s-2-16-8-26c-10-4-12-20 2-28z" fill="#d6cbb2"/>
+        <path d="M90 470c14-6 22 6 18 18s-14 30-18 40z" fill="#d6cbb2"/>
+        <path d="M536 284h-58M536 284v62M536 284l-44 46M508 284q2 22 28 28M486 284q8 44 50 50" fill="none" stroke="#9a948a" stroke-width="1.5"/>
+        <ellipse cx="210" cy="533" rx="34" ry="5" fill="#6f5f45" opacity=".75"/>
+        <ellipse cx="352" cy="534" rx="46" ry="5" fill="#6f5f45" opacity=".75"/>
+        <ellipse cx="478" cy="533" rx="30" ry="4" fill="#6f5f45" opacity=".75"/>
+        <path d="M420 500l10-6M440 508l12-4M388 506l8-8" stroke="#b9ad93" stroke-width="3"/>
+      </g>
+      <g clip-path="url(#room)"><rect id="trail" x="-70" y="284" width="70" height="244" fill="#fff" opacity="0"/></g>
+      <rect id="wiper" x="-5" y="284" width="10" height="244" fill="#c8342c" opacity="0"/>
+      <rect id="wiperGrip" x="-9" y="380" width="18" height="52" rx="3" fill="#191817" opacity="0"/>
+      <g id="sparks" fill="#c8342c" opacity="0"><g transform="translate(268,318) scale(1)"><path class="tw" style="animation-delay:0s" d="M0-14L3.5-3.5 14 0 3.5 3.5 0 14-3.5 3.5-14 0-3.5-3.5z"/></g><g transform="translate(440,356) scale(0.7)"><path class="tw" style="animation-delay:-0.5s" d="M0-14L3.5-3.5 14 0 3.5 3.5 0 14-3.5 3.5-14 0-3.5-3.5z"/></g><g transform="translate(390,470) scale(0.85)"><path class="tw" style="animation-delay:-0.9s" d="M0-14L3.5-3.5 14 0 3.5 3.5 0 14-3.5 3.5-14 0-3.5-3.5z"/></g><g transform="translate(204,350) scale(0.5)"><path class="tw" style="animation-delay:-1.3s" d="M0-14L3.5-3.5 14 0 3.5 3.5 0 14-3.5 3.5-14 0-3.5-3.5z"/></g><g transform="translate(500,310) scale(0.6)"><path class="tw" style="animation-delay:-0.3s" d="M0-14L3.5-3.5 14 0 3.5 3.5 0 14-3.5 3.5-14 0-3.5-3.5z"/></g></g>
+
+      <!-- Neue Einrichtung (kommt mit dem Umzug) -->
+      <g class="in" data-d=".14" data-dx="305"><rect x="262" y="524" width="212" height="5" fill="#c8342c"/></g>
+      <g class="in" data-d=".22" data-dx="310">
+        <rect x="292" y="448" width="150" height="56" rx="8" fill="#191817"/>
+        <rect x="284" y="484" width="166" height="34" rx="8" fill="#2b2a28"/>
+        <rect x="302" y="474" width="62" height="16" rx="6" fill="#c8342c"/><rect x="370" y="474" width="62" height="16" rx="6" fill="#8f8f8f"/>
+        <rect x="298" y="518" width="6" height="8" fill="#191817"/><rect x="430" y="518" width="6" height="8" fill="#191817"/>
+      </g>
+      <g class="in" data-d=".3" data-dx="180">
+        <rect x="474" y="372" width="54" height="152" fill="#191817"/>
+        <rect x="479" y="378" width="44" height="42" fill="#efeadf"/><rect x="479" y="425" width="44" height="42" fill="#efeadf"/><rect x="479" y="472" width="44" height="46" fill="#efeadf"/>
+        <path d="M482 392h6v28h-6zM490 386h7v34h-7zM499 396h5v24h-5z" fill="#c8342c"/><path d="M506 390h6v30h-6zM514 398h6v22h-6z" fill="#8f8f8f"/>
+        <path d="M482 437h8v30h-8zM492 443h5v24h-5z" fill="#8f8f8f"/><path d="M499 433h7v34h-7z" fill="#191817"/><path d="M508 441h6v26h-6z" fill="#c8342c"/>
+        <path d="M483 500h34v18h-34z" fill="#b79f7c"/>
+      </g>
+      <g class="in" data-d=".38" data-dx="415">
+        <rect x="259" y="418" width="4" height="106" fill="#191817"/><rect x="247" y="522" width="28" height="5" fill="#191817"/>
+        <polygon id="shade" points="243,420 279,420 270,390 252,390" fill="#d8d2c4" stroke="#191817" stroke-width="2"/>
+      </g>
+      <g class="in" data-d=".46" data-dx="475">
+        <path d="M201 426c-14-10-16-26-10-36 10 6 14 22 10 36zM201 426c2-18 12-30 24-32 2 14-8 28-24 32zM201 426c-2-14-2-34 2-46 8 12 6 32-2 46z" fill="#56725a"/>
+        <path d="M190 424h22l-3 18h-16z" fill="#c8342c"/>
+      </g>
+      <g id="pic" opacity="0">
+        <rect x="326" y="332" width="84" height="64" fill="#191817"/><rect x="332" y="338" width="72" height="52" fill="#f4f1ea"/>
+        <polyline points="362,380 376,360 390,380" fill="none" stroke="#a9a9a9" stroke-width="4"/><polyline points="352,380 367,358 382,380" fill="none" stroke="#191817" stroke-width="4"/><polyline points="342,380 356,360 370,380" fill="none" stroke="#c8342c" stroke-width="4"/>
+      </g>
+
+      <!-- Gerümpel (geht raus) -->
+      <g class="out" data-d=".35" data-dx="530">
+        <rect x="94" y="478" width="60" height="50" fill="#c9a36a"/><rect x="150" y="492" width="46" height="36" fill="#b98f55"/><rect x="106" y="442" width="44" height="36" fill="#d3b07a"/>
+        <path d="M124 478v50M173 492v36M128 442v36" stroke="#8a6a3c" stroke-width="3"/>
+      </g>
+      <g class="out" data-d=".28" data-dx="440">
+        <rect x="204" y="490" width="58" height="38" fill="#b98f55"/><path d="M204 502h58" stroke="#8a6a3c" stroke-width="3"/>
+        <rect x="208" y="442" width="52" height="48" fill="#191817"/><rect x="214" y="448" width="30" height="30" fill="#8f8f8f"/><circle cx="252" cy="454" r="2.5" fill="#8f8f8f"/><circle cx="252" cy="464" r="2.5" fill="#8f8f8f"/>
+        <path d="M234 442l-14-22M234 442l16-18" stroke="#191817" stroke-width="2.5"/>
+      </g>
+      <g class="out" data-d=".21" data-dx="385"><g transform="translate(286,384) rotate(13)"><rect width="20" height="148" fill="#8e2a25"/><ellipse cx="10" cy="2" rx="10" ry="4" fill="#6f1f1b"/><path d="M0 40h20M0 104h20" stroke="#e3ddd0" stroke-width="2"/></g></g>
+      <g class="out" data-d=".14" data-dx="340">
+        <rect x="302" y="468" width="66" height="60" fill="#c9a36a"/><rect x="310" y="420" width="56" height="48" fill="#b98f55"/><rect x="304" y="384" width="46" height="36" fill="#d3b07a"/>
+        <path d="M335 468v60M338 420v48M327 384v36" stroke="#8a6a3c" stroke-width="3"/>
+      </g>
+      <g class="out" data-d=".07" data-dx="255">
+        <rect x="380" y="428" width="26" height="100" rx="6" fill="#77736c"/><rect x="380" y="470" width="84" height="58" rx="6" fill="#8f8f8f"/><rect x="446" y="454" width="18" height="74" rx="6" fill="#77736c"/>
+        <path d="M414 484l14 12-10 6z" fill="#efeadf"/><rect x="428" y="500" width="16" height="12" fill="#c8342c"/>
+      </g>
+      <g class="out" data-d="0" data-dx="180">
+        <path d="M468 528c-8-34 2-48 20-52 2-10 10-10 12 0 20 6 26 26 18 52z" fill="#191817"/>
+        <path d="M500 528c-4-22 2-32 14-34 2-8 8-8 10 0 12 4 16 16 12 34z" fill="#3a3835"/>
+      </g>
+
+      <g id="door" opacity="0"><rect x="536" y="392" width="14" height="136" fill="#8e2a25"/><circle cx="543" cy="462" r="2.5" fill="#f4f1ea"/></g>
+      <!-- Wand über der Tür, Dach -->
+      <rect x="536" y="270" width="14" height="122" fill="#191817"/>
+      <polyline points="28,288 310,94 592,288" fill="none" stroke="#c8342c" stroke-width="26"/>
+      <polyline id="roofSnow" points="36,268 310,78 584,268" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+
+      <!-- Transporter -->
+      <g id="truck">
+        <rect x="602" y="398" width="138" height="136" fill="#f7f5f0" stroke="#191817" stroke-width="4"/>
+        <polyline points="640,470 656,446 672,470" fill="none" stroke="#c8342c" stroke-width="5"/>
+        <text x="671" y="496" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="22" letter-spacing="3" fill="#c8342c">ZAIN</text>
+        <path d="M740 452h36l18 30v52h-54z" fill="#c8342c"/><path d="M748 460h24l12 22h-36z" fill="#bcd3da"/>
+        <rect x="600" y="530" width="196" height="8" fill="#191817"/>
+        <g class="wheel"><circle cx="640" cy="543" r="17" fill="#191817"/><circle cx="640" cy="543" r="6" fill="#8f8f8f"/><path d="M640 529v28M626 543h28" stroke="#8f8f8f" stroke-width="2.5"/></g>
+        <g class="wheel"><circle cx="762" cy="543" r="17" fill="#191817"/><circle cx="762" cy="543" r="6" fill="#8f8f8f"/><path d="M762 529v28M748 543h28" stroke="#8f8f8f" stroke-width="2.5"/></g>
+      </g>
+
+      <!-- Winter -->
+      <g id="snowGround" opacity="0">
+        <path d="M-2000 566V552H0q18-7 36-3t34 3V566z" fill="#fff"/>
+        <g clip-path="url(#snowClip)"><path d="M550 566V553q20-8 40-3t40 0 40-2 40 2 40-1 50 0H2800V566z" fill="#fff"/></g>
+      </g>
+      <g id="grit" opacity="0" fill="#191817"><circle cx="566" cy="566" r="1.4"/><circle cx="584" cy="569" r="1.4"/><circle cx="603" cy="566" r="1.4"/><circle cx="622" cy="570" r="1.4"/><circle cx="640" cy="566" r="1.4"/><circle cx="661" cy="569" r="1.4"/><circle cx="680" cy="566" r="1.4"/><circle cx="699" cy="570" r="1.4"/><circle cx="720" cy="567" r="1.4"/><circle cx="741" cy="569" r="1.4"/><circle cx="760" cy="566" r="1.4"/><circle cx="781" cy="570" r="1.4"/></g>
+      <g id="shovel" opacity="0"><path d="M548 536l14 0 6 26-20 0z" fill="#c8342c"/><path d="M556 536l10-44" stroke="#191817" stroke-width="4" stroke-linecap="round"/></g>
+    </svg>
+  </div>
+
+  <div class="chapters">
+    <div class="chapter hero">
+      <h1>Ausräumen, sauber machen, umziehen. <em>Wir erledigen das.</em></h1>
+      <p class="lead">Leistungsservice Zain aus Karlsruhe übernimmt Entrümpelungen, Reinigungen, Umzüge und Hausmeisterdienste. Seit 11 Jahren, alles aus einer Hand.</p>
+      <div class="cta">
+        <a class="btn" href="tel:+491793253742">Anrufen: 0179 3253742</a>
+        <a class="btn ghost" href="#kontakt">Anfrage schreiben</a>
+      </div>
+    </div>
+
+    <article class="chapter" data-ch="1" data-tag="Entrümpelung">
+      <div class="num"><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15" fill="none" stroke="#c8342c" stroke-width="4"/></svg>01 / 04</div>
+      <h2>Entrümpelung &amp; Haushalts­auflösung</h2>
+      <p>Wir räumen Wohnungen, Keller und Betriebe leer und entsorgen, was nicht mehr gebraucht wird. Sie müssen nichts selbst tragen.</p>
+      <ul><li>Haushaltsauflösung</li><li>Wohnungsräumung</li><li>Sperrmüllentsorgung</li><li>Betriebsauflösung</li><li>Entsorgungsdienst</li></ul>
+      <a class="more" href="#kontakt" data-pick="0">Entrümpelung anfragen</a>
+    </article>
+
+    <article class="chapter" data-ch="2" data-tag="Reinigung">
+      <div class="num"><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15" fill="none" stroke="#191817" stroke-width="4"/></svg>02 / 04</div>
+      <h2>Reinigung</h2>
+      <p>Regelmäßige Reinigung, eine gründliche Grundreinigung oder die Endreinigung nach dem Auszug. Fenster reinigen wir ebenfalls.</p>
+      <ul><li>Unterhaltsreinigung</li><li>Endreinigung</li><li>Grundreinigung</li><li>Hygienereinigung</li><li>Fensterreinigung</li></ul>
+      <a class="more" href="#kontakt" data-pick="1">Reinigung anfragen</a>
+    </article>
+
+    <article class="chapter" data-ch="3" data-tag="Umzug">
+      <div class="num"><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15" fill="none" stroke="#8f8f8f" stroke-width="4"/></svg>03 / 04</div>
+      <h2>Umzug &amp; Möbel­transport</h2>
+      <p>Vom einzelnen Möbelstück bis zum ganzen Umzug. Wir bauen Ihre Möbel ab, transportieren sie und bauen sie am neuen Ort wieder auf.</p>
+      <ul><li>Kleinumzüge</li><li>Möbeltransport &amp; Kleintransporte</li><li>Beiladung</li><li>Möbelmontage, Ab- und Aufbau</li><li>Transporthilfe</li></ul>
+      <a class="more" href="#kontakt" data-pick="2">Umzug anfragen</a>
+    </article>
+
+    <article class="chapter" data-ch="4" data-tag="Hausmeister &amp; Winterdienst">
+      <div class="num"><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15" fill="none" stroke="#c8342c" stroke-width="4"/></svg>04 / 04</div>
+      <h2>Hausmeister­service &amp; Winterdienst</h2>
+      <p>Wir betreuen Ihr Objekt das ganze Jahr und übernehmen Wartung und Instandhaltung. Im Winter räumen wir Schnee und streuen die Gehwege.</p>
+      <ul><li>Objektbetreuung</li><li>Wartung &amp; Instandhaltung</li><li>Schneeräumung</li><li>Streudienst</li><li>Gehwegreinigung</li></ul>
+      <a class="more" href="#kontakt" data-pick="3">Hausmeisterservice anfragen</a>
+    </article>
+  </div>
+</section>
+
+<section class="facts" aria-label="Zahlen">
+  <div><b>11</b><span>Jahre Erfahrung</span></div>
+  <div><b>536</b><span>zufriedene Kunden</span></div>
+  <div><b>378</b><span>abgeschlossene Projekte</span></div>
+</section>
+
+<section class="sec" id="ablauf">
+  <div class="wrap">
+    <h2>So läuft es ab</h2>
+    <ol class="steps">
+      <li><i>SCHRITT 1</i><b>Sie melden sich</b><p>Rufen Sie an oder schreiben Sie uns und sagen Sie kurz, was ansteht.</p></li>
+      <li><i>SCHRITT 2</i><b>Sie bekommen ein Angebot</b><p>Wir sehen uns an, was zu tun ist, und nennen Ihnen den Preis.</p></li>
+      <li><i>SCHRITT 3</i><b>Wir erledigen die Arbeit</b><p>Zum vereinbarten Termin kommen wir und kümmern uns um alles.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec index">
+  <div class="wrap">
+    <h2>Alle Leistungen im Überblick</h2>
+    <div class="grid">
+      <div><h3><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15" fill="none" stroke="#c8342c" stroke-width="4"/></svg>Entrümpelung</h3><ul><li>Entrümpelung</li><li>Haushaltsauflösung</li><li>Wohnungsräumung</li><li>Betriebsauflösung</li><li>Sperrmüllentsorgung</li><li>Entsorgungsdienst</li></ul></div>
+      <div><h3><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15" fill="none" stroke="#191817" stroke-width="4"/></svg>Reinigung</h3><ul><li>Unterhaltsreinigung</li><li>Endreinigung</li><li>Grundreinigung</li><li>Hygienereinigung</li><li>Fensterreinigung</li></ul></div>
+      <div><h3><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15" fill="none" stroke="#8f8f8f" stroke-width="4"/></svg>Umzug &amp; Transport</h3><ul><li>Kleinumzüge</li><li>Umzugsservice</li><li>Möbeltransport</li><li>Kleintransporte</li><li>Beiladung</li><li>Möbelmontage</li><li>Demontage &amp; Remontage</li></ul></div>
+      <div><h3><svg viewBox="0 0 30 16"><polyline points="2,15 15,2 28,15" fill="none" stroke="#c8342c" stroke-width="4"/></svg>Hausmeister &amp; Winter</h3><ul><li>Hausmeisterservice</li><li>Objektbetreuung</li><li>Wartung &amp; Instandhaltung</li><li>Gebäudeservice</li><li>Schneeräumung</li><li>Streudienst</li><li>Gehwegreinigung</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="kontakt">
+  <div class="wrap cols">
+    <div>
+      <h2>Was können wir für Sie tun?</h2>
+      <a class="tel" href="tel:+491793253742">0179 3253742</a>
+      <dl>
+        <dt>E-Mail</dt><dd><a href="mailto:leistungsservicezain@gmail.com">leistungsservicezain@gmail.com</a></dd>
+        <dt>Adresse</dt><dd>Winkelriedstr. 4, 76185 Karlsruhe</dd>
+        <dt>Inhaberin</dt><dd>Dina Zain</dd>
+      </dl>
+    </div>
+    <form id="form" novalidate>
+      <fieldset>
+        <legend>Worum geht es?</legend>
+        <div class="chips">
+          <label><input type="radio" name="t" checked><span>Entrümpelung</span></label>
+          <label><input type="radio" name="t"><span>Reinigung</span></label>
+          <label><input type="radio" name="t"><span>Umzug</span></label>
+          <label><input type="radio" name="t"><span>Hausmeister / Winter</span></label>
+        </div>
+      </fieldset>
+      <label for="f1">Ihr Name</label><input id="f1" type="text" autocomplete="name">
+      <label for="f2">Telefon oder E-Mail</label><input id="f2" type="text">
+      <label for="f3">Ihre Nachricht</label><textarea id="f3" rows="3"></textarea>
+      <button class="btn" type="submit">Anfrage senden</button>
+      <p class="note" id="note" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div><b style="color:var(--ink)">Leistungsservice Zain</b><br>Inhaberin Dina Zain · Winkelriedstr. 4 · 76185 Karlsruhe</div>
+      <div><a href="https://www.machmalweb.de/impressum.html">Impressum</a> · <a href="https://www.machmalweb.de/datenschutz.html">Datenschutz</a></div>
+    </div>
+    <p class="demo">Diese Seite ist eine unverbindliche Demo und nicht die offizielle Website von Leistungsservice Zain. Impressum und Datenschutz verweisen auf machmalweb (Zeus Consulting GmbH). Gemacht von <a href="https://www.machmalweb.de/">machmalweb</a>.</p>
+  </div>
+</footer>
+
+<a class="callbar" id="callbar" href="tel:+491793253742">Anrufen · 0179 3253742</a>
+
+<aside class="pop" id="pop" aria-label="Hinweis zur Demo">
+  <button class="x" type="button" aria-label="Schließen">×</button>
+  <h4>mach<em>mal</em>web.</h4>
+  <p>Das ist ein Entwurf: So könnte die neue Website von Leistungsservice Zain aussehen. Die echte Seite ist unverändert online.</p>
+  <a href="https://www.machmalweb.de/">Mehr über machmalweb</a>
+</aside>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)}, $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  var clamp=function(x){return x<0?0:x>1?1:x}, ease=function(t){return t*t*(3-2*t)};
+  var L=function(p,d,span){return clamp((p-d)/span)};
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobile=matchMedia('(max-width:900px)');
+
+  // Schneeflocken
+  var fl=$('#flakes'), ns='http://www.w3.org/2000/svg';
+  for(var i=0;i<46;i++){
+    var c=document.createElementNS(ns,'circle');
+    c.setAttribute('cx',(-140+Math.random()*1080).toFixed(0)); c.setAttribute('cy',-70);
+    c.setAttribute('r',(1.8+Math.random()*2.4).toFixed(1)); c.setAttribute('fill','#fff'); c.setAttribute('class','flake');
+    c.style.animationDuration=(6+Math.random()*7).toFixed(1)+'s'; c.style.animationDelay=(-Math.random()*13).toFixed(1)+'s';
+    fl.appendChild(c);
+  }
+
+  var chapters=$$('.chapter[data-ch]'), outs=$$('.out'), ins=$$('.in');
+  var stage=$('#stage'), tag=$('#tag'), truck=$('#truck'), wiper=$('#wiper'), wipeRect=$('#wipeRect'),
+      sparks=$('#sparks'), pic=$('#pic'), pane=$('#pane'), shade=$('#shade'), roofSnow=$('#roofSnow'),
+      wall=$('#wall'), trail=$('#trail'), grip=$('#wiperGrip'), door=$('#door'), smoke=$('#smoke'), chimSnow=$('#chimSnow'),
+      big=$('#big'), rail=$$('#rail svg'), wheels=$$('.wheel'), lastN=-1,
+      snowGround=$('#snowGround'), snowRect=$('#snowRect'), shovel=$('#shovel'), grit=$('#grit');
+  var cur=[0,0,0,0,0], tgt=[0,0,0,0,0], lastTag='';
+
+  function mix(a,b,t){return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*t)}).join(',')+')'}
+
+  function measure(){
+    var vh=innerHeight, m=mobile.matches, start=vh*(m?1.0:.72), end=vh*(m?.5:-.05), label='Vorher', act=0;
+    chapters.forEach(function(el){
+      var top=el.getBoundingClientRect().top, n=+el.dataset.ch;
+      tgt[n]=clamp((start-top)/(start-end));
+      if(tgt[n]>.02){label=el.dataset.tag;act=n}
+    });
+    if(tgt[4]>=.98) label='Fertig';
+    if(label!==lastTag){tag.innerHTML=label;lastTag=label}
+    rail.forEach(function(el,i){el.setAttribute('class',tgt[i+1]>=.98?'done':(i+1===act?'on':''))});
+    if(act!==lastN){
+      lastN=act; big.textContent=act?'0'+act:'';
+      if(act&&!reduce&&big.animate) big.animate([{opacity:0,transform:'translateY(14px)'},{opacity:.1,transform:'none'}],{duration:420,easing:'ease-out'});
+    }
+  }
+
+  function draw(){
+    var p1=cur[1],p2=cur[2],p3=cur[3],p4=cur[4];
+    outs.forEach(function(el){
+      var l=ease(L(p1,+el.dataset.d,.4));
+      el.style.transform='translate('+(l*el.dataset.dx).toFixed(1)+'px,'+(-Math.sin(l*Math.PI)*9).toFixed(1)+'px) rotate('+(Math.sin(l*Math.PI*2)*4).toFixed(1)+'deg)';
+      el.style.opacity=1-clamp((l-.82)*6);
+    });
+    var tx = p3>0 ? 330*(1-ease(L(p3,0,.14))) + 330*ease(L(p3,.88,.12)) : 330*ease(L(p1,.8,.2));
+    truck.style.transform='translateX('+tx.toFixed(1)+'px)';
+    wheels.forEach(function(el){el.style.transform='rotate('+(tx*3.37).toFixed(0)+'deg)'});
+    var w=ease(L(p2,.08,.8)), wx=84+w*452;
+    wipeRect.setAttribute('x',wx); wiper.style.transform='translateX('+wx+'px)';
+    wiper.style.opacity=grip.style.opacity=(w>0&&w<1)?1:0; grip.style.transform='translateX('+wx+'px)';
+    trail.style.transform='translateX('+wx+'px)'; trail.style.opacity=(w>0&&w<1)?.45:0;
+    sparks.style.opacity=L(p2,.8,.15)*(1-L(p3,.05,.15));
+    ins.forEach(function(el){
+      var l=ease(L(p3,+el.dataset.d,.36));
+      el.style.transform='translate('+((1-l)*el.dataset.dx).toFixed(1)+'px,'+(-Math.sin(l*Math.PI)*9).toFixed(1)+'px) rotate('+(Math.sin(l*Math.PI*2)*-3).toFixed(1)+'deg)';
+      el.style.opacity=clamp(l*6);
+    });
+    pic.style.opacity=L(p3,.8,.1);
+    var dusk=L(p4,0,.3);
+    stage.style.setProperty('--sky',mix([244,241,234],[186,199,209],dusk));
+    pane.setAttribute('fill',mix([188,211,218],[150,170,186],dusk));
+    shade.setAttribute('fill',mix([216,210,196],[244,199,84],L(p4,.2,.2)));
+    var warm=L(p4,.2,.2);
+    wall.setAttribute('fill',mix([239,234,223],[247,232,198],warm));
+    door.style.opacity=L(p4,.02,.1); smoke.style.opacity=L(p4,.3,.2); chimSnow.style.opacity=L(p4,.1,.25);
+    fl.style.opacity=L(p4,0,.15);
+    roofSnow.style.opacity=L(p4,.1,.25);
+    snowGround.style.opacity=L(p4,.08,.22);
+    var s=ease(L(p4,.4,.5)), sx=550+s*262;
+    snowRect.setAttribute('x',sx); shovel.style.transform='translateX('+(s*262)+'px)';
+    shovel.style.opacity=(s>0&&s<1)?1:0;
+    grit.style.opacity=L(p4,.55,.35);
+  }
+
+  var running=false;
+  function tick(){
+    var moving=false;
+    for(var i=1;i<5;i++){
+      var d=tgt[i]-cur[i];
+      if(reduce||Math.abs(d)<.0008){cur[i]=tgt[i]} else {cur[i]+=d*.14; moving=true}
+    }
+    draw();
+    if(moving) requestAnimationFrame(tick); else running=false;
+  }
+  function kick(){measure(); if(!running){running=true;requestAnimationFrame(tick)}}
+  addEventListener('scroll',kick,{passive:true}); addEventListener('resize',kick);
+  var scene=$('#stage > svg');
+  function crop(){scene.setAttribute('viewBox',mobile.matches?'0 62 800 528':'0 0 800 640')}
+  crop(); (mobile.addEventListener?mobile.addEventListener('change',crop):mobile.addListener(crop));
+  fl.style.opacity=0; kick();
+  window.__snap=function(){measure();cur=tgt.slice();draw()};
+
+  // Demo-Hinweis
+  var pop=$('#pop'), shown=false;
+  function show(){pop.classList.add('on');shown=true}
+  $('#what').addEventListener('click',function(){pop.classList.toggle('on');shown=true});
+  pop.querySelector('.x').addEventListener('click',function(){pop.classList.remove('on')});
+  if(!mobile.matches){
+    addEventListener('scroll',function(){if(!shown&&scrollY>320)show()},{passive:true});
+    setTimeout(function(){if(!shown)show()},12000);
+  }
+
+  // Kapitel-Links wählen die Leistung im Formular vor
+  var radios=$$('#form input[type=radio]');
+  $$('.more').forEach(function(a){a.addEventListener('click',function(){radios[+a.dataset.pick].checked=true})});
+
+  // Einblenden beim Scrollen, Zahlen hochzählen
+  if('IntersectionObserver' in window && !reduce){
+    document.documentElement.classList.add('js');
+    var groups=['.chapter[data-ch]','.facts','.steps','.index .grid','.contact .cols'];
+    groups.forEach(function(g){$$(g).forEach(function(par){[].forEach.call(par.children,function(el,i){el.classList.add('rv');el.style.transitionDelay=(i*70)+'ms'})})});
+    $$('.sec h2').forEach(function(el){el.classList.add('rv')});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target; el.classList.add('on'); io.unobserve(el);
+      var b=el.querySelector&&el.parentNode.classList.contains('facts')?el.querySelector('b'):null;
+      if(b){var end=+b.textContent,t0=performance.now();(function step(t){var k=clamp((t-t0)/900);b.textContent=Math.round(end*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)})(t0)}
+    })},{rootMargin:'0px 0px -8% 0px'});
+    $$('.rv').forEach(function(el){io.observe(el)});
+  }
+
+  // Anruf-Leiste am Handy
+  var bar=$('#callbar'), kontakt=$('#kontakt');
+  addEventListener('scroll',function(){
+    bar.classList.toggle('on', scrollY>420 && kontakt.getBoundingClientRect().top>innerHeight*.6);
+  },{passive:true});
+
+  // Formular (Demo: sendet nichts)
+  $('#form').addEventListener('submit',function(e){
+    e.preventDefault();
+    $('#note').textContent='Demo: Hier wird nichts gesendet. Auf der echten Seite geht die Anfrage direkt an Leistungsservice Zain.';
+  });
+})();
+</script>
+<script src="/mmw-zaehler.js" defer></script>
+</body>
+</html>
